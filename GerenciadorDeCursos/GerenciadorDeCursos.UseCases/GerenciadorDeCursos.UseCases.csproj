@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeCursos.Border\GerenciadorDeCursos.Border.csproj" />
+    <ProjectReference Include="..\GerenciadorDeCursos.Shared\GerenciadorDeCursos.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
