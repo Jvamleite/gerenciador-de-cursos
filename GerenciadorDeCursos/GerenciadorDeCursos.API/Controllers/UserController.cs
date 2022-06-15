@@ -33,7 +33,7 @@ namespace GerenciadorDeCursos.API.Controllers
         public IActionResult CreateUser([FromBody] CreateUserRequest createUserRequest)
         {
             ResultBase result = _createUserUseCase.CreateUser(createUserRequest);
-            return result.sucess == true ? CreatedAtAction(nameof(Get),result.Data) : BadRequest(result.Message);
+            return result.Sucess ? CreatedAtAction(nameof(Get),result.Data) : BadRequest(result.Message);
         }
 
         [HttpPut("{id}")]
