@@ -12,4 +12,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeCursos.Border\GerenciadorDeCursos.Border.csproj" />
+    <ProjectReference Include="..\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>
