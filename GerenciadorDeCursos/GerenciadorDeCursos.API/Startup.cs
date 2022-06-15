@@ -1,5 +1,7 @@
 using GerenciadorDeCursos.Border.Repositories;
+using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Repositories.Repositories;
+using GerenciadorDeCursos.UseCases.UserUseCase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +31,7 @@ namespace GerenciadorDeCursos.API
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
