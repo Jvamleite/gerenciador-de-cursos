@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GerenciadorDeCursos.Border.DTOs.In;
+using GerenciadorDeCursos.Border.UseCases;
+using GerenciadorDeCursos.Shared.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -7,7 +10,13 @@ namespace GerenciadorDeCursos.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-     
+        private readonly ICreateUserUseCase _createUserUseCase;
+
+        public UserController(ICreateUserUseCase createUserUseCase)
+        {
+            _createUserUseCase = createUserUseCase;
+        }
+
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -21,8 +30,10 @@ namespace GerenciadorDeCursos.API.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CreateUser([FromBody] CreateUserRequest createUserRequest)
         {
+            ResultBase result = _createUserUseCase.CreateUser(createUserRequest);
+            return result.sucess == true ? CreatedAtAction(nameof(Get),result.Data) : BadRequest(result.Message);
         }
 
         [HttpPut("{id}")]
