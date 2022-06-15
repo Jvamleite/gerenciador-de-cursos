@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GerenciadorDeCursos.Border\GerenciadorDeCursos.Border.csproj" />
     <ProjectReference Include="..\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Repositories.csproj" />
+    <ProjectReference Include="..\GerenciadorDeCursos.UseCases\GerenciadorDeCursos.UseCases.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.In;
+using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,9 @@ namespace GerenciadorDeCursos.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody] CreateUserRequest createUserRequest)
+        public IActionResult CreateUser([FromBody] CreateUserRequest createUserRequest, Roles role)
         {
-            ResultBase result = _createUserUseCase.CreateUser(createUserRequest);
+            ResultBase result = _createUserUseCase.CreateUser(createUserRequest,role);
             return result.Sucess ? CreatedAtAction(nameof(Get),result.Data) : BadRequest(result.Message);
         }
 
