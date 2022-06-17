@@ -28,10 +28,11 @@ namespace GerenciadorDeCursos.API.Controllers
             return result.Sucess ? Ok(result.Data) : BadRequest(result.Message);
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("roles")]
+        public async Task<IActionResult> GetByRole(Roles role)
         {
-            return "value";
+            ResultBase result = await _getUserUseCase.GetByRole(role);
+            return result.Sucess ? Ok(result.Data) : NotFound(result.Message);
         }
 
         [HttpPost]

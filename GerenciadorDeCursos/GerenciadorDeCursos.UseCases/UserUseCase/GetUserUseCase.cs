@@ -42,7 +42,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
                 CreateUserResponse createUserResponse = user.CreateCreateUserReponse();
                 createUserResponseList.Add(createUserResponse);
             }
-            return createUserResponseList
+            return createUserResponseList;
         }
     }
 }
