@@ -1,8 +1,10 @@
 ﻿using GerenciadorDeCursos.Border.Entities;
+using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Repositories.Repositories
@@ -21,6 +23,11 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
+        }
+
+        public async Task<List<User>> FindByRole(Roles role)
+        {
+            return await _context.Users.Where(p => p.Role == role).ToListAsync();
         }
 
         public async Task<List<User>> GetAll()
