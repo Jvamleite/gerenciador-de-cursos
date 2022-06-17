@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.Repositories
@@ -6,5 +7,6 @@ namespace GerenciadorDeCursos.Border.Repositories
     public interface IUserRepository
     {
         Task<User> Add(User user);
+        Task<List<User>> GetAll();
     }
 }
