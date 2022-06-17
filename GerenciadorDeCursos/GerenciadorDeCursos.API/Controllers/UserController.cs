@@ -4,6 +4,7 @@ using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
 {
@@ -31,9 +32,9 @@ namespace GerenciadorDeCursos.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody] CreateUserRequest createUserRequest, Roles role)
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest, Roles role)
         {
-            ResultBase result = _createUserUseCase.CreateUser(createUserRequest,role);
+            ResultBase result = await _createUserUseCase.CreateUser(createUserRequest,role);
             return result.Sucess ? CreatedAtAction(nameof(Get),result.Data) : BadRequest(result.Message);
         }
 

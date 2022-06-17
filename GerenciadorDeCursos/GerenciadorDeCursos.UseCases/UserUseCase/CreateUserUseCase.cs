@@ -5,6 +5,7 @@ using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCase
 {
@@ -17,11 +18,11 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
             _userRepositoy = userRepositoy; 
         }
 
-        public ResultBase CreateUser(CreateUserRequest request, Roles role) {
+        public async Task<ResultBase> CreateUser(CreateUserRequest request, Roles role) {
             ResultBase result = new ResultBase();
             CreateUserResponse userResponse = new CreateUserResponse();
             User createdUser = new User(request.Username,request.Password);
-            _userRepositoy.Add(createdUser);
+            await _userRepositoy.Add(createdUser);
             userResponse.Username = createdUser.Username;
             userResponse.Role = role;
             result.Data = userResponse;
