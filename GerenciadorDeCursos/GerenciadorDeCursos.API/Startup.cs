@@ -39,6 +39,7 @@ namespace GerenciadorDeCursos.API
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
+            services.AddScoped<IGetUserUseCase, GetUserUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

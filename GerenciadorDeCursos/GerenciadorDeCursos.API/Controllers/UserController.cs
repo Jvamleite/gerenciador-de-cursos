@@ -13,16 +13,19 @@ namespace GerenciadorDeCursos.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly ICreateUserUseCase _createUserUseCase;
+        private readonly IGetUserUseCase _getUserUseCase;
 
-        public UserController(ICreateUserUseCase createUserUseCase)
+        public UserController(ICreateUserUseCase createUserUseCase,IGetUserUseCase getUserUseCase)
         {
             _createUserUseCase = createUserUseCase;
+            _getUserUseCase = getUserUseCase;
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            ResultBase result = await _getUserUseCase.GetAll();
+            return result.Sucess ? Ok(result.Data) : BadRequest(result.Message);
         }
 
         [HttpGet("{id}")]
@@ -35,7 +38,7 @@ namespace GerenciadorDeCursos.API.Controllers
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest, Roles role)
         {
             ResultBase result = await _createUserUseCase.CreateUser(createUserRequest,role);
-            return result.Sucess ? CreatedAtAction(nameof(Get),result.Data) : BadRequest(result.Message);
+            return result.Sucess ? CreatedAtAction(nameof(GetAll),result.Data) : BadRequest(result.Message);
         }
 
         [HttpPut("{id}")]
