@@ -22,14 +22,20 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
         {
             ResultBase result = new ResultBase();
             List<User> users = await _userRepository.GetAll();
+            List<CreateUserResponse> createUserResponseList = CreateUserResponseList(users);
+            result.Data = createUserResponseList;
+            return result;
+        }
+
+        private List<CreateUserResponse> CreateUserResponseList(List<User> users)
+        {
             List<CreateUserResponse> createUserResponseList = new List<CreateUserResponse>();
             foreach (User user in users)
             {
                 CreateUserResponse createUserResponse = user.CreateCreateUserReponse();
                 createUserResponseList.Add(createUserResponse);
             }
-            result.Data = createUserResponseList;
-            return result;
+            return createUserResponseList
         }
     }
 }
