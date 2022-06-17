@@ -20,9 +20,9 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
         public ResultBase CreateUser(CreateUserRequest request, Roles role) {
             ResultBase result = new ResultBase();
             CreateUserResponse userResponse = new CreateUserResponse();
-            User createdUser = new User(request.Name,request.Password);
+            User createdUser = new User(request.Username,request.Password);
             _userRepositoy.Add(createdUser);
-            userResponse.Name = createdUser.Name;
+            userResponse.Username = createdUser.Username;
             userResponse.Role = role;
             result.Data = userResponse;
             return result;
