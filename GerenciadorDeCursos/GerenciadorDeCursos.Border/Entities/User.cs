@@ -1,4 +1,5 @@
-﻿using GerenciadorDeCursos.Border.Enums;
+﻿using GerenciadorDeCursos.Border.DTOs.Out;
+using GerenciadorDeCursos.Border.Enums;
 
 namespace GerenciadorDeCursos.Border.Entities
 {
@@ -9,10 +10,19 @@ namespace GerenciadorDeCursos.Border.Entities
         public string Password { get; set; }
         public Roles Role { get; set; }
 
-        public User(string username, string password)
+        public User(string username, string password,Roles role)
         {
             Username = username;
             Password = password;
+            Role = role;
+        }
+
+        public CreateUserResponse CreateCreateUserReponse()
+        {
+            CreateUserResponse userResponse = new CreateUserResponse();
+            userResponse.Username = Username;
+            userResponse.Role = Role;
+            return userResponse;
         }
     }
 

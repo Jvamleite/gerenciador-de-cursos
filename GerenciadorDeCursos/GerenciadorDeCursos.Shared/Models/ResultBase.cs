@@ -15,6 +15,7 @@ namespace GerenciadorDeCursos.Shared.Models
         public ResultBase(object data)
         {
             Data = data;
+            Sucess = data != null;
         }
     }
 

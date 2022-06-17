@@ -19,13 +19,10 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
         }
 
         public async Task<ResultBase> CreateUser(CreateUserRequest request, Roles role) {
-            ResultBase result = new ResultBase();
-            CreateUserResponse userResponse = new CreateUserResponse();
-            User createdUser = new User(request.Username,request.Password);
-            await _userRepositoy.Add(createdUser);
-            userResponse.Username = createdUser.Username;
-            userResponse.Role = role;
-            result.Data = userResponse;
+            User createdUser = new User(request.Username,request.Password,role);
+            User addedUser = await _userRepositoy.Add(createdUser);
+            CreateUserResponse response = addedUser.CreateCreateUserReponse();
+            ResultBase result = new ResultBase(response);
             return result;
         }
     }
