@@ -3,6 +3,7 @@ using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,22 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return user;
         }
 
+        public async Task<bool> DeleteByUsername(string username)
+        {
+            try
+            {
+                User user = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
+                _context.Remove(user);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (NullReferenceException ex)
+            {
+                return false;
+            }
+            
+        }
+
         public async Task<List<User>> FindByRole(Roles role)
         {
             return await _context.Users.Where(p => p.Role == role).ToListAsync();
@@ -34,5 +51,6 @@ namespace GerenciadorDeCursos.Repositories.Repositories
         {
             return await _context.Users.AsNoTracking().ToListAsync();
         }
+       
     }
 }
