@@ -1,26 +1,57 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        private static string currentEnvironment;
+        public static int Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                currentEnvironment = string.Empty;
+
+                var hostBuilder = CreateHostBuilder(args).Build();
+                Log.Warning("Iniciando API. Ambiente: " + currentEnvironment);
+                hostBuilder.Run();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host encerrado inesperadamente. Ambiente: " + currentEnvironment);
+                return 1;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+
+            var hostBuilder = Host.CreateDefaultBuilder(args)
+           .ConfigureAppConfiguration((builderContext, config) =>
+           {
+               var env = builderContext.HostingEnvironment;
+               currentEnvironment = env.EnvironmentName;
+               var settings = config.Build();
+               Log.Logger = new LoggerConfiguration()
+                  .Enrich.FromLogContext()
+                  .MinimumLevel.Debug()
+                  .WriteTo.Console()
+                  .CreateLogger();
+           })
+           .UseSerilog()
+           .ConfigureWebHostDefaults(webBuilder =>
+           {
+               webBuilder.UseStartup<Startup>();
+           });
+
+            return hostBuilder;
+        }
     }
 }
