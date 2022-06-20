@@ -3,7 +3,6 @@ using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -14,11 +13,13 @@ namespace GerenciadorDeCursos.API.Controllers
     {
         private readonly ICreateUserUseCase _createUserUseCase;
         private readonly IGetUserUseCase _getUserUseCase;
+        private readonly IDeleteUserUseCase _deleteUserUseCase;
 
-        public UserController(ICreateUserUseCase createUserUseCase,IGetUserUseCase getUserUseCase)
+        public UserController(ICreateUserUseCase createUserUseCase,IGetUserUseCase getUserUseCase,IDeleteUserUseCase deleteUserUseCase)
         {
             _createUserUseCase = createUserUseCase;
             _getUserUseCase = getUserUseCase;
+            _deleteUserUseCase = deleteUserUseCase;
         }
 
         [HttpGet]
@@ -47,9 +48,11 @@ namespace GerenciadorDeCursos.API.Controllers
         {
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string username)
         {
+            ResultBase result = await _deleteUserUseCase.DeleteUserByUsername(username);
+            return result.Sucess ? NoContent() : BadRequest(result.Message);
         }
     }
 }
