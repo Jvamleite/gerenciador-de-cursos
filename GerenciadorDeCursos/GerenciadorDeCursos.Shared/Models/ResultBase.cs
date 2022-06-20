@@ -17,6 +17,11 @@ namespace GerenciadorDeCursos.Shared.Models
             Data = data;
             Sucess = data != null;
         }
+        public ResultBase(bool sucess, string message)
+        {
+            Sucess = sucess;
+            Message = message;
+        }
     }
 
     

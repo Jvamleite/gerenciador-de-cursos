@@ -28,28 +28,24 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
         public async Task<bool> DeleteByUsername(string username)
         {
-            try
-            {
-                User user = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
-                _context.Remove(user);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch (NullReferenceException ex)
-            {
-                return false;
-            }
-            
+            User user = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
+            if (user == null)
+                throw new NullReferenceException("Username inválido");
+            _context.Remove(user);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<List<User>> FindByRole(Roles role)
         {
-            return await _context.Users.Where(p => p.Role == role).ToListAsync();
+            List<User> usersByRole = await _context.Users.Where(p => p.Role == role).ToListAsync();
+            return !usersByRole.Any() ? throw new Exception("Não há usuários com o role selecionado") : usersByRole;
         }
 
         public async Task<List<User>> GetAll()
         {
-            return await _context.Users.AsNoTracking().ToListAsync();
+            List<User> users = await _context.Users.AsNoTracking().ToListAsync();
+            return !users.Any() ? throw new Exception("Não há usuários para listar") : users;
         }
        
     }

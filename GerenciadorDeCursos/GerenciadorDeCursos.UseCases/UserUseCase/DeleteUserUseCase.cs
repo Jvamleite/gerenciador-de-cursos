@@ -21,7 +21,14 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
         public async Task<ResultBase> DeleteUserByUsername(string username)
         {
             ResultBase result = new ResultBase();
-            result.Sucess = await _userRepository.DeleteByUsername(username);
+            try
+            {
+                result.Sucess = await _userRepository.DeleteByUsername(username);
+            }
+            catch(Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
             return result;
         }
     }

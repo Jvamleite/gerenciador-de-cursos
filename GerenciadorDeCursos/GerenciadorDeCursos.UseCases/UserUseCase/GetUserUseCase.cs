@@ -4,6 +4,7 @@ using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,16 +22,30 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
 
         public async Task<ResultBase> GetAll()
         {
-            ResultBase result = new ResultBase();
-            List<User> users = await _userRepository.GetAll();
-            List<CreateUserResponse> createUserResponseList = CreateUserResponseList(users);
-            result.Data = createUserResponseList;
-            return result;
+            List<CreateUserResponse> createUserResponseList;
+            try
+            {
+                List<User> users = await _userRepository.GetAll();
+                createUserResponseList = CreateUserResponseList(users);
+            }
+            catch(Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
+            return new ResultBase(createUserResponseList);
         }
 
         public async Task<ResultBase> GetByRole(Roles role)
         {
-            List<User> usersByRole = await _userRepository.FindByRole(role);
+            List<User> usersByRole;
+            try
+            {
+                usersByRole = await _userRepository.FindByRole(role);
+            }
+            catch(Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
             return new ResultBase(usersByRole);
         }
 

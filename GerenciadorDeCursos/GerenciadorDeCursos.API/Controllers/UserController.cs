@@ -26,7 +26,7 @@ namespace GerenciadorDeCursos.API.Controllers
         public async Task<IActionResult> GetAll()
         {
             ResultBase result = await _getUserUseCase.GetAll();
-            return result.Sucess ? Ok(result.Data) : BadRequest(result.Message);
+            return result.Sucess ? Ok(result.Data) : NotFound(result.Message);
         }
 
         [HttpGet("roles")]
