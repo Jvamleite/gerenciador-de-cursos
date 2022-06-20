@@ -3,6 +3,8 @@ using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -14,12 +16,14 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly ICreateUserUseCase _createUserUseCase;
         private readonly IGetUserUseCase _getUserUseCase;
         private readonly IDeleteUserUseCase _deleteUserUseCase;
+        private readonly ILogger _logger;
 
-        public UserController(ICreateUserUseCase createUserUseCase,IGetUserUseCase getUserUseCase,IDeleteUserUseCase deleteUserUseCase)
+        public UserController(ICreateUserUseCase createUserUseCase,IGetUserUseCase getUserUseCase,IDeleteUserUseCase deleteUserUseCase, ILogger logger)
         {
             _createUserUseCase = createUserUseCase;
             _getUserUseCase = getUserUseCase;
             _deleteUserUseCase = deleteUserUseCase;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -39,8 +43,15 @@ namespace GerenciadorDeCursos.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest, Roles role)
         {
+            _logger.Warning($"Iniciando a criação de um novo usuário");
             ResultBase result = await _createUserUseCase.CreateUser(createUserRequest,role);
-            return result.Sucess ? CreatedAtAction(nameof(GetAll),result.Data) : BadRequest(result.Message);
+            if(!result.Sucess)
+            {
+                _logger.Warning("Falha ao tentar criar o usuário: " + result.Message);
+                return BadRequest(result.Message);
+            }
+            _logger.Warning("Usuário criado com sucesso");
+            return CreatedAtAction(nameof(GetAll), result.Data);
         }
 
         [HttpPut("{id}")]
