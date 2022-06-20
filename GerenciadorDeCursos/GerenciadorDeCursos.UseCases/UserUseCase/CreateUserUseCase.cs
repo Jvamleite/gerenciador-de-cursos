@@ -5,6 +5,7 @@ using GerenciadorDeCursos.Border.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases;
 using GerenciadorDeCursos.Shared.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCase
@@ -19,11 +20,22 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
         }
 
         public async Task<ResultBase> CreateUser(CreateUserRequest request, Roles role) {
-            User createdUser = new User(request.Username,request.Password,role);
-            User addedUser = await _userRepositoy.Add(createdUser);
-            UserResponse response = addedUser.CreateCreateUserReponse();
-            ResultBase result = new ResultBase(response);
-            return result;
+            try
+            {
+                User user = await _userRepositoy.FindByUsername(request.Username);
+                if (user != null)
+                {
+                    return new ResultBase(false, "Usuário já existe!");
+                }
+                User createdUser = new User(request.Username, request.Password, role);
+                User addedUser = await _userRepositoy.Add(createdUser);
+                UserResponse response = addedUser.CreateCreateUserReponse();
+                return new ResultBase(response);
+            }
+            catch(Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
         }
     }
 }
