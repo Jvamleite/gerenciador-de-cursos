@@ -17,9 +17,9 @@ namespace GerenciadorDeCursos.Border.Entities
             Role = role;
         }
 
-        public CreateUserResponse CreateCreateUserReponse()
+        public UserResponse CreateCreateUserReponse()
         {
-            CreateUserResponse userResponse = new CreateUserResponse();
+            UserResponse userResponse = new UserResponse();
             userResponse.Username = Username;
             userResponse.Role = Role;
             return userResponse;

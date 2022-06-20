@@ -21,7 +21,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
         public async Task<ResultBase> CreateUser(CreateUserRequest request, Roles role) {
             User createdUser = new User(request.Username,request.Password,role);
             User addedUser = await _userRepositoy.Add(createdUser);
-            CreateUserResponse response = addedUser.CreateCreateUserReponse();
+            UserResponse response = addedUser.CreateCreateUserReponse();
             ResultBase result = new ResultBase(response);
             return result;
         }

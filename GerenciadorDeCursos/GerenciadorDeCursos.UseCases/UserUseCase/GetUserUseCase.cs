@@ -22,25 +22,27 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
 
         public async Task<ResultBase> GetAll()
         {
-            List<CreateUserResponse> createUserResponseList;
+            List<UserResponse> userResponseList;
             try
             {
                 List<User> users = await _userRepository.GetAll();
-                createUserResponseList = CreateUserResponseList(users);
+                userResponseList = CreateUserResponseList(users);
             }
             catch(Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }
-            return new ResultBase(createUserResponseList);
+            return new ResultBase(userResponseList);
         }
 
         public async Task<ResultBase> GetByRole(Roles role)
         {
-            List<User> usersByRole;
+            List<UserResponse> usersByRole;
+            List<User> users;
             try
             {
-                usersByRole = await _userRepository.FindByRole(role);
+                users = await _userRepository.FindByRole(role);
+                usersByRole = CreateUserResponseList(users);
             }
             catch(Exception ex)
             {
@@ -49,15 +51,15 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
             return new ResultBase(usersByRole);
         }
 
-        private List<CreateUserResponse> CreateUserResponseList(List<User> users)
+        private List<UserResponse> CreateUserResponseList(List<User> users)
         {
-            List<CreateUserResponse> createUserResponseList = new List<CreateUserResponse>();
+            List<UserResponse> userResponseList = new List<UserResponse>();
             foreach (User user in users)
             {
-                CreateUserResponse createUserResponse = user.CreateCreateUserReponse();
-                createUserResponseList.Add(createUserResponse);
+                UserResponse userResponse = user.CreateCreateUserReponse();
+                userResponseList.Add(userResponse);
             }
-            return createUserResponseList;
+            return userResponseList;
         }
     }
 }

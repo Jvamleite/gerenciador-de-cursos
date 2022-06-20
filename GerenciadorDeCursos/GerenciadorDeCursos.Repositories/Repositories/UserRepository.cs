@@ -28,7 +28,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
         public async Task<bool> DeleteByUsername(string username)
         {
-            User user = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
+            User user = await FindByUsername(username);
             if (user == null)
                 throw new NullReferenceException("Username inválido");
             _context.Remove(user);
@@ -40,6 +40,12 @@ namespace GerenciadorDeCursos.Repositories.Repositories
         {
             List<User> usersByRole = await _context.Users.Where(p => p.Role == role).ToListAsync();
             return !usersByRole.Any() ? throw new Exception("Não há usuários com o role selecionado") : usersByRole;
+        }
+
+        public async Task<User> FindByUsername(string username)
+        {
+            User usersByRole = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
+            return usersByRole == null ? throw new Exception("Não há usuários com o username escolhido") : usersByRole;
         }
 
         public async Task<List<User>> GetAll()

@@ -9,6 +9,7 @@ namespace GerenciadorDeCursos.Border.Repositories
     {
         Task<User> Add(User user);
         Task<List<User>> GetAll();
+        Task<User> FindByUsername(string username);
         Task<List<User>> FindByRole(Roles role);
         Task<bool> DeleteByUsername(string username);
     }

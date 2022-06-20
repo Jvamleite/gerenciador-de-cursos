@@ -2,7 +2,7 @@
 
 namespace GerenciadorDeCursos.Border.DTOs.Out
 {
-    public class CreateUserResponse
+    public class UserResponse
     {
         public string Username { get; set; }
         public Roles Role { get; set; }
