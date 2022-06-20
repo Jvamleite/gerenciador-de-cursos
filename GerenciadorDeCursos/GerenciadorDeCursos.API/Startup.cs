@@ -1,5 +1,7 @@
+using FluentValidation.AspNetCore;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases;
+using GerenciadorDeCursos.Border.Validators;
 using GerenciadorDeCursos.Repositories.Data;
 using GerenciadorDeCursos.Repositories.Repositories;
 using GerenciadorDeCursos.UseCases.UserUseCase;
@@ -28,10 +30,15 @@ namespace GerenciadorDeCursos.API
         {
 
             services.AddControllers()
+                    .AddFluentValidation(opt =>
+                    {
+                        opt.RegisterValidatorsFromAssemblyContaining<UserValidator>();
+                    })
                     .AddJsonOptions(opt =>
                     {
                         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                     });
+                    
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciadorDeCursos.API", Version = "v1" });
