@@ -1,6 +1,6 @@
-﻿using GerenciadorDeCursos.Border.Enums;
+﻿using GerenciadorDeCursos.Border.Entities.User.Enums;
 
-namespace GerenciadorDeCursos.Border.DTOs.Out
+namespace GerenciadorDeCursos.Border.DTOs.UserDTOs.Response
 {
     public class UserResponse
     {

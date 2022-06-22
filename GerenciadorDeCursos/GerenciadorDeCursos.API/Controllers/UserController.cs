@@ -1,10 +1,9 @@
-﻿using GerenciadorDeCursos.Border.DTOs.In;
-using GerenciadorDeCursos.Border.Enums;
-using GerenciadorDeCursos.Border.UseCases;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Request;
+using GerenciadorDeCursos.Border.Entities.User.Enums;
+using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -41,7 +40,7 @@ namespace GerenciadorDeCursos.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest, Roles role)
+        public async Task<IActionResult> CreateUser([FromBody] RegisterUserRequest createUserRequest, Roles role)
         {
             _logger.Warning($"Iniciando a criação de um novo usuário");
             ResultBase result = await _createUserUseCase.CreateUser(createUserRequest,role);

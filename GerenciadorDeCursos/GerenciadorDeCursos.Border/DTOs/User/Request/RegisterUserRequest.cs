@@ -1,6 +1,6 @@
-﻿namespace GerenciadorDeCursos.Border.DTOs.In
+﻿namespace GerenciadorDeCursos.Border.DTOs.UserDTOs.Request
 {
-    public class CreateUserRequest
+    public class RegisterUserRequest
     {
         public string Username { get; set; }
         public string Password { get; set; }
