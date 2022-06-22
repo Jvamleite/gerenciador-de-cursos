@@ -1,11 +1,10 @@
 ﻿using FluentValidation;
-using GerenciadorDeCursos.Border.DTOs.In;
-using GerenciadorDeCursos.Border.Entities;
+using GerenciadorDeCursos.Border.DTOs.UserDTOs.Request;
 using System.Text.RegularExpressions;
 
 namespace GerenciadorDeCursos.Border.Validators
 {
-    public class UserValidator : AbstractValidator<CreateUserRequest>
+    public class UserValidator : AbstractValidator<RegisterUserRequest>
     {
         public UserValidator()
         {

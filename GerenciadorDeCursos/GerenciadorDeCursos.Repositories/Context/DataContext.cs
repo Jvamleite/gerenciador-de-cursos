@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities;
+﻿using GerenciadorDeCursos.Border.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorDeCursos.Repositories.Data

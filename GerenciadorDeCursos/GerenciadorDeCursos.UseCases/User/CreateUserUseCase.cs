@@ -1,27 +1,29 @@
-﻿using GerenciadorDeCursos.Border.DTOs.In;
-using GerenciadorDeCursos.Border.DTOs.Out;
-using GerenciadorDeCursos.Border.Entities;
-using GerenciadorDeCursos.Border.Enums;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Request;
+using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
+using GerenciadorDeCursos.Border.Entities.User;
+using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.UseCases;
+using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using Serilog;
 using System;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.UseCases.UserUseCase
+namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
-    public class CreateUserUseCase : ICreateUserUseCase {
+    public class CreateUserUseCase : ICreateUserUseCase
+    {
 
         private readonly IUserRepository _userRepositoy;
         private readonly ILogger _logger;
 
         public CreateUserUseCase(IUserRepository userRepositoy)
         {
-            _userRepositoy = userRepositoy; 
+            _userRepositoy = userRepositoy;
         }
 
-        public async Task<ResultBase> CreateUser(CreateUserRequest request, Roles role) {
+        public async Task<ResultBase> CreateUser(RegisterUserRequest request, Roles role)
+        {
             try
             {
                 _logger.Warning("Verificando se o usuário já existe no banco de dados");
@@ -36,7 +38,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
                 UserResponse response = addedUser.CreateCreateUserReponse();
                 return new ResultBase(response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }

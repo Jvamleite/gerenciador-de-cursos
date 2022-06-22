@@ -1,10 +1,10 @@
 using FluentValidation.AspNetCore;
 using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.UseCases;
+using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Border.Validators;
 using GerenciadorDeCursos.Repositories.Data;
 using GerenciadorDeCursos.Repositories.Repositories;
-using GerenciadorDeCursos.UseCases.UserUseCase;
+using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

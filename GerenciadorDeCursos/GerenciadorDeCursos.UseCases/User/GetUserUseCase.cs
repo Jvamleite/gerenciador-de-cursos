@@ -1,14 +1,14 @@
-﻿using GerenciadorDeCursos.Border.DTOs.Out;
-using GerenciadorDeCursos.Border.Entities;
-using GerenciadorDeCursos.Border.Enums;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
+using GerenciadorDeCursos.Border.Entities.User;
+using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.UseCases;
+using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.UseCases.UserUseCase
+namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
 
     public class GetUserUseCase : IGetUserUseCase
@@ -28,7 +28,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
                 List<User> users = await _userRepository.GetAll();
                 userResponseList = CreateUserResponseList(users);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }
@@ -44,7 +44,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
                 users = await _userRepository.FindByRole(role);
                 usersByRole = CreateUserResponseList(users);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }

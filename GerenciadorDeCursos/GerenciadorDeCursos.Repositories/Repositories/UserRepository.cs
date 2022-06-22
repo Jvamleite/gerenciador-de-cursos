@@ -1,5 +1,5 @@
-﻿using GerenciadorDeCursos.Border.Entities;
-using GerenciadorDeCursos.Border.Enums;
+﻿using GerenciadorDeCursos.Border.Entities.User;
+using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;

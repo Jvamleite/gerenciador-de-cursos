@@ -1,13 +1,10 @@
 ﻿using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.UseCases;
+using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.UseCases.UserUseCase
+namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
 
     public class DeleteUserUseCase : IDeleteUserUseCase
@@ -25,7 +22,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCase
             {
                 result.Sucess = await _userRepository.DeleteByUsername(username);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }

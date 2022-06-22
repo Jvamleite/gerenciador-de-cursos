@@ -1,7 +1,7 @@
-﻿using GerenciadorDeCursos.Border.DTOs.Out;
-using GerenciadorDeCursos.Border.Enums;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
+using GerenciadorDeCursos.Border.Entities.User.Enums;
 
-namespace GerenciadorDeCursos.Border.Entities
+namespace GerenciadorDeCursos.Border.Entities.User
 {
     public class User
     {
@@ -10,7 +10,7 @@ namespace GerenciadorDeCursos.Border.Entities
         public string Password { get; set; }
         public Roles Role { get; set; }
 
-        public User(string username, string password,Roles role)
+        public User(string username, string password, Roles role)
         {
             Username = username;
             Password = password;
