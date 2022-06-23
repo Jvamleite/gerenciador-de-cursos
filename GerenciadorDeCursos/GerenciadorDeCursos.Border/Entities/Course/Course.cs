@@ -1,4 +1,5 @@
-﻿using GerenciadorDeCursos.Border.Entities.Course.Enums;
+﻿using GerenciadorDeCursos.Border.DTOs.Course.Response;
+using GerenciadorDeCursos.Border.Entities.Course.Enums;
 using System;
 
 namespace GerenciadorDeCursos.Border.Entities.Course
@@ -25,7 +26,7 @@ namespace GerenciadorDeCursos.Border.Entities.Course
             Status = 0;
         }
 
-        private Status GetStatus()
+        public Status GetStatus()
         {
             if (CourseIsOnGoing())
                 return Status.EmAndamento;
@@ -40,6 +41,16 @@ namespace GerenciadorDeCursos.Border.Entities.Course
         private bool CourseIsFinished()
         {
             return (dateNow > DataFinal);
+        }
+
+        public CourseResponse CreateCourseResponse()
+        {
+            CourseResponse courseResponse = new CourseResponse();
+            courseResponse.Título = this.Título;
+            courseResponse.DataInicial = this.DataInicial;
+            courseResponse.DataFinal = this.DataFinal;
+            courseResponse.Status = this.Status;
+            return courseResponse;
         }
     }
 
