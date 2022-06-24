@@ -1,9 +1,11 @@
 using FluentValidation.AspNetCore;
 using GerenciadorDeCursos.Border.Repositories;
+using GerenciadorDeCursos.Border.UseCases.Course;
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Border.Validators;
 using GerenciadorDeCursos.Repositories.Data;
 using GerenciadorDeCursos.Repositories.Repositories;
+using GerenciadorDeCursos.UseCases.CourseUseCase;
 using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -53,6 +55,7 @@ namespace GerenciadorDeCursos.API
             services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
             services.AddScoped<IGetUserUseCase, GetUserUseCase>();
             services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
+            services.AddScoped<ICreateCourseUseCase, CreateCourseUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

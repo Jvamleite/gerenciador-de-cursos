@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GerenciadorDeCursos.Border.DTOs.Course.Request;
+using GerenciadorDeCursos.Border.UseCases.Course;
+using GerenciadorDeCursos.Shared.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
 {
@@ -7,6 +11,12 @@ namespace GerenciadorDeCursos.API.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
+        private readonly ICreateCourseUseCase _createCourseUseCase;
+
+        public CourseController(ICreateCourseUseCase createCourseUseCase)
+        {
+            _createCourseUseCase = createCourseUseCase;
+        }
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -20,8 +30,10 @@ namespace GerenciadorDeCursos.API.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CreateCourse([FromBody] CreateCourseRequest createCourseRequest)
         {
+            ResultBase response = await _createCourseUseCase.CreateCourseAsync(createCourseRequest);
+            return response.Sucess ? CreatedAtAction(nameof(Get), response.Data) : BadRequest(response.Message);
         }
 
         [HttpPut("{id}")]
