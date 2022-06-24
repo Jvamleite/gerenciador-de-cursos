@@ -5,7 +5,7 @@ using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -14,27 +14,28 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
     public class CreateUserUseCase : ICreateUserUseCase
     {
 
-        private readonly IUserRepository _userRepositoy;
-        private readonly ILogger _logger;
+        private readonly IUserRepository _userRepository;
+        private readonly ILogger<CreateUserUseCase> _logger;
 
-        public CreateUserUseCase(IUserRepository userRepositoy)
+        public CreateUserUseCase(IUserRepository userRepository,ILogger<CreateUserUseCase> logger)
         {
-            _userRepositoy = userRepositoy;
+            _userRepository = userRepository;
+            _logger = logger;
         }
 
-        public async Task<ResultBase> CreateUser(RegisterUserRequest request, Roles role)
+        public async Task<ResultBase> CreateUserAsync(RegisterUserRequest request, Roles role)
         {
             try
             {
-                _logger.Warning("Verificando se o usuário já existe no banco de dados");
-                User user = await _userRepositoy.FindByUsername(request.Username);
+                _logger.LogWarning("Verificando se o usuário já existe no banco de dados");
+                User user = await _userRepository.FindByUsernameAsync(request.Username);
                 if (user != null)
                 {
                     return new ResultBase(false, "Usuário já existe!");
                 }
-                _logger.Warning("Usuário não encontrado, criando usuário");
+                _logger.LogWarning("Usuário não encontrado, criando usuário");
                 User createdUser = new User(request.Username, request.Password, role);
-                User addedUser = await _userRepositoy.Add(createdUser);
+                User addedUser = await _userRepository.AddAsync(createdUser);
                 UserResponse response = addedUser.CreateCreateUserReponse();
                 return new ResultBase(response);
             }

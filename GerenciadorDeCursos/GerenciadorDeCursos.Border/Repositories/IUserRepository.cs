@@ -7,10 +7,10 @@ namespace GerenciadorDeCursos.Border.Repositories
 {
     public interface IUserRepository
     {
-        Task<User> Add(User user);
-        Task<List<User>> GetAll();
-        Task<User> FindByUsername(string username);
-        Task<List<User>> FindByRole(Roles role);
-        Task<bool> DeleteByUsername(string username);
+        Task<User> AddAsync(User user);
+        Task<List<User>> GetAllAsync();
+        Task<User> FindByUsernameAsync(string username);
+        Task<List<User>> FindByRoleAsync(Roles role);
+        Task<bool> DeleteByUsernameAsync(string username);
     }
 }

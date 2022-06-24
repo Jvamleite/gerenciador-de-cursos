@@ -7,6 +7,6 @@ namespace GerenciadorDeCursos.Border.UseCases.User
 {
     public interface ICreateUserUseCase
     {
-        Task<ResultBase> CreateUser(RegisterUserRequest request, Roles role);
+        Task<ResultBase> CreateUserAsync(RegisterUserRequest request, Roles role);
     }
 }

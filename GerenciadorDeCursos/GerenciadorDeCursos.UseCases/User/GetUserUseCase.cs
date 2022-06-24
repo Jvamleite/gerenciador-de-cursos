@@ -20,12 +20,12 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             _userRepository = userRepository;
         }
 
-        public async Task<ResultBase> GetAll()
+        public async Task<ResultBase> GetAllAsync()
         {
             List<UserResponse> userResponseList;
             try
             {
-                List<User> users = await _userRepository.GetAll();
+                List<User> users = await _userRepository.GetAllAsync();
                 userResponseList = CreateUserResponseList(users);
             }
             catch (Exception ex)
@@ -35,13 +35,13 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             return new ResultBase(userResponseList);
         }
 
-        public async Task<ResultBase> GetByRole(Roles role)
+        public async Task<ResultBase> GetByRoleAsync(Roles role)
         {
             List<UserResponse> usersByRole;
             List<User> users;
             try
             {
-                users = await _userRepository.FindByRole(role);
+                users = await _userRepository.FindByRoleAsync(role);
                 usersByRole = CreateUserResponseList(users);
             }
             catch (Exception ex)

@@ -19,16 +19,16 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context = context;
         }
 
-        public async Task<User> Add(User user)
+        public async Task<User> AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
         }
 
-        public async Task<bool> DeleteByUsername(string username)
+        public async Task<bool> DeleteByUsernameAsync(string username)
         {
-            User user = await FindByUsername(username);
+            User user = await FindByUsernameAsync(username);
             if (user == null)
                 throw new NullReferenceException("Username inválido");
             _context.Remove(user);
@@ -36,19 +36,19 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return true;
         }
 
-        public async Task<List<User>> FindByRole(Roles role)
+        public async Task<List<User>> FindByRoleAsync(Roles role)
         {
             List<User> usersByRole = await _context.Users.Where(p => p.Role == role).ToListAsync();
             return !usersByRole.Any() ? throw new Exception("Não há usuários com o role selecionado") : usersByRole;
         }
 
-        public async Task<User> FindByUsername(string username)
+        public async Task<User> FindByUsernameAsync(string username)
         {
             User usersByRole = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
             return usersByRole == null ? throw new Exception("Não há usuários com o username escolhido") : usersByRole;
         }
 
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> GetAllAsync()
         {
             List<User> users = await _context.Users.AsNoTracking().ToListAsync();
             return !users.Any() ? throw new Exception("Não há usuários para listar") : users;

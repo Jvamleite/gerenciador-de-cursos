@@ -6,8 +6,8 @@ namespace GerenciadorDeCursos.Border.UseCases.User
 {
     public interface IGetUserUseCase
     {
-        Task<ResultBase> GetAll();
+        Task<ResultBase> GetAllAsync();
 
-        Task<ResultBase> GetByRole(Roles role);
+        Task<ResultBase> GetByRoleAsync(Roles role);
     }
 }
