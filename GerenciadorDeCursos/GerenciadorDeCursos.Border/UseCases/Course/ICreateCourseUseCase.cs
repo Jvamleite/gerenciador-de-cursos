@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.UseCases.Course
 {
-    public interface ICreateCourseUseCase 
+    public interface ICreateCourseUseCase
     {
         Task<ResultBase> CreateCourseAsync(CreateCourseRequest createCourseRequest);
     }

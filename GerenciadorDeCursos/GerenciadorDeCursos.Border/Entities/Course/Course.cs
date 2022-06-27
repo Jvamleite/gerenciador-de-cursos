@@ -7,7 +7,7 @@ namespace GerenciadorDeCursos.Border.Entities.Course
     public class Course
     {
         private readonly DateTime dateNow = DateTime.Now;
-        
+
         public int Id { get; set; }
 
         public string Título { get; set; }
@@ -34,10 +34,12 @@ namespace GerenciadorDeCursos.Border.Entities.Course
                 return Status.Concluido;
             else return Status.Previsto;
         }
+
         private bool CourseIsOnGoing()
         {
             return (dateNow > DataInicial && dateNow < DataFinal);
         }
+
         private bool CourseIsFinished()
         {
             return (dateNow > DataFinal);
@@ -53,6 +55,4 @@ namespace GerenciadorDeCursos.Border.Entities.Course
             return courseResponse;
         }
     }
-
-    
 }

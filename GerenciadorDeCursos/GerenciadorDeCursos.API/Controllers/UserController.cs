@@ -17,7 +17,7 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly IDeleteUserUseCase _deleteUserUseCase;
         private readonly ILogger _logger;
 
-        public UserController(ICreateUserUseCase createUserUseCase,IGetUserUseCase getUserUseCase,IDeleteUserUseCase deleteUserUseCase, ILogger logger)
+        public UserController(ICreateUserUseCase createUserUseCase, IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase, ILogger logger)
         {
             _createUserUseCase = createUserUseCase;
             _getUserUseCase = getUserUseCase;
@@ -43,8 +43,8 @@ namespace GerenciadorDeCursos.API.Controllers
         public async Task<IActionResult> CreateUser([FromBody] RegisterUserRequest createUserRequest, Roles role)
         {
             _logger.Warning($"Iniciando a criação de um novo usuário");
-            ResultBase result = await _createUserUseCase.CreateUser(createUserRequest,role);
-            if(!result.Sucess)
+            ResultBase result = await _createUserUseCase.CreateUser(createUserRequest, role);
+            if (!result.Sucess)
             {
                 _logger.Warning("Falha ao tentar criar o usuário: " + result.Message);
                 return BadRequest(result.Message);

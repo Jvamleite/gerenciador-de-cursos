@@ -1,13 +1,7 @@
 using FluentValidation.AspNetCore;
 using GerenciadorDeCursos.API.Configurations;
-using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.UseCases.Course;
-using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Border.Validators;
 using GerenciadorDeCursos.Repositories.Data;
-using GerenciadorDeCursos.Repositories.Repositories;
-using GerenciadorDeCursos.UseCases.CourseUseCase;
-using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +25,6 @@ namespace GerenciadorDeCursos.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers()
                     .AddFluentValidation(opt =>
                     {
@@ -41,7 +34,7 @@ namespace GerenciadorDeCursos.API
                     {
                         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                     });
-                    
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciadorDeCursos.API", Version = "v1" });

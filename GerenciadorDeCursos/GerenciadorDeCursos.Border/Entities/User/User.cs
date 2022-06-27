@@ -25,6 +25,4 @@ namespace GerenciadorDeCursos.Border.Entities.User
             return userResponse;
         }
     }
-
-
 }

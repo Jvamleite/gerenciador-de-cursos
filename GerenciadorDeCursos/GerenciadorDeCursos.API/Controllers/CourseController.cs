@@ -17,6 +17,7 @@ namespace GerenciadorDeCursos.API.Controllers
         {
             _createCourseUseCase = createCourseUseCase;
         }
+
         [HttpGet]
         public IEnumerable<string> Get()
         {

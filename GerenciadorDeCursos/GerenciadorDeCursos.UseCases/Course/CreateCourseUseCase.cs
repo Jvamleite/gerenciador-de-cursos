@@ -11,6 +11,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
     public class CreateCourseUseCase : ICreateCourseUseCase
     {
         private readonly ICourseRepository courseRepository;
+
         public CreateCourseUseCase(ICourseRepository courseRepository)
         {
             this.courseRepository = courseRepository;
@@ -20,11 +21,11 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
         {
             try
             {
-                Course createdCourse = new Course(createCourseRequest.Título,createCourseRequest.DataInicial,createCourseRequest.DataFinal);
+                Course createdCourse = new Course(createCourseRequest.Título, createCourseRequest.DataInicial, createCourseRequest.DataFinal);
                 Course addedCourse = await courseRepository.AddCourseAsync(createdCourse);
                 return new ResultBase(addedCourse.CreateCourseResponse());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }

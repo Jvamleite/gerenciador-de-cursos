@@ -8,6 +8,7 @@ namespace GerenciadorDeCursos.API
     public class Program
     {
         private static string currentEnvironment;
+
         public static int Main(string[] args)
         {
             try
@@ -32,7 +33,6 @@ namespace GerenciadorDeCursos.API
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
-
             var hostBuilder = Host.CreateDefaultBuilder(args)
            .ConfigureAppConfiguration((builderContext, config) =>
            {

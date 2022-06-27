@@ -6,23 +6,23 @@ namespace GerenciadorDeCursos.Shared.Models
     {
         public string Message { get; set; }
         public bool Sucess { get; set; }
-        public Object Data { get ; set; }
+        public Object Data { get; set; }
 
         public ResultBase()
         {
-            Sucess = true;       
+            Sucess = true;
         }
+
         public ResultBase(object data)
         {
             Data = data;
             Sucess = data != null;
         }
+
         public ResultBase(bool sucess, string message)
         {
             Sucess = sucess;
             Message = message;
         }
     }
-
-    
 }

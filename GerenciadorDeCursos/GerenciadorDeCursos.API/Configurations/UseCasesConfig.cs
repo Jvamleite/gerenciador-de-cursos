@@ -15,6 +15,5 @@ namespace GerenciadorDeCursos.API.Configurations
             services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
             services.AddScoped<ICreateCourseUseCase, CreateCourseUseCase>();
         }
-       
     }
 }

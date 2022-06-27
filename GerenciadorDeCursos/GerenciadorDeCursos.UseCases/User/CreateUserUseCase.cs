@@ -13,7 +13,6 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
     public class CreateUserUseCase : ICreateUserUseCase
     {
-
         private readonly IUserRepository _userRepositoy;
         private readonly ILogger _logger;
 
