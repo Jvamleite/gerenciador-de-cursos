@@ -1,6 +1,7 @@
 ﻿using GerenciadorDeCursos.Border.Entities.Course;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Repositories.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,12 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             await _context.Courses.AddAsync(course);
             await _context.SaveChangesAsync();
             return course;
+        }
+
+        public async Task<IEnumerable<Course>> GetAllAsync()
+        {
+            IEnumerable<Course> courses = await _context.Courses.ToListAsync();
+            return courses.Any() ? courses : throw new Exception("Não há cursos para listar");
         }
     }
 }
