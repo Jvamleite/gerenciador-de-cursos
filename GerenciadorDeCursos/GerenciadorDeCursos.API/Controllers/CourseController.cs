@@ -12,16 +12,19 @@ namespace GerenciadorDeCursos.API.Controllers
     public class CourseController : ControllerBase
     {
         private readonly ICreateCourseUseCase _createCourseUseCase;
+        private readonly IGetCourseUseCase _getCourseUseCase;
 
-        public CourseController(ICreateCourseUseCase createCourseUseCase)
+        public CourseController(ICreateCourseUseCase createCourseUseCase, IGetCourseUseCase getCourseUseCase)
         {
             _createCourseUseCase = createCourseUseCase;
+            _getCourseUseCase = getCourseUseCase;
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            ResultBase response = await _getCourseUseCase.GetAll();
+            return response.Sucess ? Ok(response.Data) : BadRequest(response.Message);
         }
 
         [HttpGet("{id}")]
@@ -34,7 +37,7 @@ namespace GerenciadorDeCursos.API.Controllers
         public async Task<IActionResult> CreateCourse([FromBody] CreateCourseRequest createCourseRequest)
         {
             ResultBase response = await _createCourseUseCase.CreateCourseAsync(createCourseRequest);
-            return response.Sucess ? CreatedAtAction(nameof(Get), response.Data) : BadRequest(response.Message);
+            return response.Sucess ? CreatedAtAction(nameof(GetAll), response.Data) : BadRequest(response.Message);
         }
 
         [HttpPut("{id}")]
