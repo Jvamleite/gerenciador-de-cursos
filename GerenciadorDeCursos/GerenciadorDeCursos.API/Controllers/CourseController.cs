@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.Course.Request;
+using GerenciadorDeCursos.Border.Entities.Course.Enums;
 using GerenciadorDeCursos.Border.UseCases.Course;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -23,14 +24,15 @@ namespace GerenciadorDeCursos.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            ResultBase response = await _getCourseUseCase.GetAll();
+            ResultBase response = await _getCourseUseCase.GetAllAsync();
             return response.Sucess ? Ok(response.Data) : BadRequest(response.Message);
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{status}")]
+        public async Task<IActionResult> GetByStatus(Status status)
         {
-            return "value";
+            ResultBase response = await _getCourseUseCase.GetCourseByStatusAsync(status);
+            return response.Sucess ? Ok(response.Data) : BadRequest(response.Message);
         }
 
         [HttpPost]

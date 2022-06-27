@@ -16,9 +16,10 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
         private readonly IUserRepository _userRepositoy;
         private readonly ILogger _logger;
 
-        public CreateUserUseCase(IUserRepository userRepositoy)
+        public CreateUserUseCase(IUserRepository userRepositoy, ILogger logger)
         {
             _userRepositoy = userRepositoy;
+            _logger = logger;
         }
 
         public async Task<ResultBase> CreateUser(RegisterUserRequest request, Roles role)
