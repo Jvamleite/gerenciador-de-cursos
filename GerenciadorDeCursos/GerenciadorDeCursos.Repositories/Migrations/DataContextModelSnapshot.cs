@@ -21,10 +21,9 @@ namespace GerenciadorDeCursos.Repositories.Migrations
 
             modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.Course.Course", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataFinal")
                         .HasColumnType("datetime2");
@@ -48,10 +47,9 @@ namespace GerenciadorDeCursos.Repositories.Migrations
 
             modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.User.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Password")
                         .IsRequired()

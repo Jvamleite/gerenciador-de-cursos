@@ -8,7 +8,7 @@ namespace GerenciadorDeCursos.Border.Entities.Course
     {
         private readonly DateTime dateNow = DateTime.Now;
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Título { get; set; }
 
@@ -20,6 +20,7 @@ namespace GerenciadorDeCursos.Border.Entities.Course
 
         public Course(string título, DateTime dataInicial, DateTime dataFinal)
         {
+            Id = Guid.NewGuid();
             Título = título;
             DataInicial = dataInicial;
             DataFinal = dataFinal;
@@ -48,10 +49,11 @@ namespace GerenciadorDeCursos.Border.Entities.Course
         public CourseResponse CreateCourseResponse()
         {
             CourseResponse courseResponse = new CourseResponse();
-            courseResponse.Título = this.Título;
-            courseResponse.DataInicial = this.DataInicial;
-            courseResponse.DataFinal = this.DataFinal;
-            courseResponse.Status = this.Status;
+            courseResponse.Id = Id;
+            courseResponse.Título = Título;
+            courseResponse.DataInicial = DataInicial;
+            courseResponse.DataFinal = DataFinal;
+            courseResponse.Status = Status;
             return courseResponse;
         }
     }

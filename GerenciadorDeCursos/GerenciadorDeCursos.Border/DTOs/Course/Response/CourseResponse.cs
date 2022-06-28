@@ -5,6 +5,7 @@ namespace GerenciadorDeCursos.Border.DTOs.Course.Response
 {
     public class CourseResponse
     {
+        public Guid Id { get; set; }
         public string Título { get; set; }
 
         public DateTime DataInicial { get; set; }
