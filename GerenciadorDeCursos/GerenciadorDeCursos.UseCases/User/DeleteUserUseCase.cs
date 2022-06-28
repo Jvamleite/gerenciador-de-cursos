@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
-
     public class DeleteUserUseCase : IDeleteUserUseCase
     {
         private readonly IUserRepository _userRepository;
+
         public DeleteUserUseCase(IUserRepository userRepository)
         {
             _userRepository = userRepository;

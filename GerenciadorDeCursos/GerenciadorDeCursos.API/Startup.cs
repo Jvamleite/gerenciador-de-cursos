@@ -1,10 +1,7 @@
 using FluentValidation.AspNetCore;
-using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.UseCases.User;
+using GerenciadorDeCursos.API.Configurations;
 using GerenciadorDeCursos.Border.Validators;
 using GerenciadorDeCursos.Repositories.Data;
-using GerenciadorDeCursos.Repositories.Repositories;
-using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,17 +26,21 @@ namespace GerenciadorDeCursos.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers()
-                    .AddFluentValidation(opt =>
-                    {
-                        opt.RegisterValidatorsFromAssemblyContaining<UserValidator>();
-                    })
-                    .AddJsonOptions(opt =>
-                    {
-                        opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                    });
+            services.AddControllers(opt =>
+            {
+                opt.SuppressAsyncSuffixInActionNames = false;
+            })
+            .AddFluentValidation(opt =>
+            {
+                opt.RegisterValidatorsFromAssemblyContaining<UserValidator>();
+            })
+            .AddJsonOptions(opt =>
+            {
+                opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
                     
+            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciadorDeCursos.API", Version = "v1" });
@@ -50,11 +51,8 @@ namespace GerenciadorDeCursos.API
                 opt.UseSqlServer(Configuration.GetConnectionString("DataContext"));
             });
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
-            services.AddScoped<IGetUserUseCase, GetUserUseCase>();
-            services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
-            
+            services.ConfigureRepository();
+            services.ConfigureUseCases();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

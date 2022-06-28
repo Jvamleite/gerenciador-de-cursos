@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
-
     public class GetUserUseCase : IGetUserUseCase
     {
         private readonly IUserRepository _userRepository;
