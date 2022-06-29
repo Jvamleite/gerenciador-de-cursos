@@ -20,6 +20,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
             try
             {
                 await _courseRepository.UpdateStatusCourseAsync();
+
                 return new ResultBase(true);
             }
             catch(Exception ex)

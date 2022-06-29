@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Serilog;
 using System.Text.Json.Serialization;
 
 namespace GerenciadorDeCursos.API
@@ -23,7 +22,6 @@ namespace GerenciadorDeCursos.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(opt =>
@@ -38,8 +36,6 @@ namespace GerenciadorDeCursos.API
             {
                 opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
-                    
-            
 
             services.AddSwaggerGen(c =>
             {
@@ -55,7 +51,6 @@ namespace GerenciadorDeCursos.API
             services.ConfigureUseCases();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

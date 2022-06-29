@@ -5,7 +5,6 @@ using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -20,7 +19,11 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly IDeleteCourseUseCase _deleteCourseUseCase;
         private readonly ILogger<CourseController> _logger;
 
-        public CourseController(ICreateCourseUseCase createCourseUseCase, IGetCourseUseCase getCourseUseCase,IUpdateStatusCouseUseCase updateStatusCouseUseCase,IDeleteCourseUseCase deleteCourseUseCase, ILogger<CourseController> logger)
+        public CourseController(ICreateCourseUseCase createCourseUseCase, 
+                                IGetCourseUseCase getCourseUseCase, 
+                                IUpdateStatusCouseUseCase updateStatusCouseUseCase, 
+                                IDeleteCourseUseCase deleteCourseUseCase, 
+                                ILogger<CourseController> logger)
         {
             _createCourseUseCase = createCourseUseCase;
             _getCourseUseCase = getCourseUseCase;

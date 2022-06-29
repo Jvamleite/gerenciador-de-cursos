@@ -24,12 +24,14 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
             try
             {
                 IEnumerable<Course> courses = await _courseRepository.GetAllAsync();
+
                 List<CourseResponse> courseResponses = new List<CourseResponse>();
                 foreach (Course course in courses)
                 {
                     var courseResponse = course.CreateCourseResponse();
                     courseResponses.Add(courseResponse);
                 }
+
                 return new ResultBase(courseResponses);
             }
             catch (Exception ex)
@@ -43,6 +45,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
             try
             {
                 Course course = await _courseRepository.GetByCourseStatusAsync(status);
+
                 return new ResultBase(course.CreateCourseResponse());
             }
             catch (Exception ex)

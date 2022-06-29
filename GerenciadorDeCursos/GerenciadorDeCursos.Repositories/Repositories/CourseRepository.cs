@@ -23,6 +23,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
         {
             await _context.Courses.AddAsync(course);
             await _context.SaveChangesAsync();
+
             return course;
         }
 
@@ -42,12 +43,14 @@ namespace GerenciadorDeCursos.Repositories.Repositories
         public async Task<IEnumerable<Course>> GetAllAsync()
         {
             IEnumerable<Course> courses = await _context.Courses.ToListAsync();
+
             return courses.Any() ? courses : throw new Exception("Não há cursos para listar");
         }
 
         public async Task<Course> GetByCourseStatusAsync(Status status)
         {
             Course course = await _context.Courses.FirstOrDefaultAsync(x => x.Status == status);
+
             return course == null ? throw new Exception($"Não há cursos com status {status}") : course;
         }
 
@@ -64,8 +67,8 @@ namespace GerenciadorDeCursos.Repositories.Repositories
                 await _context.SaveChangesAsync();
 
                 return true;
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
             }

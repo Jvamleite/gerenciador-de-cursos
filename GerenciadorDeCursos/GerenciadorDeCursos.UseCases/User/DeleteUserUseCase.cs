@@ -21,6 +21,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             try
             {
                 result.Sucess = await _userRepository.DeleteByUsernameAsync(username);
+
                 return result;
             }
             catch (Exception ex)

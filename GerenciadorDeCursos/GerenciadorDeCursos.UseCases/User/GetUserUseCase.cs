@@ -21,43 +21,47 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 
         public async Task<ResultBase> GetAllAsync()
         {
-            List<UserResponse> userResponseList;
             try
             {
                 List<User> users = await _userRepository.GetAllAsync();
-                userResponseList = CreateUserResponseList(users);
+
+                var userResponseList = CreateUserResponseList(users);
+
+                return new ResultBase(userResponseList);
             }
             catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }
-            return new ResultBase(userResponseList);
+            
         }
 
         public async Task<ResultBase> GetByRoleAsync(Roles role)
         {
-            List<UserResponse> usersByRole;
-            List<User> users;
             try
             {
-                users = await _userRepository.FindByRoleAsync(role);
-                usersByRole = CreateUserResponseList(users);
+                List<User> users = await _userRepository.FindByRoleAsync(role);
+
+                List<UserResponse> usersByRole = CreateUserResponseList(users);
+
+                return new ResultBase(usersByRole);
             }
             catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }
-            return new ResultBase(usersByRole);
         }
 
         private List<UserResponse> CreateUserResponseList(List<User> users)
         {
             List<UserResponse> userResponseList = new List<UserResponse>();
+
             foreach (User user in users)
             {
                 UserResponse userResponse = user.CreateCreateUserReponse();
                 userResponseList.Add(userResponse);
             }
+
             return userResponseList;
         }
     }

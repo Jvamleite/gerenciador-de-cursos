@@ -5,7 +5,7 @@ using System;
 
 namespace GerenciadorDeCursos.API
 {
-    public class Program
+    public static class Program
     {
         private static string currentEnvironment;
 
@@ -38,7 +38,6 @@ namespace GerenciadorDeCursos.API
            {
                var env = builderContext.HostingEnvironment;
                currentEnvironment = env.EnvironmentName;
-               var settings = config.Build();
                Log.Logger = new LoggerConfiguration()
                   .Enrich.FromLogContext()
                   .MinimumLevel.Debug()
