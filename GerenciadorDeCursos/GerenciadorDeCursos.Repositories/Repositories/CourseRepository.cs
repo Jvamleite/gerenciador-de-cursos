@@ -26,6 +26,19 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return course;
         }
 
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+            Course course = _context.Courses.FirstOrDefault(c => c.Id == id);
+
+            if (course == null)
+                throw new Exception("Não há cursos com esse id");
+
+            _context.Remove(course);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<IEnumerable<Course>> GetAllAsync()
         {
             IEnumerable<Course> courses = await _context.Courses.ToListAsync();
@@ -36,6 +49,26 @@ namespace GerenciadorDeCursos.Repositories.Repositories
         {
             Course course = await _context.Courses.FirstOrDefaultAsync(x => x.Status == status);
             return course == null ? throw new Exception($"Não há cursos com status {status}") : course;
+        }
+
+        public async Task<bool> UpdateStatusCourseAsync()
+        {
+            try
+            {
+                IEnumerable<Course> courses = await GetAllAsync();
+                foreach (Course course in courses)
+                {
+                    course.Status = course.GetStatus();
+                }
+
+                await _context.SaveChangesAsync();
+
+                return true;
+            } 
+            catch(Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
         }
     }
 }
