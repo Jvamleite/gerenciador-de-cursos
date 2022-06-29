@@ -19,10 +19,10 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly IDeleteCourseUseCase _deleteCourseUseCase;
         private readonly ILogger<CourseController> _logger;
 
-        public CourseController(ICreateCourseUseCase createCourseUseCase, 
-                                IGetCourseUseCase getCourseUseCase, 
-                                IUpdateStatusCouseUseCase updateStatusCouseUseCase, 
-                                IDeleteCourseUseCase deleteCourseUseCase, 
+        public CourseController(ICreateCourseUseCase createCourseUseCase,
+                                IGetCourseUseCase getCourseUseCase,
+                                IUpdateStatusCouseUseCase updateStatusCouseUseCase,
+                                IDeleteCourseUseCase deleteCourseUseCase,
                                 ILogger<CourseController> logger)
         {
             _createCourseUseCase = createCourseUseCase;

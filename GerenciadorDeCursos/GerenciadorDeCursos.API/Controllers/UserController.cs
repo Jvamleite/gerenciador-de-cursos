@@ -17,9 +17,9 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly IDeleteUserUseCase _deleteUserUseCase;
         private readonly ILogger<UserController> _logger;
 
-        public UserController(ICreateUserUseCase createUserUseCase, 
-                              IGetUserUseCase getUserUseCase, 
-                              IDeleteUserUseCase deleteUserUseCase, 
+        public UserController(ICreateUserUseCase createUserUseCase,
+                              IGetUserUseCase getUserUseCase,
+                              IDeleteUserUseCase deleteUserUseCase,
                               ILogger<UserController> logger)
         {
             _createUserUseCase = createUserUseCase;

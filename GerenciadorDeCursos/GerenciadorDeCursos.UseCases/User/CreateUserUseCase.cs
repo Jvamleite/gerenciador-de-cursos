@@ -13,11 +13,10 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
     public class CreateUserUseCase : ICreateUserUseCase
     {
-
         private readonly IUserRepository _userRepository;
         private readonly ILogger<CreateUserUseCase> _logger;
 
-        public CreateUserUseCase(IUserRepository userRepository,ILogger<CreateUserUseCase> logger)
+        public CreateUserUseCase(IUserRepository userRepository, ILogger<CreateUserUseCase> logger)
         {
             _userRepository = userRepository;
             _logger = logger;
@@ -31,9 +30,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 
                 User user = await _userRepository.FindByUsernameAsync(request.Username);
                 if (user != null)
-                {
                     return new ResultBase(false, "Usuário já existe!");
-                }
 
                 _logger.LogWarning("Usuário não encontrado, criando usuário");
                 User createdUser = new User(request.Username, request.Password, role);

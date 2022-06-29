@@ -25,14 +25,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
             {
                 IEnumerable<Course> courses = await _courseRepository.GetAllAsync();
 
-                List<CourseResponse> courseResponses = new List<CourseResponse>();
-                foreach (Course course in courses)
-                {
-                    var courseResponse = course.CreateCourseResponse();
-                    courseResponses.Add(courseResponse);
-                }
-
-                return new ResultBase(courseResponses);
+                return new ResultBase(CreateCourseResponseList(courses));
             }
             catch (Exception ex)
             {
@@ -52,6 +45,18 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
             {
                 return new ResultBase(false, ex.Message);
             }
+        }
+
+        private List<CourseResponse> CreateCourseResponseList(IEnumerable<Course> courses)
+        {
+            List<CourseResponse> courseResponses = new List<CourseResponse>();
+            foreach (Course course in courses)
+            {
+                var courseResponse = course.CreateCourseResponse();
+                courseResponses.Add(courseResponse);
+            }
+
+            return courseResponses;
         }
     }
 }

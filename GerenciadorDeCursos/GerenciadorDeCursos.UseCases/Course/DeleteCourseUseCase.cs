@@ -25,7 +25,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
 
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }

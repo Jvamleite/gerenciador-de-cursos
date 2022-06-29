@@ -33,7 +33,6 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             {
                 return new ResultBase(false, ex.Message);
             }
-            
         }
 
         public async Task<ResultBase> GetByRoleAsync(Roles role)
