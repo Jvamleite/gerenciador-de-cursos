@@ -5,6 +5,7 @@ using GerenciadorDeCursos.Tests.Builders.CourseBuilder;
 using GerenciadorDeCursos.UseCases.CourseUseCase;
 using Microsoft.Extensions.Logging;
 using Moq;
+using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -28,15 +29,33 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
         {
             //Arrange
             var request = new CreateCourseRequestBuilder().Build();
-            var course = new CourseBuilder().Build();
+            var courseRequest = new CourseBuilder().Build();
+            var courseResponse = new CourseBuilder().Build();
 
-            _courseRepositoryMock.Setup(f => f.AddCourseAsync(course))
-                .ReturnsAsync(new Course(request.Título,request.DataInicial,request.DataFinal));
+            _courseRepositoryMock.Setup(f => f.AddCourseAsync(courseRequest))
+                .ReturnsAsync(courseResponse);
 
             //Act
             var result = await _usecase.CreateCourseAsync(request);
 
-            result.Should().BeEquivalentTo(course);
+            result.Should().BeEquivalentTo(courseResponse);
         }
+
+        [Fact]
+        public async Task ReturnExceptionError()
+        {
+            //Arrange
+            var exception = new Exception("Erro");
+            var request = new CreateCourseRequestBuilder().Build();
+            var course = new CourseBuilder().Build();
+
+            _courseRepositoryMock.Setup(f => f.AddCourseAsync(course))
+                .Throws(exception);
+
+            var response = await _usecase.CreateCourseAsync(request);
+
+            Assert.Equal("Erro", response.Message);
+        }
+
     }
 }

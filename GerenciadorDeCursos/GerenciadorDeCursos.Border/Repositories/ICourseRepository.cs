@@ -8,7 +8,7 @@ namespace GerenciadorDeCursos.Border.Repositories
 {
     public interface ICourseRepository
     {
-        Task<Course> AddCourseAsync(Course course);
+        Task AddCourseAsync(Course course);
 
         Task<IEnumerable<Course>> GetAllAsync();
 
