@@ -25,8 +25,8 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
         {
             try
             {
-                _logger.LogWarning("Verificando se Curso já existe");
-                VerifyIfCourseAlreadyExist(createCourseRequest);
+                //_logger.LogWarning("Verificando se Curso já existe");
+                //VerifyIfCourseAlreadyExist(createCourseRequest);
 
                 _logger.LogWarning("Curso não encontrado, criando curso");
                 Course createdCourse = new Course(createCourseRequest.Título, createCourseRequest.DataInicial, createCourseRequest.DataFinal);
