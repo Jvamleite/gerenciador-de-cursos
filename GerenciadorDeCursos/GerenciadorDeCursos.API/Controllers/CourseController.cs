@@ -62,9 +62,9 @@ namespace GerenciadorDeCursos.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put()
+        public async Task<IActionResult> UpdateStatusCourse()
         {
-            ResultBase response = await _updateStatusCouseCase.UpdateStatus();
+            ResultBase response = await _updateStatusCouseCase.UpdateStatusAsync();
             return response.Sucess ? Ok() : BadRequest(response.Message);
         }
 

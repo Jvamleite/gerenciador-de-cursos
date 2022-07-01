@@ -45,31 +45,24 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return courses.Any() ? courses : throw new Exception("Não há cursos para listar");
         }
 
-        public async Task<Course> GetByCourseStatusAsync(Status status)
+        public async Task<IEnumerable<Course>> GetCourseByStatusAsync(Status status)
         {
-            Course course = await _context.Courses.FirstOrDefaultAsync(x => x.Status == status);
+            IEnumerable<Course> courses = await _context.Courses.Where(p => p.Status == status).ToListAsync();
 
-            return course == null ? throw new Exception($"Não há cursos com status {status}") : course;
+            return courses.Any() ? courses : throw new Exception($"Não há cursos com status {status}");
         }
 
-        public async Task<bool> UpdateStatusCourseAsync()
+        public async Task UpdateStatusCourseAsync()
         {
-            try
-            {
-                IEnumerable<Course> courses = await GetAllAsync();
-                foreach (Course course in courses)
-                {
-                    course.Status = course.GetStatus();
-                }
+            IEnumerable<Course> courses = await GetAllAsync();
 
-                await _context.SaveChangesAsync();
+            if (!courses.Any())
+                throw new Exception("Não cursos para atualizar o status");
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.ToString());
-            }
+            foreach (Course course in courses)
+                course.Status = course.GetStatus();
+
+            await _context.SaveChangesAsync();
         }
     }
 }

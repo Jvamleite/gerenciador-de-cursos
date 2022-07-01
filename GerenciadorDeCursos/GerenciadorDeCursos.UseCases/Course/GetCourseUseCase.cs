@@ -37,9 +37,9 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
         {
             try
             {
-                Course course = await _courseRepository.GetByCourseStatusAsync(status);
+                IEnumerable<Course> courses = await _courseRepository.GetCourseByStatusAsync(status);
 
-                return new ResultBase(course.CreateCourseResponse());
+                return new ResultBase(CreateCourseResponseList(courses));
             }
             catch (Exception ex)
             {

@@ -18,7 +18,8 @@ namespace GerenciadorDeCursos.Border.Entities.Course
 
         public Status Status { get; set; }
 
-        public Course() { }
+        public Course()
+        { }
 
         public Course(string título, DateTime dataInicial, DateTime dataFinal)
         {

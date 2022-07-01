@@ -5,6 +5,6 @@ namespace GerenciadorDeCursos.Border.UseCases.Course
 {
     public interface IUpdateStatusCouseUseCase
     {
-        Task<ResultBase> UpdateStatus();
+        Task<ResultBase> UpdateStatusAsync();
     }
 }

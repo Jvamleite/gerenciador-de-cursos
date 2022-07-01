@@ -15,7 +15,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
             _courseRepository = courseRepository;
         }
 
-        public async Task<ResultBase> UpdateStatus()
+        public async Task<ResultBase> UpdateStatusAsync()
         {
             try
             {

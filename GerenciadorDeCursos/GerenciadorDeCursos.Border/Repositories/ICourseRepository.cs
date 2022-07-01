@@ -12,9 +12,9 @@ namespace GerenciadorDeCursos.Border.Repositories
 
         Task<IEnumerable<Course>> GetAllAsync();
 
-        Task<Course> GetByCourseStatusAsync(Status status);
+        Task<IEnumerable<Course>> GetCourseByStatusAsync(Status status);
 
-        Task<bool> UpdateStatusCourseAsync();
+        Task UpdateStatusCourseAsync();
 
         Task<bool> DeleteAsync(Guid id);
     }

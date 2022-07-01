@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using Bogus.Extensions.Brazil;
 using GerenciadorDeCursos.Border.DTOs.Course.Request;
 using GerenciadorDeCursos.Tests.Utils;
 using System;

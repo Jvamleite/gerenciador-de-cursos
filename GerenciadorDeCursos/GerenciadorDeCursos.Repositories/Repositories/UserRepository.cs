@@ -32,7 +32,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             User user = await FindByUsernameAsync(username);
 
             if (user == null)
-                throw new NullReferenceException("Username inválido");
+                throw new ArgumentException("Username inválido");
 
             _context.Remove(user);
             await _context.SaveChangesAsync();

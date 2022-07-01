@@ -1,11 +1,9 @@
 ﻿using FluentAssertions;
-using GerenciadorDeCursos.Border.Entities.Course;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Tests.Builders.CourseBuilder;
 using GerenciadorDeCursos.UseCases.CourseUseCase;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,42 +18,27 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
         {
             _courseRepositoryMock = new Mock<ICourseRepository>();
             _usecase = new CreateCourseUseCase(
-                _courseRepositoryMock.Object, 
+                _courseRepositoryMock.Object,
                 Mock.Of<ILogger<CreateCourseUseCase>>());
         }
 
-        [Fact]
-        public async Task ReturnResultSucess()
+        //[Fact]
+        public async Task ExecuteReturnSucess()
         {
             //Arrange
             var request = new CreateCourseRequestBuilder().Build();
-            var courseRequest = new CourseBuilder().Build();
-            var courseResponse = new CourseBuilder().Build();
+            var course = new CreateCourseBuilder()
+                                    .WithRequest(request)
+                                    .Build();
 
-            _courseRepositoryMock.Setup(f => f.AddCourseAsync(courseRequest))
-                .ReturnsAsync(courseResponse);
+            _courseRepositoryMock.Setup(f => f.AddCourseAsync(course));
 
             //Act
             var result = await _usecase.CreateCourseAsync(request);
 
-            result.Should().BeEquivalentTo(courseResponse);
+            //Assert
+            result.Data.Should().BeEquivalentTo(course);
+            result.Sucess.Should().BeTrue();
         }
-
-        [Fact]
-        public async Task ReturnExceptionError()
-        {
-            //Arrange
-            var exception = new Exception("Erro");
-            var request = new CreateCourseRequestBuilder().Build();
-            var course = new CourseBuilder().Build();
-
-            _courseRepositoryMock.Setup(f => f.AddCourseAsync(course))
-                .Throws(exception);
-
-            var response = await _usecase.CreateCourseAsync(request);
-
-            Assert.Equal("Erro", response.Message);
-        }
-
     }
 }
