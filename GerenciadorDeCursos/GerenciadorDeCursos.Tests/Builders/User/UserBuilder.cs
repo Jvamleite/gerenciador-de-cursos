@@ -19,7 +19,7 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
                 Username = _faker.Internet.UserName(),
                 Password = _faker.Internet.Password(),
                 Role = Roles.Aluno
-            };    
+            };
         }
 
         public User Build()

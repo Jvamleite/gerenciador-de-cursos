@@ -1,6 +1,7 @@
 ﻿using GerenciadorDeCursos.Border.Entities.Course;
 using GerenciadorDeCursos.Border.Entities.Course.Enums;
 using GerenciadorDeCursos.Border.Repositories;
+using GerenciadorDeCursos.Border.Shared;
 using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,7 +20,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context = context;
         }
 
-        public async Task AddCourseAsync(Course course)
+        public async Task AddAsync(Course course)
         {
             await _context.Courses.AddAsync(course);
             await _context.SaveChangesAsync();
@@ -64,5 +65,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+        
     }
 }

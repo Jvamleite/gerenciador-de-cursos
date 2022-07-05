@@ -1,12 +1,9 @@
 ﻿using FluentAssertions;
 using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
-using GerenciadorDeCursos.Border.Entities.Course.Enums;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Tests.Builders.CourseBuilder;
 using GerenciadorDeCursos.Tests.Builders.UserBuilder;
 using GerenciadorDeCursos.Tests.Utils;
-using GerenciadorDeCursos.UseCases.CourseUseCases;
 using GerenciadorDeCursos.UseCases.UserUseCases;
 using Moq;
 using System;
@@ -36,8 +33,8 @@ namespace GerenciadorDeCursos.Tests.UseCases.UserTests
 
             foreach (var user in users)
             {
-               var userResponse = new UserResponseBuilder().WithUser(user).Build();
-               userResponseList.Add(userResponse);
+                var userResponse = new UserResponseBuilder().WithUser(user).Build();
+                userResponseList.Add(userResponse);
             }
 
             _userRepositoryMock.Setup(f => f.GetAllAsync())

@@ -31,7 +31,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
                                     .WithRequest(request)
                                     .Build();
 
-            _courseRepositoryMock.Setup(f => f.AddCourseAsync(course));
+            _courseRepositoryMock.Setup(f => f.AddAsync(course));
 
             //Act
             var result = await _usecase.CreateCourseAsync(request);

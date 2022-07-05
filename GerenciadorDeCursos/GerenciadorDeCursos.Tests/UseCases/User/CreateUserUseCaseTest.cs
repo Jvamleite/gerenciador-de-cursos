@@ -17,7 +17,5 @@ namespace GerenciadorDeCursos.Tests.UseCases.UserTests
                 _userRepositoryMock.Object,
                 Mock.Of<ILogger<CreateUserUseCase>>());
         }
-
-
     }
 }

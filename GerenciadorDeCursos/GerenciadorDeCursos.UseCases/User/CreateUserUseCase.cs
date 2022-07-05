@@ -26,7 +26,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
         {
             try
             {
-                _logger.LogWarning("Verificando se o usuário já existe no banco de dados");
+                 _logger.LogWarning("Verificando se o usuário já existe no banco de dados");
 
                 User user = await _userRepository.FindByUsernameAsync(request.Username);
                 if (user != null)
@@ -35,9 +35,9 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                 _logger.LogWarning("Usuário não encontrado, criando usuário");
                 User createdUser = new User(request.Username, request.Password, role);
 
-                User addedUser = await _userRepository.AddAsync(createdUser);
+                await _userRepository.AddAsync(createdUser);
 
-                UserResponse response = addedUser.CreateCreateUserReponse();
+                UserResponse response = createdUser.CreateCreateUserReponse();
 
                 return new ResultBase(response);
             }

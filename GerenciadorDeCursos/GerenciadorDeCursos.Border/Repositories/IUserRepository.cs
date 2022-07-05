@@ -1,16 +1,14 @@
 ﻿using GerenciadorDeCursos.Border.Entities.User;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
-using System;
+using GerenciadorDeCursos.Border.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User, Task>
     {
-        Task<User> AddAsync(User user);
-
-        Task<List<User>> GetAllAsync();
+        Task<IEnumerable<User>> GetAllAsync();
 
         Task<User> FindByUsernameAsync(string username);
 

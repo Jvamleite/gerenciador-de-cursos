@@ -23,7 +23,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
         {
             try
             {
-                List<User> users = await _userRepository.GetAllAsync();
+                var users = await _userRepository.GetAllAsync();
 
                 var userResponseList = CreateUserResponseList(users);
 
@@ -39,9 +39,9 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
         {
             try
             {
-                List<User> users = await _userRepository.FindByRoleAsync(role);
+                var users = await _userRepository.FindByRoleAsync(role);
 
-                List<UserResponse> usersByRole = CreateUserResponseList(users);
+                var usersByRole = CreateUserResponseList(users);
 
                 return new ResultBase(usersByRole);
             }
@@ -51,7 +51,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             }
         }
 
-        private static List<UserResponse> CreateUserResponseList(List<User> users)
+        private static IEnumerable<UserResponse> CreateUserResponseList(IEnumerable<User> users)
         {
             List<UserResponse> userResponseList = new List<UserResponse>();
 

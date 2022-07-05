@@ -31,7 +31,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
                 _logger.LogWarning("Curso não encontrado, criando curso");
                 Course createdCourse = new Course(createCourseRequest.Título, createCourseRequest.DataInicial, createCourseRequest.DataFinal);
 
-                await _courseRepository.AddCourseAsync(createdCourse);
+                await _courseRepository.AddAsync(createdCourse);
 
                 return new ResultBase(createdCourse.CreateCourseResponse());
             }

@@ -14,7 +14,8 @@ namespace GerenciadorDeCursos.Border.Entities.User
 
         public Roles Role { get; set; }
 
-        public User(){ }
+        public User()
+        { }
 
         public User(string username, string password, Roles role)
         {

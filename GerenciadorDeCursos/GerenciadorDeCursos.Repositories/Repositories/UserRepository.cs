@@ -19,12 +19,10 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context = context;
         }
 
-        public async Task<User> AddAsync(User user)
+        public async Task AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-
-            return user;
         }
 
         public async Task DeleteAsync(string username)
@@ -36,7 +34,6 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
             _context.Remove(user);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task<List<User>> FindByRoleAsync(Roles role)
@@ -53,7 +50,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return usersByRole == null ? throw new Exception("Não há usuários com o username escolhido") : usersByRole;
         }
 
-        public async Task<List<User>> GetAllAsync()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
             List<User> users = await _context.Users.AsNoTracking().ToListAsync();
 
