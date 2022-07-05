@@ -8,8 +8,7 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
     {
         public void Configure(EntityTypeBuilder<Course> builder)
         {
-            builder.ToTable("Cursos");
-            builder.HasKey(p => p.Id);
+            builder.ToTable("Courses");
             builder.Property(p => p.Título).HasMaxLength(20).IsRequired();
             builder.Property(p => p.DataInicial).IsRequired();
             builder.Property(p => p.DataFinal).IsRequired();

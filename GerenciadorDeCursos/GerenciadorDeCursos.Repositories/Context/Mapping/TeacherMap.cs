@@ -4,15 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GerenciadorDeCursos.Repositories.Context.Mapping
 {
-    public class UserMap : IEntityTypeConfiguration<User>
+    public class TeacherMap : IEntityTypeConfiguration<Teacher>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Teacher> builder)
         {
-            builder.ToTable("Users");
-            builder.HasKey(x => x.Id);
+            builder.ToTable("Teachers");
             builder.Property(p => p.Username).IsRequired();
             builder.Property(p => p.Password).IsRequired();
-            builder.Property(p => p.Role).HasConversion<string>().IsRequired();
+            builder.Property(p => p.Role).IsRequired();
+
+            builder.HasMany(p => p.Courses)
+                .WithOne(p => p.Teacher).HasForeignKey(p => p.TeacherId);
+
         }
     }
 }

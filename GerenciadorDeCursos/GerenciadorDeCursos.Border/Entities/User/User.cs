@@ -14,6 +14,8 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public Roles Role { get; set; }
 
+        public bool IsAdmin { get; set; }
+
         public User()
         { }
 
