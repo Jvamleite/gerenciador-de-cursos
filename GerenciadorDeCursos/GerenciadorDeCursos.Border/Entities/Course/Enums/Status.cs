@@ -1,4 +1,4 @@
-﻿namespace GerenciadorDeCursos.Border.Entities.Course.Enums
+﻿namespace GerenciadorDeCursos.Border.Entities.CourseEntities.Enums
 {
     public enum Status
     {

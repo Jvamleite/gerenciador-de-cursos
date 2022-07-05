@@ -1,5 +1,5 @@
-﻿using GerenciadorDeCursos.Border.Entities.Course;
-using GerenciadorDeCursos.Border.Entities.Course.Enums;
+﻿using GerenciadorDeCursos.Border.Entities.CourseEntities;
+using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
 using GerenciadorDeCursos.Border.Shared;
 using System;
 using System.Collections.Generic;

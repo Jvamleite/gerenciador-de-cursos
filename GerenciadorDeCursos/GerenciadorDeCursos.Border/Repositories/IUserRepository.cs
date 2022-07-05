@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities.User;
+﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Shared;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.Course.Request;
-using GerenciadorDeCursos.Border.Entities.Course.Enums;
+using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
 using GerenciadorDeCursos.Border.UseCases.Course;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.AspNetCore.Mvc;

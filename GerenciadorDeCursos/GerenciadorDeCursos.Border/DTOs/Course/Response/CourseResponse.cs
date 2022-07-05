@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities.Course.Enums;
+﻿using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
 using System;
 
 namespace GerenciadorDeCursos.Border.DTOs.Course.Response

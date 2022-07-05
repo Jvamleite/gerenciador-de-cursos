@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using GerenciadorDeCursos.Border.Entities.User;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Tests.Utils;
 using System;

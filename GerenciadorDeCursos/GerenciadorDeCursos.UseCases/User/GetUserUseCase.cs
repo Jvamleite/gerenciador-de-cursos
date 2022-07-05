@@ -1,5 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
-using GerenciadorDeCursos.Border.Entities.User;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;

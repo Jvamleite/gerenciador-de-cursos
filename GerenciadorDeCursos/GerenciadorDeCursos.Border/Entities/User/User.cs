@@ -2,7 +2,7 @@
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 
-namespace GerenciadorDeCursos.Border.Entities.User
+namespace GerenciadorDeCursos.Border.Entities.UserEntities
 {
     public class User
     {

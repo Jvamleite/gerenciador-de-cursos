@@ -1,5 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.Course.Request;
-using GerenciadorDeCursos.Border.Entities.Course;
+using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.Course;
 using GerenciadorDeCursos.Shared.Models;

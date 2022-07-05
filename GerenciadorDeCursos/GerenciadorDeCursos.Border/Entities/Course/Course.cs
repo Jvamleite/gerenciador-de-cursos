@@ -1,8 +1,10 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.Course.Response;
-using GerenciadorDeCursos.Border.Entities.Course.Enums;
+using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
 using System;
+using System.Collections.Generic;
 
-namespace GerenciadorDeCursos.Border.Entities.Course
+namespace GerenciadorDeCursos.Border.Entities.CourseEntities
 {
     public class Course
     {
@@ -17,6 +19,8 @@ namespace GerenciadorDeCursos.Border.Entities.Course
         public DateTime DataFinal { get; set; }
 
         public Status Status { get; set; }
+
+        public IEnumerable<Student> Students { get; set; }
 
         public Course()
         { }
