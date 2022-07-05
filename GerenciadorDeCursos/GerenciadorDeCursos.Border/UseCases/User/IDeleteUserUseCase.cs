@@ -1,10 +1,11 @@
 ﻿using GerenciadorDeCursos.Shared.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.UseCases.User
 {
     public interface IDeleteUserUseCase
     {
-        Task<ResultBase> DeleteUserByUsernameAsync(string username);
+        Task<ResultBase> DeleteAsync(string username);
     }
 }

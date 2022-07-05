@@ -51,7 +51,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             }
         }
 
-        private List<UserResponse> CreateUserResponseList(List<User> users)
+        private static List<UserResponse> CreateUserResponseList(List<User> users)
         {
             List<UserResponse> userResponseList = new List<UserResponse>();
 

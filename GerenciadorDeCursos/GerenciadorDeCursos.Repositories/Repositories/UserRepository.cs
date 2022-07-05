@@ -27,7 +27,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return user;
         }
 
-        public async Task<bool> DeleteByUsernameAsync(string username)
+        public async Task DeleteAsync(string username)
         {
             User user = await FindByUsernameAsync(username);
 
@@ -37,7 +37,6 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context.Remove(user);
             await _context.SaveChangesAsync();
 
-            return true;
         }
 
         public async Task<List<User>> FindByRoleAsync(Roles role)

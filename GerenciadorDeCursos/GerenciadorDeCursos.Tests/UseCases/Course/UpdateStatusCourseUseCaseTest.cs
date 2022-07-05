@@ -8,12 +8,12 @@ using Xunit;
 
 namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
 {
-    public class UpdateStatusCourseUseCaseTests
+    public class UpdateStatusCourseUseCaseTest
     {
         private readonly UpdateStatusCourseUseCase _useCase;
         private readonly Mock<ICourseRepository> _courseRepositoryMock;
 
-        public UpdateStatusCourseUseCaseTests()
+        public UpdateStatusCourseUseCaseTest()
         {
             _courseRepositoryMock = new Mock<ICourseRepository>();
             _useCase = new UpdateStatusCourseUseCase(_courseRepositoryMock.Object);

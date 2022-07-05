@@ -15,12 +15,12 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             _userRepository = userRepository;
         }
 
-        public async Task<ResultBase> DeleteUserByUsernameAsync(string username)
+        public async Task<ResultBase> DeleteAsync(string username)
         {
             ResultBase result = new ResultBase();
             try
             {
-                result.Sucess = await _userRepository.DeleteByUsernameAsync(username);
+                await _userRepository.DeleteAsync(username);
 
                 return result;
             }

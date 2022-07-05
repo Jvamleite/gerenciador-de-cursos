@@ -1,5 +1,6 @@
 ﻿using GerenciadorDeCursos.Border.Entities.User;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,6 +16,6 @@ namespace GerenciadorDeCursos.Border.Repositories
 
         Task<List<User>> FindByRoleAsync(Roles role);
 
-        Task<bool> DeleteByUsernameAsync(string username);
+        Task DeleteAsync(string username);
     }
 }

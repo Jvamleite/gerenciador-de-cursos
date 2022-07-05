@@ -66,7 +66,7 @@ namespace GerenciadorDeCursos.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(string username)
         {
-            ResultBase result = await _deleteUserUseCase.DeleteUserByUsernameAsync(username);
+            ResultBase result = await _deleteUserUseCase.DeleteAsync(username);
             return result.Sucess ? NoContent() : BadRequest(result.Message);
         }
     }
