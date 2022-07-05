@@ -1,5 +1,5 @@
-﻿using GerenciadorDeCursos.Border.Entities.Course;
-using GerenciadorDeCursos.Border.Entities.User;
+﻿using GerenciadorDeCursos.Border.Entities.CourseEntities;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorDeCursos.Repositories.Data
@@ -8,6 +8,7 @@ namespace GerenciadorDeCursos.Repositories.Data
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

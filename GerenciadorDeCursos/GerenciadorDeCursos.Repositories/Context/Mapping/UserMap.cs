@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities.User;
+﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
