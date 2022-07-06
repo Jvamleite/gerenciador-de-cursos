@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GerenciadorDeCursos.Border.DTOs.Course.Request
+namespace GerenciadorDeCursos.Border.DTOs.CourseDtos.Request
 {
     public class CreateCourseRequest
     {

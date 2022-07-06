@@ -1,7 +1,7 @@
 ﻿using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
 using System;
 
-namespace GerenciadorDeCursos.Border.DTOs.Course.Response
+namespace GerenciadorDeCursos.Border.DTOs.CourseDtos.Response
 {
     public class CourseResponse
     {
