@@ -43,20 +43,6 @@ namespace GerenciadorDeCursos.API.Controllers
             return result.Sucess ? Ok(result.Data) : NotFound(result.Message);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] RegisterUserRequest createUserRequest, Roles role)
-        {
-            _logger.LogWarning($"Iniciando a criação de um novo usuário");
-            ResultBase result = await _createUserUseCase.CreateUserAsync(createUserRequest, role);
-            if (!result.Sucess)
-            {
-                _logger.LogWarning("Falha ao tentar criar o usuário: " + result.Message);
-                return BadRequest(result.Message);
-            }
-            _logger.LogWarning("Usuário criado com sucesso");
-            return CreatedAtAction(nameof(GetAll), result.Data);
-        }
-
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

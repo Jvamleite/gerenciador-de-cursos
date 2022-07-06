@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.DTOs.CreateUserRequest;
+﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
 using GerenciadorDeCursos.Border.UseCases.User;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

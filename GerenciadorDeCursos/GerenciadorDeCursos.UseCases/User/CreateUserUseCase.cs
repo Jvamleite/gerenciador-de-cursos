@@ -8,7 +8,7 @@ using GerenciadorDeCursos.Shared.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using GerenciadorDeCursos.Border.DTOs.CreateUserRequest;
+using GerenciadorDeCursos.Border.DTOs.User.Request;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {

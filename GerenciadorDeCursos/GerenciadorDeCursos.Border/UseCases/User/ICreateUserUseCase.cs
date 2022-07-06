@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.DTOs.CreateUserRequest;
+﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
 using GerenciadorDeCursos.Border.DTOs.UserDTOs.Request;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Shared.Models;
