@@ -1,4 +1,5 @@
-﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
+﻿using Bogus;
+using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 
