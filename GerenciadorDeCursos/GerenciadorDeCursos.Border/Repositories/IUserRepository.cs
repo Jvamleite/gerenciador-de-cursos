@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.Repositories
 {
-    public interface IUserRepository : IRepository<User, Task>
+    public interface IUserRepository
     {
+        Task AddTeacherAsync(Teacher teacher);
+
+        Task AddStudentAsync(Student student);
+
         Task<IEnumerable<User>> GetAllAsync();
 
         Task<User> FindByUsernameAsync(string username);

@@ -8,6 +8,7 @@ using GerenciadorDeCursos.Shared.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using GerenciadorDeCursos.Border.DTOs.CreateUserRequest;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
@@ -22,26 +23,22 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             _logger = logger;
         }
 
-        public async Task<ResultBase> CreateUserAsync(RegisterUserRequest request, Roles role)
+        public async Task<ResultBase> CreateUserAsync(CreateUserRequest createUserRequest, Roles role)
         {
             try
             {
-                /*_logger.LogWarning("Verificando se o usuário já existe no banco de dados");
-
-                User user = await _userRepository.FindByUsernameAsync(request.Username);
-                if (user != null)
-                    return new ResultBase(false, "Usuário já existe!");
-
-                _logger.LogWarning("Usuário não encontrado, criando usuário");
-                */
-
-                User createdUser = new User(request.Username, request.Password, role);
-
-                await _userRepository.AddAsync(createdUser);
-
-                UserResponse response = createdUser.CreateCreateUserReponse();
-
-                return new ResultBase(response);
+                if (role == Roles.Aluno)
+                {
+                    var createdStudent = new Student(createUserRequest.Name, role);
+                    await _userRepository.AddStudentAsync(createdStudent);
+                    return new ResultBase(createdStudent);
+                }
+                else 
+                {
+                    var createdTeacher = new Teacher();
+                    await _userRepository.AddTeacherAsync(createdTeacher);
+                    return new ResultBase(createdTeacher);
+                }            
             }
             catch (Exception ex)
             {

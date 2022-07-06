@@ -19,9 +19,15 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context = context;
         }
 
-        public async Task AddAsync(User user)
+        public async Task AddTeacherAsync(Teacher teacher)
         {
-            await _context.Users.AddAsync(user);
+            await _context.Teachers.AddAsync(teacher);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddStudentAsync(Student student)
+        {
+            await _context.Students.AddAsync(student);
             await _context.SaveChangesAsync();
         }
 
