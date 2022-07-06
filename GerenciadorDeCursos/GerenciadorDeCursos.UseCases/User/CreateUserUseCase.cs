@@ -31,13 +31,13 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                 {
                     var createdStudent = new Student(createUserRequest.Name, role);
                     await _userRepository.AddStudentAsync(createdStudent);
-                    return new ResultBase(createdStudent);
+                    return new ResultBase(createdStudent.CreateCreateUserReponse());
                 }
                 else 
                 {
                     var createdTeacher = new Teacher(createUserRequest.Name,role);
                     await _userRepository.AddTeacherAsync(createdTeacher);
-                    return new ResultBase(createdTeacher);
+                    return new ResultBase(createdTeacher.CreateCreateUserReponse());
                 }            
             }
             catch (Exception ex)

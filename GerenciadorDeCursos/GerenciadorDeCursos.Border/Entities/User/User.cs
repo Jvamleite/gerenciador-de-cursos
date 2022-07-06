@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
+using GerenciadorDeCursos.Border.DTOs.User.Response;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 
@@ -31,12 +31,11 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
             IsAdmin = isAdmin;
         }
 
-        public UserResponse CreateCreateUserReponse()
+        public CreateUserResponse CreateCreateUserReponse()
         {
-            UserResponse userResponse = new UserResponse();
-            userResponse.Id = Id;
+            var userResponse = new CreateUserResponse();
             userResponse.Username = Username;
-            userResponse.Role = Role;
+            userResponse.Password = Password;
             return userResponse;
         }
     }
