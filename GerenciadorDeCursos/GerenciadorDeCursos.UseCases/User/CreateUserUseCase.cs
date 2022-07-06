@@ -35,7 +35,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                 }
                 else 
                 {
-                    var createdTeacher = new Teacher();
+                    var createdTeacher = new Teacher(createUserRequest.Name,role);
                     await _userRepository.AddTeacherAsync(createdTeacher);
                     return new ResultBase(createdTeacher);
                 }            
