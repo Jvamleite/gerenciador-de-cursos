@@ -1,4 +1,4 @@
-﻿using Bogus;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
@@ -10,9 +10,20 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
     {
         public IEnumerable<Course> Courses { get; set; }
 
+        public Teacher() 
+        { }
+
         public Teacher(string name, Roles role) : base(name,role)
         {
             
+        }
+
+        public GetTeacherResponse CreateGetTeacherResponse()
+        {
+            var teacherResponse = new GetTeacherResponse();
+            teacherResponse.Username = this.Username;
+            teacherResponse.Courses = this.Courses;
+            return teacherResponse;
         }
     }
 }

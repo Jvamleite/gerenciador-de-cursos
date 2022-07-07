@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using GerenciadorDeCursos.Border.DTOs.Course.Request;
+using GerenciadorDeCursos.Border.DTOs.CourseDtos.Request;
 using GerenciadorDeCursos.Tests.Utils;
 using System;
 

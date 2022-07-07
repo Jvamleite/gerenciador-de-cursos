@@ -9,7 +9,7 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
         public void Configure(EntityTypeBuilder<Student> builder)
         {
             builder.ToTable("Students");
-            //builder.HasAlternateKey(p => p.RegistrationNumber);
+            builder.HasAlternateKey(p => p.RegistrationNumber);
             builder.Property(p => p.Username).IsRequired();
             builder.Property(p => p.Password).IsRequired();
             builder.Property(p => p.Role).IsRequired();

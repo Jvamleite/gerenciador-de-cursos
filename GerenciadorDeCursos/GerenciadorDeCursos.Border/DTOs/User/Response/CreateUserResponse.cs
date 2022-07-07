@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.Border.DTOs.User.Response
+namespace GerenciadorDeCursos.Border.DTOs.UserDtos.Response
 {
     public class CreateUserResponse
     {

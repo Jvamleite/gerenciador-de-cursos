@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using GerenciadorDeCursos.Border.DTOs.Course.Request;
+using GerenciadorDeCursos.Border.DTOs.CourseDtos.Request;
 using System;
 
 namespace GerenciadorDeCursos.Border.Validators

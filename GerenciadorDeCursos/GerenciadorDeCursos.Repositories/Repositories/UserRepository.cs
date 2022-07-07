@@ -31,36 +31,47 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(string username)
+        public async Task<IEnumerable<Student>> GetAllStudentsAsync()
         {
-            User user = await FindByUsernameAsync(username);
+            var students = await _context.Students.AsNoTracking().ToListAsync();
 
-            if (user == null)
-                throw new ArgumentException("Username inválido");
+            return !students.Any() ? throw new Exception("Não há alunos para listar") : students;
+        }
 
-            _context.Remove(user);
+        public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
+        {
+            var teachers = await _context.Teachers.AsNoTracking().ToListAsync();
+
+            return !teachers.Any() ? throw new Exception("Não há professores para listar") : teachers;
+        }
+
+        public async Task<Student> GetByRegistrationNumberAsync(Guid registrationNumber)
+        {
+            var student = await _context.Students.FirstOrDefaultAsync(p => p.RegistrationNumber == registrationNumber);
+            return student ?? throw new Exception($"Não há nenhum estudante com o número de matrícula {registrationNumber}");
+        }
+
+        private async Task<Teacher> GetTeacherByUsernameAsync(string username)
+        {
+            var teacher = await _context.Teachers.FirstOrDefaultAsync(p => p.Username == username);
+            return teacher ?? throw new Exception($"Username inválido");
+        }
+
+        public async Task DeleteStudentAsync(Guid RegistrationNumber)
+        {
+            var student = await GetByRegistrationNumberAsync(RegistrationNumber);
+
+            _context.Remove(student);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<User>> FindByRoleAsync(Roles role)
+        public async Task DeleteTeacherAsync(string username)
         {
-            List<User> usersByRole = await _context.Users.Where(p => p.Role == role).ToListAsync();
+            var teacher = await GetTeacherByUsernameAsync(username);
 
-            return !usersByRole.Any() ? throw new Exception("Não há usuários com o role selecionado") : usersByRole;
+            _context.Remove(teacher);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<User> FindByUsernameAsync(string username)
-        {
-            User usersByRole = await _context.Users.FirstOrDefaultAsync(p => p.Username == username);
-
-            return usersByRole == null ? throw new Exception("Não há usuários com o username escolhido") : usersByRole;
-        }
-
-        public async Task<IEnumerable<User>> GetAllAsync()
-        {
-            List<User> users = await _context.Users.AsNoTracking().ToListAsync();
-
-            return !users.Any() ? throw new Exception("Não há usuários para listar") : users;
-        }
     }
 }

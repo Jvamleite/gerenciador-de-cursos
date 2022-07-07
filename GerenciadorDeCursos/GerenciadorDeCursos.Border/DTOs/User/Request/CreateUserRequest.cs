@@ -1,6 +1,6 @@
 ﻿using GerenciadorDeCursos.Border.Entities.User.Enums;
 
-namespace GerenciadorDeCursos.Border.DTOs.User.Request
+namespace GerenciadorDeCursos.Border.DTOs.UserDtos.Request
 {
     public class CreateUserRequest
     {

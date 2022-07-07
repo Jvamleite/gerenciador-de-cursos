@@ -1,9 +1,9 @@
-﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
+using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.UseCases.User;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace GerenciadorDeCursos.API.Controllers
 {
@@ -13,11 +13,16 @@ namespace GerenciadorDeCursos.API.Controllers
     {
         private readonly ICreateUserUseCase _createUserUseCase;
 
-        [HttpPost]
-        public async Task<IActionResult> CreateARequest([FromBody] CreateUserRequest createUserRequest)
+        public RequestController(ICreateUserUseCase createUserUseCase)
         {
-            var result = _createUserUseCase.CreateUserAsync(createUserRequest);
-            return Ok(result);
+            _createUserUseCase = createUserUseCase;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateARequest([FromBody] CreateUserRequest createUserRequest, Roles role)
+        {
+            var result = await _createUserUseCase.CreateUserAsync(createUserRequest,role);
+            return result.Sucess ? Ok(result.Data) : BadRequest(result.Message);
         }
 
     }

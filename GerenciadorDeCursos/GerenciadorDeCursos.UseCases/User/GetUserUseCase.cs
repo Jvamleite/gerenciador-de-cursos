@@ -1,5 +1,4 @@
-﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
-using GerenciadorDeCursos.Border.Entities.UserEntities;
+﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;
@@ -7,6 +6,7 @@ using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
@@ -19,15 +19,15 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             _userRepository = userRepository;
         }
 
-        public async Task<ResultBase> GetAllAsync()
+        public async Task<ResultBase> GetAllStudentsAsync()
         {
             try
             {
-                var users = await _userRepository.GetAllAsync();
+                var students = await _userRepository.GetAllStudentsAsync();
 
-                var userResponseList = CreateUserResponseList(users);
+                var studentResponseList = CreateStudentResponseList(students);
 
-                return new ResultBase(userResponseList);
+                return new ResultBase(studentResponseList);
             }
             catch (Exception ex)
             {
@@ -35,15 +35,15 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             }
         }
 
-        public async Task<ResultBase> GetByRoleAsync(Roles role)
+        public async Task<ResultBase> GetAllTeachersAsync()
         {
             try
             {
-                var users = await _userRepository.FindByRoleAsync(role);
+                var teachers = await _userRepository.GetAllTeachersAsync();
 
-                var usersByRole = CreateUserResponseList(users);
+                var teacherResponseList = CreateTeacherResponseList(teachers);
 
-                return new ResultBase(usersByRole);
+                return new ResultBase(teacherResponseList);
             }
             catch (Exception ex)
             {
@@ -51,17 +51,44 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             }
         }
 
-        private static IEnumerable<UserResponse> CreateUserResponseList(IEnumerable<User> users)
+        public async Task<ResultBase> GetStudentByRegistrationNumberAsync(Guid registrationNumber)
         {
-            List<UserResponse> userResponseList = new List<UserResponse>();
-
-            foreach (User user in users)
+            try
             {
-                UserResponse userResponse = user.CreateCreateUserReponse();
-                userResponseList.Add(userResponse);
+                var student = await _userRepository.GetByRegistrationNumberAsync(registrationNumber);
+                return new ResultBase(student.CreateGetStudentResponse());
+            }
+            catch(Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
+        }
+
+        private static IEnumerable<GetStudentResponse> CreateStudentResponseList(IEnumerable<Student> students)
+        {
+            var  studentResponseList = new List<GetStudentResponse>();
+
+            foreach (var student in students)
+            {
+                var studentResponse = student.CreateGetStudentResponse();
+                studentResponseList.Add(studentResponse);
             }
 
-            return userResponseList;
+            return studentResponseList;
         }
+        private static IEnumerable<GetTeacherResponse> CreateTeacherResponseList(IEnumerable<Teacher> teachers)
+        {
+            var teacherResponseList = new List<GetTeacherResponse>();
+
+            foreach (var teacher in teachers)
+            {
+                var teacherResponse = teacher.CreateGetTeacherResponse();
+                teacherResponseList.Add(teacherResponse);
+            }
+
+            return teacherResponseList;
+        }
+
+        
     }
 }

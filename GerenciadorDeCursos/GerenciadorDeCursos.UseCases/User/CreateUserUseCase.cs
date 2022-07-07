@@ -1,5 +1,4 @@
-﻿using GerenciadorDeCursos.Border.DTOs.UserDTOs.Request;
-using GerenciadorDeCursos.Border.DTOs.UserDTOs.Response;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
@@ -8,7 +7,7 @@ using GerenciadorDeCursos.Shared.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using GerenciadorDeCursos.Border.DTOs.User.Request;
+using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {

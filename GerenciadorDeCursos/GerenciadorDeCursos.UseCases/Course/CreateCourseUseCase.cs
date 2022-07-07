@@ -1,4 +1,4 @@
-﻿using GerenciadorDeCursos.Border.DTOs.Course.Request;
+﻿using GerenciadorDeCursos.Border.DTOs.CourseDtos.Request;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.Course;
@@ -47,7 +47,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
             foreach (var course in courses)
             {
                 if (createCourseRequest.Título == course.Título)
-                    throw new ArgumentException("Já existe um curso com esse título");
+                    throw new Exception("Já existe um curso com esse título");
             }
         }
     }

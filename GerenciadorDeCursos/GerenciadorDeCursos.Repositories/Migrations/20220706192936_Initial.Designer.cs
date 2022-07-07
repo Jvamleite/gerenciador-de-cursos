@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCursos.Repositories.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220705190426_Initial")]
+    [Migration("20220706192936_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,37 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.User", b =>
+            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Student", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RegistrationNumber")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("RegistrationNumber");
+
+                    b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Teacher", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,23 +118,6 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Student", b =>
-                {
-                    b.HasBaseType("GerenciadorDeCursos.Border.Entities.UserEntities.User");
-
-                    b.Property<Guid>("RegistrationNumber")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Teacher", b =>
-                {
-                    b.HasBaseType("GerenciadorDeCursos.Border.Entities.UserEntities.User");
 
                     b.ToTable("Teachers");
                 });
@@ -133,24 +146,6 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                         .IsRequired();
 
                     b.Navigation("Teacher");
-                });
-
-            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Student", b =>
-                {
-                    b.HasOne("GerenciadorDeCursos.Border.Entities.UserEntities.User", null)
-                        .WithOne()
-                        .HasForeignKey("GerenciadorDeCursos.Border.Entities.UserEntities.Student", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Teacher", b =>
-                {
-                    b.HasOne("GerenciadorDeCursos.Border.Entities.UserEntities.User", null)
-                        .WithOne()
-                        .HasForeignKey("GerenciadorDeCursos.Border.Entities.UserEntities.Teacher", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("GerenciadorDeCursos.Border.Entities.UserEntities.Teacher", b =>

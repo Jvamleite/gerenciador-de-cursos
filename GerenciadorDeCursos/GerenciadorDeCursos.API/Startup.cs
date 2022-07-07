@@ -30,7 +30,7 @@ namespace GerenciadorDeCursos.API
             })
             .AddFluentValidation(opt =>
             {
-                opt.RegisterValidatorsFromAssemblyContaining<UserValidator>();
+                opt.RegisterValidatorsFromAssemblyContaining<CourseValidator>();
             })
             .AddJsonOptions(opt =>
             {

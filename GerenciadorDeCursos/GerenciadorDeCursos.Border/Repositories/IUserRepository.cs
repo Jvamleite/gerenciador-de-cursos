@@ -3,6 +3,7 @@ using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace GerenciadorDeCursos.Border.Repositories
 {
@@ -12,12 +13,15 @@ namespace GerenciadorDeCursos.Border.Repositories
 
         Task AddStudentAsync(Student student);
 
-        Task<IEnumerable<User>> GetAllAsync();
+        Task<IEnumerable<Student>> GetAllStudentsAsync();
 
-        Task<User> FindByUsernameAsync(string username);
+        Task<IEnumerable<Teacher>> GetAllTeachersAsync();
 
-        Task<List<User>> FindByRoleAsync(Roles role);
+        Task<Student> GetByRegistrationNumberAsync(Guid registrationNumber);
 
-        Task DeleteAsync(string username);
+        Task DeleteStudentAsync(Guid RegistrationNumber);
+
+        Task DeleteTeacherAsync(string username);
+
     }
 }

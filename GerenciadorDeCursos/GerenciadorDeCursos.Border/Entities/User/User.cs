@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using GerenciadorDeCursos.Border.DTOs.User.Response;
+using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 
@@ -7,7 +7,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 {
     public class User
     {
-        private readonly Faker _faker = new Faker("pt-BR");
+        private readonly Faker _faker = new Faker("pt_BR");
 
         public Guid Id { get; set; }
 

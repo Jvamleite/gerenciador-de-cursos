@@ -15,19 +15,33 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             _userRepository = userRepository;
         }
 
-        public async Task<ResultBase> DeleteAsync(string username)
+        public async Task<ResultBase> DeleteStudentAsync(Guid registrationNumber)
         {
-            ResultBase result = new ResultBase();
             try
             {
-                await _userRepository.DeleteAsync(username);
+                await _userRepository.DeleteStudentAsync(registrationNumber);
 
-                return result;
+                return new ResultBase();
+            }
+            catch(Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
+        }
+
+        public async Task<ResultBase> DeleteTeacherAsync(string username)
+        {
+            try
+            {
+                await _userRepository.DeleteTeacherAsync(username);
+
+                return new ResultBase();
             }
             catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }
         }
+        
     }
 }
