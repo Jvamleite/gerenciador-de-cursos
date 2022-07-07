@@ -1,13 +1,12 @@
-﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
-using GerenciadorDeCursos.Border.Entities.UserEntities;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
@@ -32,12 +31,12 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                     await _userRepository.AddStudentAsync(createdStudent);
                     return new ResultBase(createdStudent.CreateCreateUserReponse());
                 }
-                else 
+                else
                 {
-                    var createdTeacher = new Teacher(createUserRequest.Name,role);
+                    var createdTeacher = new Teacher(createUserRequest.Name, role);
                     await _userRepository.AddTeacherAsync(createdTeacher);
                     return new ResultBase(createdTeacher.CreateCreateUserReponse());
-                }            
+                }
             }
             catch (Exception ex)
             {

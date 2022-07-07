@@ -21,7 +21,7 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
         public Status Status { get; set; }
 
         public Guid TeacherId { get; set; }
-        
+
         public Teacher Teacher { get; set; }
 
         public IEnumerable<Student> Students { get; set; }

@@ -5,7 +5,6 @@ using GerenciadorDeCursos.UseCases.CourseUseCase;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Threading.Tasks;
-using Xunit;
 
 namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
 {

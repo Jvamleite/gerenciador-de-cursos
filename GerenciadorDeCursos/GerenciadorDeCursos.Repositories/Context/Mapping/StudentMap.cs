@@ -16,7 +16,6 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
 
             builder.HasMany(p => p.EnrolledCourses)
                 .WithMany(p => p.Students);
-
         }
     }
 }

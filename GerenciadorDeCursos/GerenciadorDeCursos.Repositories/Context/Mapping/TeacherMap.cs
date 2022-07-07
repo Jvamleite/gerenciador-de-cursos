@@ -15,7 +15,6 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
 
             builder.HasMany(p => p.Courses)
                 .WithOne(p => p.Teacher).HasForeignKey(p => p.TeacherId);
-
         }
     }
 }

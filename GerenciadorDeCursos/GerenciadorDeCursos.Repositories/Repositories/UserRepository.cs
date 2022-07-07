@@ -1,5 +1,4 @@
 ﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
@@ -72,6 +71,5 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context.Remove(teacher);
             await _context.SaveChangesAsync();
         }
-
     }
 }

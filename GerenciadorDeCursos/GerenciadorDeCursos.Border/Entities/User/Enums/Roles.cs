@@ -5,6 +5,5 @@
         Aluno = 0,
 
         Professor = 1,
-
     }
 }

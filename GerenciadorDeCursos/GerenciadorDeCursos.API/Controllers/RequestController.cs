@@ -4,7 +4,6 @@ using GerenciadorDeCursos.Border.UseCases.User;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-
 namespace GerenciadorDeCursos.API.Controllers
 {
     [Route("api/[controller]")]
@@ -21,9 +20,8 @@ namespace GerenciadorDeCursos.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateARequest([FromBody] CreateUserRequest createUserRequest, Roles role)
         {
-            var result = await _createUserUseCase.CreateUserAsync(createUserRequest,role);
+            var result = await _createUserUseCase.CreateUserAsync(createUserRequest, role);
             return result.Sucess ? Ok(result.Data) : BadRequest(result.Message);
         }
-
     }
 }

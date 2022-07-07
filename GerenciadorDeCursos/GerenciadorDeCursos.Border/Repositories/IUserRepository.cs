@@ -1,9 +1,7 @@
 ﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
-using GerenciadorDeCursos.Border.Shared;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
 
 namespace GerenciadorDeCursos.Border.Repositories
 {
@@ -22,6 +20,5 @@ namespace GerenciadorDeCursos.Border.Repositories
         Task DeleteStudentAsync(Guid RegistrationNumber);
 
         Task DeleteTeacherAsync(string username);
-
     }
 }

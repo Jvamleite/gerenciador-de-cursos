@@ -1,5 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities.User.Enums;
-using GerenciadorDeCursos.Shared.Models;
+﻿using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Threading.Tasks;
 

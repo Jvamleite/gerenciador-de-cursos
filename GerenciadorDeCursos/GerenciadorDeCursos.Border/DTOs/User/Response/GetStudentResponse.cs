@@ -1,5 +1,4 @@
 ﻿using GerenciadorDeCursos.Border.Entities.CourseEntities;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +11,5 @@ namespace GerenciadorDeCursos.Border.DTOs.UserDtos.Response
         public string Username { get; set; }
 
         public IEnumerable<Course> Courses { get; set; }
-
-
     }
 }

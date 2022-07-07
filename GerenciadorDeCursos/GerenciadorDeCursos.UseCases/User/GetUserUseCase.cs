@@ -1,12 +1,11 @@
-﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
+﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 
 namespace GerenciadorDeCursos.UseCases.UserUseCases
 {
@@ -58,7 +57,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                 var student = await _userRepository.GetByRegistrationNumberAsync(registrationNumber);
                 return new ResultBase(student.CreateGetStudentResponse());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }
@@ -66,7 +65,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 
         private static IEnumerable<GetStudentResponse> CreateStudentResponseList(IEnumerable<Student> students)
         {
-            var  studentResponseList = new List<GetStudentResponse>();
+            var studentResponseList = new List<GetStudentResponse>();
 
             foreach (var student in students)
             {
@@ -76,6 +75,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 
             return studentResponseList;
         }
+
         private static IEnumerable<GetTeacherResponse> CreateTeacherResponseList(IEnumerable<Teacher> teachers)
         {
             var teacherResponseList = new List<GetTeacherResponse>();
@@ -88,7 +88,5 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
 
             return teacherResponseList;
         }
-
-        
     }
 }

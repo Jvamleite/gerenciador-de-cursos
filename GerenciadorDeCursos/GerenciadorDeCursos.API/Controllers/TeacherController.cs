@@ -1,6 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.UseCases.User;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -12,7 +11,7 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly IGetUserUseCase _getUserUseCase;
         private readonly IDeleteUserUseCase _deleteUserUseCase;
 
-        public TeacherController(IGetUserUseCase getUserUseCase,IDeleteUserUseCase deleteUserUseCase)
+        public TeacherController(IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase)
         {
             _getUserUseCase = getUserUseCase;
             _deleteUserUseCase = deleteUserUseCase;
@@ -29,7 +28,7 @@ namespace GerenciadorDeCursos.API.Controllers
         public async Task<IActionResult> DeleteByUsername(string username)
         {
             var result = await _deleteUserUseCase.DeleteTeacherAsync(username);
-            return result.Sucess? NoContent() : BadRequest(result.Message);
+            return result.Sucess ? NoContent() : BadRequest(result.Message);
         }
     }
 }

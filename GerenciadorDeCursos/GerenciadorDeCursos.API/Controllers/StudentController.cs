@@ -14,11 +14,10 @@ namespace GerenciadorDeCursos.API.Controllers
         private readonly IGetUserUseCase _getUserUseCase;
         private readonly IDeleteUserUseCase _deleteUserUseCase;
 
-        public StudentController(IGetUserUseCase getUserUseCase,IDeleteUserUseCase deleteUserUseCase)
+        public StudentController(IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase)
         {
             _getUserUseCase = getUserUseCase;
             _deleteUserUseCase = deleteUserUseCase;
-
         }
 
         [HttpGet]

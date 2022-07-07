@@ -1,7 +1,6 @@
 ﻿using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
 using GerenciadorDeCursos.Border.Repositories;
-using GerenciadorDeCursos.Border.Shared;
 using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -65,7 +64,5 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
             await _context.SaveChangesAsync();
         }
-
-        
     }
 }

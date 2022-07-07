@@ -19,7 +19,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         {
             RegistrationNumber = Guid.NewGuid();
         }
-        
+
         public GetStudentResponse CreateGetStudentResponse()
         {
             var studentResponse = new GetStudentResponse();
@@ -28,6 +28,5 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
             studentResponse.RegistrationNumber = this.RegistrationNumber;
             return studentResponse;
         }
-
     }
 }
