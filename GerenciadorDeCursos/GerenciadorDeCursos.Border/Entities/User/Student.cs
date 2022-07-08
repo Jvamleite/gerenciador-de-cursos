@@ -15,7 +15,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         public Student()
         { }
 
-        public Student(string name, Roles role) : base(name, role)
+        public Student(string name) : base(name)
         {
             RegistrationNumber = Guid.NewGuid();
         }

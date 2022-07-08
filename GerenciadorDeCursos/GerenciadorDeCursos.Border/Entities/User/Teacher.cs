@@ -12,7 +12,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         public Teacher()
         { }
 
-        public Teacher(string name, Roles role) : base(name, role)
+        public Teacher(string name) : base(name)
         {
         }
 

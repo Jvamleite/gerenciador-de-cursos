@@ -12,7 +12,6 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
             builder.HasAlternateKey(p => p.RegistrationNumber);
             builder.Property(p => p.Username).IsRequired();
             builder.Property(p => p.Password).IsRequired();
-            builder.Property(p => p.Role).IsRequired();
 
             builder.HasMany(p => p.EnrolledCourses)
                 .WithMany(p => p.Students);

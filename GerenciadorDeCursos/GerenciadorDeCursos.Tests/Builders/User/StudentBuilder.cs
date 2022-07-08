@@ -18,7 +18,6 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
             {
                 Id = Guid.Parse("b5303c62-3148-48d1-8f69-b31c4fc7167d"),
                 RegistrationNumber = Guid.Parse("c0be006e-73a5-4d12-8bd0-2cb326ca4a9e"),
-                Role = Roles.Aluno,
                 Username = _faker.Internet.UserName(),
                 Password = _faker.Internet.Password(),
                 IsAdmin = false

@@ -15,19 +15,16 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public string Password { get; set; }
 
-        public Roles Role { get; set; }
-
         public bool IsAdmin { get; set; }
 
         public User()
         { }
 
-        public User(string name, Roles role, bool isAdmin = false)
+        public User(string name, bool isAdmin = false)
         {
             Id = Guid.NewGuid();
             Username = _faker.Internet.UserName(name);
-            Password = _faker.Internet.Password(10, true, @"^(?=.*?[A - Z])(?=.*?[a - z])(?=.*?[0 - 9])(?=.*?[#?!@$%^&*-]).{8,}$");
-            Role = role;
+            Password = _faker.Internet.Password(10, true, "^(?=.*?[A - Z])(?=.*?[a - z])(?=.*?[0 - 9])(?=.*?[#?!@$%^&*-]).{8,}$");
             IsAdmin = isAdmin;
         }
 

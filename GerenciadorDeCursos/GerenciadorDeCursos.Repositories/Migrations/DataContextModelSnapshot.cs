@@ -81,9 +81,6 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                     b.Property<Guid>("RegistrationNumber")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -107,9 +104,6 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()

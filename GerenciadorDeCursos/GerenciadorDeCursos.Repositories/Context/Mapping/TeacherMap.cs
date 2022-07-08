@@ -11,7 +11,6 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
             builder.ToTable("Teachers");
             builder.Property(p => p.Username).IsRequired();
             builder.Property(p => p.Password).IsRequired();
-            builder.Property(p => p.Role).IsRequired();
 
             builder.HasMany(p => p.Courses)
                 .WithOne(p => p.Teacher).HasForeignKey(p => p.TeacherId);
