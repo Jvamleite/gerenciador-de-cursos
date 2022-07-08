@@ -2,8 +2,10 @@
 using GerenciadorDeCursos.Border.DTOs.CourseDtos.Request;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
+using GerenciadorDeCursos.Tests.Builders.UserBuilder;
 using GerenciadorDeCursos.Tests.Utils;
 using System;
+using System.Linq;
 
 namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
 {
@@ -20,7 +22,10 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
                 Título = _faker.Name.ToString(),
                 DataInicial = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
                 DataFinal = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
-                Status = Status.Previsto
+                Status = Status.Previsto,
+                Students = ListFactory.Generate(() => new StudentBuilder().Build(), min: 1).AsEnumerable(),
+                Teacher = new TeacherBuilder().Build(),
+                TeacherId = Guid.Parse("e045a3fa-11ba-4955-b25d-5ef362211e2e")
             };
         }
 

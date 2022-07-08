@@ -26,7 +26,8 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
         public async Task Execute_GetAll_RetunsSucess()
         {
             //Arrange
-            var courses = ListFactory.Generate(() => new CreateCourseBuilder().Build(), min: 1);
+            var courses = ListFactory.Generate(() => new CreateCourseBuilder().Build(), min: 2, max: 2);
+            var coursesResponse = new CourseResponseListBuilder().WithListOfCourses(courses).Build();
 
             _courseRepositoryMock.Setup(f => f.GetAllAsync())
                 .ReturnsAsync(courses);
@@ -35,7 +36,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
             var result = await _useCase.GetAllAsync();
 
             //Assert
-            result.Data.Should().BeEquivalentTo(courses);
+            result.Data.Should().BeEquivalentTo(coursesResponse);
             result.Sucess.Should().BeTrue();
         }
 
@@ -60,7 +61,8 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
         public async Task Execute_GetCourseByStatus_RetunsSucess()
         {
             //Arrange
-            var courses = ListFactory.Generate(() => new CreateCourseBuilder().Build(), min: 1);
+            var courses = ListFactory.Generate(() => new CreateCourseBuilder().Build(), min: 2, max: 2);
+            var courseResponse = new CourseResponseListBuilder().WithListOfCourses(courses).Build();
 
             _courseRepositoryMock.Setup(f => f.GetCourseByStatusAsync(Status.Previsto))
                 .ReturnsAsync(courses);
@@ -70,7 +72,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
 
             //Assert
             result.Sucess.Should().BeTrue();
-            result.Data.Should().BeEquivalentTo(courses);
+            result.Data.Should().BeEquivalentTo(courseResponse);
         }
 
         [Fact]
