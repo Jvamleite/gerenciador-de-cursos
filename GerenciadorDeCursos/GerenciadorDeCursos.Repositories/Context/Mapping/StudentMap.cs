@@ -10,8 +10,13 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
         {
             builder.ToTable("Students");
             builder.HasAlternateKey(p => p.RegistrationNumber);
+            builder.Property(p => p.Name).IsRequired();
+            builder.Property(p => p.LastName).IsRequired();
             builder.Property(p => p.Username).IsRequired();
             builder.Property(p => p.Password).IsRequired();
+            builder.Property(p => p.Email).IsRequired();
+            builder.Property(p => p.CPF).IsRequired();
+            
 
             builder.HasMany(p => p.EnrolledCourses)
                 .WithMany(p => p.Students);
