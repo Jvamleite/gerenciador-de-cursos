@@ -27,13 +27,21 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             {
                 if (role == Roles.Aluno)
                 {
-                    var createdStudent = new Student(createUserRequest.Name);
+                    var createdStudent = new Student(createUserRequest.Name,
+                                                     createUserRequest.LastName,
+                                                     createUserRequest.Email,
+                                                     createUserRequest.CPF);
+
                     await _userRepository.AddStudentAsync(createdStudent);
                     return new ResultBase(createdStudent.CreateCreateUserReponse());
                 }
                 else
                 {
-                    var createdTeacher = new Teacher(createUserRequest.Name);
+                    var createdTeacher = new Teacher(createUserRequest.Name,
+                                                     createUserRequest.LastName,
+                                                     createUserRequest.Email,
+                                                     createUserRequest.CPF);
+
                     await _userRepository.AddTeacherAsync(createdTeacher);
                     return new ResultBase(createdTeacher.CreateCreateUserReponse());
                 }

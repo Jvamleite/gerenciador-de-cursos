@@ -11,6 +11,14 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public Guid Id { get; set; }
 
+        public string Name { get; set; }
+
+        public string LastName { get; set; }
+
+        public string CPF { get; set; }
+
+        public string Email { get; set; }
+
         public string Username { get; set; }
 
         public string Password { get; set; }
@@ -20,10 +28,14 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         public User()
         { }
 
-        public User(string name, bool isAdmin = false)
+        public User(string name, string lastName,string email,string cpf, bool isAdmin = false)
         {
             Id = Guid.NewGuid();
-            Username = _faker.Internet.UserName(name);
+            Name = name;
+            LastName = lastName;
+            Email = email;
+            CPF = cpf;
+            Username = name + "_" + lastName;
             Password = _faker.Internet.Password(10, true, "^(?=.*?[A - Z])(?=.*?[a - z])(?=.*?[0 - 9])(?=.*?[#?!@$%^&*-]).{8,}$");
             IsAdmin = isAdmin;
         }
