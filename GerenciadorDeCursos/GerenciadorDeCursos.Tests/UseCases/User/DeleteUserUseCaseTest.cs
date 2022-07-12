@@ -20,7 +20,8 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             _useCase = new DeleteUserUseCase(_userRepositoryMock.Object);
         }
 
-        [Fact] public async Task Execute_DeleteStudentAsync_ReturnsSucess()
+        [Fact]
+        public async Task Execute_DeleteStudentAsync_ReturnsSucess()
         {
             //Arrange
             var student = new StudentBuilder().Build();
@@ -80,7 +81,5 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);
         }
-
-
     }
 }

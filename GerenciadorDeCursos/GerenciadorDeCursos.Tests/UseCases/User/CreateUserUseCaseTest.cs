@@ -6,7 +6,6 @@ using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Threading.Tasks;
-using Xunit;
 
 namespace GerenciadorDeCursos.Tests.UseCases.UserTest
 {
@@ -21,7 +20,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.UserTest
             _useCase = new CreateUserUseCase(_userRepositoryMock.Object, Mock.Of<ILogger<CreateUserUseCase>>());
         }
 
-        
         public async Task Execute_CreateUserAsync_CreateStudent_ReturnsSucess()
         {
             //Arrange

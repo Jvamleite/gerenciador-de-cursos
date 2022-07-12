@@ -40,7 +40,7 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
 
         public GetStudentResponseBuilder WithListOfStudents(List<Student> students)
         {
-            for(int i = 0; i < 2 ; i++)
+            for (int i = 0; i < 2; i++)
             {
                 this._instance.ElementAt(i).RegistrationNumber = students.ElementAt(i).RegistrationNumber;
                 this._instance.ElementAt(i).Username = students.ElementAt(i).Username;

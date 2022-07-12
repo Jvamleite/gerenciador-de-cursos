@@ -27,12 +27,9 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             //Arrange
             var students = ListFactory.Generate(() => new StudentBuilder().Build(), min: 2, max: 2);
             var studentsResponse = new GetStudentResponseBuilder().WithListOfStudents(students).Build();
-            
 
             _userRepositoryMock.Setup(f => f.GetAllStudentsAsync())
                 .ReturnsAsync(students);
-
-            
 
             //Act
             var result = await _useCase.GetAllStudentsAsync();
@@ -47,7 +44,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             //Arrange
             var exception = new Exception("não há alunos para listar");
 
-
             _userRepositoryMock.Setup(f => f.GetAllStudentsAsync())
                 .Throws(exception);
 
@@ -56,7 +52,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
 
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);
-            
         }
 
         [Fact]
@@ -65,7 +60,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             //Arrange
             var teachers = ListFactory.Generate(() => new TeacherBuilder().Build(), min: 2, max: 2);
             var teachersResponse = new GetTeacherResponseBuilder().WithListOfTeacher(teachers).Build();
-
 
             _userRepositoryMock.Setup(f => f.GetAllTeachersAsync())
                 .ReturnsAsync(teachers);
@@ -83,7 +77,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             //Arrange
             var exception = new Exception("não há professores para listar");
 
-
             _userRepositoryMock.Setup(f => f.GetAllTeachersAsync())
                 .Throws(exception);
 
@@ -93,7 +86,5 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);
         }
-
-
     }
 }

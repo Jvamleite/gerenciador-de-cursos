@@ -1,10 +1,7 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
 using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
-using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Tests.Utils;
-using System;
 
 namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
 {

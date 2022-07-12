@@ -1,10 +1,7 @@
 ﻿using Bogus;
 using GerenciadorDeCursos.Border.DTOs.CourseDtos.Response;
-using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
-using GerenciadorDeCursos.Border.Entities.UserEntities;
-using GerenciadorDeCursos.Tests.Builders.CourseBuilder;
 using GerenciadorDeCursos.Tests.Utils;
 using System;
 using System.Collections.Generic;
@@ -29,7 +26,7 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
                     DataFinal = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
                     Status = Status.Previsto,
                 },
-                new CourseResponse 
+                new CourseResponse
                 {
                     Id = Guid.NewGuid(),
                     Título = _faker.Name.ToString(),

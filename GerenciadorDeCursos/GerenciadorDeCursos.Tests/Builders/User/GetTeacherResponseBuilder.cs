@@ -3,7 +3,6 @@ using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Tests.Builders.CourseBuilder;
 using GerenciadorDeCursos.Tests.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

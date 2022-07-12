@@ -16,7 +16,6 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
             builder.Property(p => p.Password).IsRequired();
             builder.Property(p => p.Email).IsRequired();
             builder.Property(p => p.CPF).IsRequired();
-            
 
             builder.HasMany(p => p.EnrolledCourses)
                 .WithMany(p => p.Students);

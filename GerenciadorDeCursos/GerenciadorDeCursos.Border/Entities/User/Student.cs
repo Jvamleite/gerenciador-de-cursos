@@ -1,6 +1,5 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +14,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         public Student()
         { }
 
-        public Student(string name, string lastName, string email,string cpf) : base(name,lastName,email,cpf)
+        public Student(string name, string lastName, string email, string cpf) : base(name, lastName, email, cpf)
         {
             RegistrationNumber = Guid.NewGuid();
         }

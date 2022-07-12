@@ -1,6 +1,5 @@
 ﻿using Bogus;
 using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
-using GerenciadorDeCursos.Border.Entities.User.Enums;
 using System;
 
 namespace GerenciadorDeCursos.Border.Entities.UserEntities
@@ -28,7 +27,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         public User()
         { }
 
-        public User(string name, string lastName,string email,string cpf, bool isAdmin = false)
+        public User(string name, string lastName, string email, string cpf, bool isAdmin = false)
         {
             Id = Guid.NewGuid();
             Name = name;
