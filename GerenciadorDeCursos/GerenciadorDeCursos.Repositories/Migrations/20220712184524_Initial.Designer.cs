@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCursos.Repositories.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220708152824_Initial")]
+    [Migration("20220712184524_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,11 +42,14 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DataFinal")
+                    b.Property<DateTime>("FinalData")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataInicial")
+                    b.Property<DateTime>("InitialData")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("NumeroDeVagas")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -55,7 +58,7 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("title")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");

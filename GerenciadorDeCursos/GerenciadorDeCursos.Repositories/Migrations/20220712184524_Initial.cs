@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GerenciadorDeCursos.Repositories.Migrations
 {
@@ -50,11 +50,12 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    title = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    DataInicial = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataFinal = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    InitialData = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FinalData = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TeacherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TeacherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NumeroDeVagas = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

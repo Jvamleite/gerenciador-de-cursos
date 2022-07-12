@@ -27,9 +27,6 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
         {
             try
             {
-                _logger.LogWarning("Verificando se Curso já existe");
-                await VerifyIfCourseAlreadyExist(createCourseRequest);
-
                 var teacher = await _userRepository.GetTeacherByNameAsync(createCourseRequest.TeachersName);
 
                 _logger.LogWarning("Curso não encontrado, criando curso");
@@ -42,16 +39,6 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
             catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
-            }
-        }
-
-        private async Task VerifyIfCourseAlreadyExist(CreateCourseRequest createCourseRequest)
-        {
-            IEnumerable<Course> courses = await _courseRepository.GetAllAsync();
-            foreach (var course in courses)
-            {
-                if (createCourseRequest.Title == course.Title)
-                    throw new Exception("Já existe um curso com esse title");
             }
         }
     }

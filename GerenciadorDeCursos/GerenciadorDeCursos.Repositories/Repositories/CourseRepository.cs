@@ -40,14 +40,14 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
         public async Task<IEnumerable<Course>> GetAllAsync()
         {
-            IEnumerable<Course> courses = await _context.Courses.ToListAsync();
+            var courses = await _context.Courses.Include(p => p.Teacher).ToListAsync();
 
             return courses.Any() ? courses : throw new Exception("Não há cursos para listar");
         }
 
         public async Task<IEnumerable<Course>> GetCourseByStatusAsync(Status status)
         {
-            IEnumerable<Course> courses = await _context.Courses.Where(p => p.Status == status).ToListAsync();
+            IEnumerable<Course> courses = await _context.Courses.Include(p => p.Teacher).Where(p => p.Status == status).ToListAsync();
 
             return courses.Any() ? courses : throw new Exception($"Não há cursos com status {status}");
         }

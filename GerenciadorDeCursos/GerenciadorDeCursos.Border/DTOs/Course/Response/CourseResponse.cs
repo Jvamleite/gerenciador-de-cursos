@@ -10,12 +10,14 @@ namespace GerenciadorDeCursos.Border.DTOs.CourseDtos.Response
 
         public string Title { get; set; }
 
-        public Teacher Teacher { get; set; }
+        public string Teacher { get; set; }
 
         public DateTime InitialData { get; set; }
 
         public DateTime FinalData { get; set; }
 
         public Status Status { get; set; }
+
+        public int PositionsFree { get; set; }
     }
 }

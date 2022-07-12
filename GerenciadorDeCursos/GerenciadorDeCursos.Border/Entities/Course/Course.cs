@@ -68,7 +68,9 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
             courseResponse.Title = Title;
             courseResponse.InitialData = InitialData;
             courseResponse.FinalData = FinalData;
+            courseResponse.Teacher = Teacher.Name;
             courseResponse.Status = Status;
+            courseResponse.PositionsFree = NumeroDeVagas;
             return courseResponse;
         }
     }
