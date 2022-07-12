@@ -52,31 +52,31 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
         }
 
         [Fact]
-        public async Task Execute_DeleteTeacherAsync_ReturnsSucess()
+        public async Task Execute_DeleteteacherAsync_ReturnsSucess()
         {
             //Arrange
             var teacher = new TeacherBuilder().Build();
 
-            _userRepositoryMock.Setup(f => f.DeleteTeacherAsync(teacher.Username));
+            _userRepositoryMock.Setup(f => f.DeleteteacherAsync(teacher.Username));
 
             //Act
-            var result = await _useCase.DeleteTeacherAsync(teacher.Username);
+            var result = await _useCase.DeleteteacherAsync(teacher.Username);
 
             result.Sucess.Should().BeTrue();
         }
 
         [Fact]
-        public async Task Execute_DeleteTeacherAsync_ReturnsException()
+        public async Task Execute_DeleteteacherAsync_ReturnsException()
         {
             //Arrange
             var teacher = new TeacherBuilder().Build();
             var exception = new Exception($"Username inválido");
 
-            _userRepositoryMock.Setup(f => f.DeleteTeacherAsync(teacher.Username))
+            _userRepositoryMock.Setup(f => f.DeleteteacherAsync(teacher.Username))
                 .Throws(exception);
 
             //Act
-            var result = await _useCase.DeleteTeacherAsync(teacher.Username);
+            var result = await _useCase.DeleteteacherAsync(teacher.Username);
 
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);

@@ -18,7 +18,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             _context = context;
         }
 
-        public async Task AddTeacherAsync(Teacher teacher)
+        public async Task AddteacherAsync(Teacher teacher)
         {
             await _context.Teachers.AddAsync(teacher);
             await _context.SaveChangesAsync();
@@ -37,7 +37,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return !students.Any() ? throw new Exception("Não há alunos para listar") : students;
         }
 
-        public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
+        public async Task<IEnumerable<Teacher>> GetAllteachersAsync()
         {
             var teachers = await _context.Teachers.AsNoTracking().ToListAsync();
 
@@ -50,10 +50,16 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             return student ?? throw new Exception($"Não há nenhum estudante com o número de matrícula {registrationNumber}");
         }
 
-        private async Task<Teacher> GetTeacherByUsernameAsync(string username)
+        public async Task<Teacher> GetTeacherByUsernameAsync(string username)
         {
             var teacher = await _context.Teachers.FirstOrDefaultAsync(p => p.Username == username);
             return teacher ?? throw new Exception($"Username inválido");
+        }
+
+        public async Task<Teacher> GetTeacherByNameAsync(string name)
+        {
+            var teacher = await _context.Teachers.FirstOrDefaultAsync(p => p.Name == name);
+            return teacher ?? throw new Exception($"Não há professor com o nome escolhido");
         }
 
         public async Task DeleteStudentAsync(Guid RegistrationNumber)
@@ -64,7 +70,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteTeacherAsync(string username)
+        public async Task DeleteteacherAsync(string username)
         {
             var teacher = await GetTeacherByUsernameAsync(username);
 

@@ -7,18 +7,22 @@ namespace GerenciadorDeCursos.Border.Repositories
 {
     public interface IUserRepository
     {
-        Task AddTeacherAsync(Teacher teacher);
+        Task AddteacherAsync(Teacher teacher);
 
         Task AddStudentAsync(Student student);
 
         Task<IEnumerable<Student>> GetAllStudentsAsync();
 
-        Task<IEnumerable<Teacher>> GetAllTeachersAsync();
+        Task<IEnumerable<Teacher>> GetAllteachersAsync();
+
+        Task<Teacher> GetTeacherByUsernameAsync(string username);
 
         Task<Student> GetByRegistrationNumberAsync(Guid registrationNumber);
 
+        Task<Teacher> GetTeacherByNameAsync(string name);
+
         Task DeleteStudentAsync(Guid RegistrationNumber);
 
-        Task DeleteTeacherAsync(string username);
+        Task DeleteteacherAsync(string username);
     }
 }

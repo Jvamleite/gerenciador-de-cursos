@@ -35,7 +35,7 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
             return _instance;
         }
 
-        public GetTeacherResponseBuilder WithListOfTeacher(List<Teacher> teachers)
+        public GetTeacherResponseBuilder WithListOfteacher(List<Teacher> teachers)
         {
             for (int i = 0; i < 2; i++)
             {

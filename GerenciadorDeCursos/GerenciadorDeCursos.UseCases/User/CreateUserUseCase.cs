@@ -37,13 +37,13 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                 }
                 else
                 {
-                    var createdTeacher = new Teacher(createUserRequest.Name,
+                    var createdteacher = new Teacher(createUserRequest.Name,
                                                      createUserRequest.LastName,
                                                      createUserRequest.Email,
                                                      createUserRequest.CPF);
 
-                    await _userRepository.AddTeacherAsync(createdTeacher);
-                    return new ResultBase(createdTeacher.CreateCreateUserReponse());
+                    await _userRepository.AddteacherAsync(createdteacher);
+                    return new ResultBase(createdteacher.CreateCreateUserReponse());
                 }
             }
             catch (Exception ex)

@@ -55,33 +55,33 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
         }
 
         [Fact]
-        public async Task Execute_GetAllTeacher_ReturnsSucess()
+        public async Task Execute_GetAllteacher_ReturnsSucess()
         {
             //Arrange
             var teachers = ListFactory.Generate(() => new TeacherBuilder().Build(), min: 2, max: 2);
-            var teachersResponse = new GetTeacherResponseBuilder().WithListOfTeacher(teachers).Build();
+            var teachersResponse = new GetTeacherResponseBuilder().WithListOfteacher(teachers).Build();
 
-            _userRepositoryMock.Setup(f => f.GetAllTeachersAsync())
+            _userRepositoryMock.Setup(f => f.GetAllteachersAsync())
                 .ReturnsAsync(teachers);
 
             //Act
-            var result = await _useCase.GetAllTeachersAsync();
+            var result = await _useCase.GetAllteachersAsync();
 
             result.Sucess.Should().BeTrue();
             result.Data.Should().BeEquivalentTo(teachersResponse);
         }
 
         [Fact]
-        public async Task Execute_GetAllTeachers_ReturnsException()
+        public async Task Execute_GetAllteachers_ReturnsException()
         {
             //Arrange
             var exception = new Exception("não há professores para listar");
 
-            _userRepositoryMock.Setup(f => f.GetAllTeachersAsync())
+            _userRepositoryMock.Setup(f => f.GetAllteachersAsync())
                 .Throws(exception);
 
             //Act
-            var result = await _useCase.GetAllTeachersAsync();
+            var result = await _useCase.GetAllteachersAsync();
 
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);

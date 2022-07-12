@@ -20,24 +20,26 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
 
         public Status Status { get; set; }
 
-        public Guid TeacherId { get; set; }
+        public Guid teacherId { get; set; }
 
         public Teacher Teacher { get; set; }
 
         public IEnumerable<Student> Students { get; set; }
 
-        public int NumeroDeVagasLivres { get; set; }
+        public int NumeroDeVagas { get; set; }
 
         public Course()
         { }
 
-        public Course(string title, DateTime dataInicial, DateTime dataFinal)
+        public Course(string title, DateTime dataInicial, DateTime dataFinal, Teacher teacher, int numeroDeVagas)
         {
             Id = Guid.NewGuid();
             Title = title;
             InitialData = dataInicial;
             FinalData = dataFinal;
             Status = 0;
+            Teacher = teacher;
+            NumeroDeVagas = numeroDeVagas;
         }
 
         public Status GetStatus()

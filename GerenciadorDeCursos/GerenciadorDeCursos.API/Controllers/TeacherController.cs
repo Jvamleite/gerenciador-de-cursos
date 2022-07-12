@@ -6,12 +6,12 @@ namespace GerenciadorDeCursos.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeacherController : ControllerBase
+    public class teacherController : ControllerBase
     {
         private readonly IGetUserUseCase _getUserUseCase;
         private readonly IDeleteUserUseCase _deleteUserUseCase;
 
-        public TeacherController(IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase)
+        public teacherController(IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase)
         {
             _getUserUseCase = getUserUseCase;
             _deleteUserUseCase = deleteUserUseCase;
@@ -20,14 +20,14 @@ namespace GerenciadorDeCursos.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _getUserUseCase.GetAllTeachersAsync();
+            var result = await _getUserUseCase.GetAllteachersAsync();
             return result.Sucess ? Ok(result.Data) : NotFound(result.Message);
         }
 
         [HttpDelete("{username}")]
         public async Task<IActionResult> DeleteByUsername(string username)
         {
-            var result = await _deleteUserUseCase.DeleteTeacherAsync(username);
+            var result = await _deleteUserUseCase.DeleteteacherAsync(username);
             return result.Sucess ? NoContent() : BadRequest(result.Message);
         }
     }

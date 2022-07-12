@@ -29,11 +29,11 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             }
         }
 
-        public async Task<ResultBase> DeleteTeacherAsync(string username)
+        public async Task<ResultBase> DeleteteacherAsync(string username)
         {
             try
             {
-                await _userRepository.DeleteTeacherAsync(username);
+                await _userRepository.DeleteteacherAsync(username);
 
                 return new ResultBase();
             }

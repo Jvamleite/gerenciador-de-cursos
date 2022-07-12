@@ -17,7 +17,7 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
             builder.Property(p => p.CPF).IsRequired();
 
             builder.HasMany(p => p.Courses)
-                .WithOne(p => p.Teacher).HasForeignKey(p => p.TeacherId);
+                .WithOne(p => p.Teacher).HasForeignKey(p => p.teacherId);
         }
     }
 }

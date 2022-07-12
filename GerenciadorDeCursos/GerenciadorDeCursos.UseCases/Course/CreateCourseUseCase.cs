@@ -13,12 +13,14 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
     public class CreateCourseUseCase : ICreateCourseUseCase
     {
         private readonly ICourseRepository _courseRepository;
+        private readonly IUserRepository _userRepository;
         private readonly ILogger<CreateCourseUseCase> _logger;
 
-        public CreateCourseUseCase(ICourseRepository courseRepository, ILogger<CreateCourseUseCase> logger)
+        public CreateCourseUseCase(ICourseRepository courseRepository, ILogger<CreateCourseUseCase> logger, IUserRepository userRepository)
         {
             _courseRepository = courseRepository;
             _logger = logger;
+            _userRepository = userRepository;
         }
 
         public async Task<ResultBase> CreateCourseAsync(CreateCourseRequest createCourseRequest)
@@ -28,8 +30,10 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
                 _logger.LogWarning("Verificando se Curso já existe");
                 await VerifyIfCourseAlreadyExist(createCourseRequest);
 
+                var teacher = await _userRepository.GetTeacherByNameAsync(createCourseRequest.TeachersName);
+
                 _logger.LogWarning("Curso não encontrado, criando curso");
-                Course createdCourse = new Course(createCourseRequest.Title, createCourseRequest.InitialData, createCourseRequest.FinalData);
+                var createdCourse = new Course(createCourseRequest.Title, createCourseRequest.InitialData, createCourseRequest.FinalData,teacher, createCourseRequest.NumeroDeVagas);
 
                 await _courseRepository.AddAsync(createdCourse);
 

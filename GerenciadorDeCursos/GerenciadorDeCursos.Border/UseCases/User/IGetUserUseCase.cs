@@ -8,7 +8,7 @@ namespace GerenciadorDeCursos.Border.UseCases.User
     {
         Task<ResultBase> GetAllStudentsAsync();
 
-        Task<ResultBase> GetAllTeachersAsync();
+        Task<ResultBase> GetAllteachersAsync();
 
         Task<ResultBase> GetStudentByRegistrationNumberAsync(Guid registrationNumber);
     }

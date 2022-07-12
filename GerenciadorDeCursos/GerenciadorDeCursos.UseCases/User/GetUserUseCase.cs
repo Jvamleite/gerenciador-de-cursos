@@ -34,13 +34,13 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             }
         }
 
-        public async Task<ResultBase> GetAllTeachersAsync()
+        public async Task<ResultBase> GetAllteachersAsync()
         {
             try
             {
-                var teachers = await _userRepository.GetAllTeachersAsync();
+                var teachers = await _userRepository.GetAllteachersAsync();
 
-                var teacherResponseList = CreateTeacherResponseList(teachers);
+                var teacherResponseList = CreateteacherResponseList(teachers);
 
                 return new ResultBase(teacherResponseList);
             }
@@ -76,7 +76,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
             return studentResponseList;
         }
 
-        private static IEnumerable<GetTeacherResponse> CreateTeacherResponseList(IEnumerable<Teacher> teachers)
+        private static IEnumerable<GetTeacherResponse> CreateteacherResponseList(IEnumerable<Teacher> teachers)
         {
             var teacherResponseList = new List<GetTeacherResponse>();
 

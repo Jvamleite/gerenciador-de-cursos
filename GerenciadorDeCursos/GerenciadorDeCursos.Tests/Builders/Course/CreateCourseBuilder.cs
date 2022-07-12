@@ -25,7 +25,7 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
                 Status = Status.Previsto,
                 Students = ListFactory.Generate(() => new StudentBuilder().Build(), min: 1).AsEnumerable(),
                 Teacher = new TeacherBuilder().Build(),
-                TeacherId = Guid.Parse("e045a3fa-11ba-4955-b25d-5ef362211e2e")
+                teacherId = Guid.Parse("e045a3fa-11ba-4955-b25d-5ef362211e2e")
             };
         }
 

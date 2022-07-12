@@ -6,7 +6,7 @@ namespace GerenciadorDeCursos.Border.UseCases.User
 {
     public interface IDeleteUserUseCase
     {
-        Task<ResultBase> DeleteTeacherAsync(string username);
+        Task<ResultBase> DeleteteacherAsync(string username);
 
         Task<ResultBase> DeleteStudentAsync(Guid registrationNumber);
     }
