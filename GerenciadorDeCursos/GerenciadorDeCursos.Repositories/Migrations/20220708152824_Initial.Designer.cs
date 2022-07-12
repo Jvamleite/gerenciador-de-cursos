@@ -55,7 +55,7 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Título")
+                    b.Property<string>("title")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");

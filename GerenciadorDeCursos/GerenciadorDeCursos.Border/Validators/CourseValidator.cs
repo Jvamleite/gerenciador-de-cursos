@@ -8,19 +8,19 @@ namespace GerenciadorDeCursos.Border.Validators
     {
         public CourseValidator()
         {
-            RuleFor(p => p.Título)
+            RuleFor(p => p.Title)
                 .NotNull()
-                    .WithMessage("O Título é obrigatório")
+                    .WithMessage("O title é obrigatório")
                 .MinimumLength(8)
-                    .WithMessage("Mínimo de 8 caracteres para título")
+                    .WithMessage("Mínimo de 8 caracteres para title")
                 .MaximumLength(70)
-                    .WithMessage("Máximo de 70 caracteres para título");
-            RuleFor(p => p.DataInicial)
+                    .WithMessage("Máximo de 70 caracteres para title");
+            RuleFor(p => p.InitialData)
                 .NotNull()
                     .WithMessage("A Data Inicial é obrigatória")
                 .Must(BeAValidInitialDate)
                     .WithMessage("A Data Inicial não pode ser hoje e não pode ultrapassar um ano a partir de hoje");
-            RuleFor(p => p.DataFinal)
+            RuleFor(p => p.FinalData)
                 .NotNull()
                     .WithMessage("A data final é obrigatória")
                 .Must(BeAValidFinalDate)

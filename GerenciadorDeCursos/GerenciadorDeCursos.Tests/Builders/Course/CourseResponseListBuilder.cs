@@ -21,17 +21,17 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
                 new CourseResponse
                 {
                     Id = Guid.NewGuid(),
-                    Título = _faker.Name.ToString(),
-                    DataInicial = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
-                    DataFinal = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
+                    Title = _faker.Name.ToString(),
+                    InitialData = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
+                    FinalData = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
                     Status = Status.Previsto,
                 },
                 new CourseResponse
                 {
                     Id = Guid.NewGuid(),
-                    Título = _faker.Name.ToString(),
-                    DataInicial = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
-                    DataFinal = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
+                    Title = _faker.Name.ToString(),
+                    InitialData = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
+                    FinalData = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
                     Status = Status.Previsto,
                 }
             };
@@ -47,9 +47,9 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
             for (int i = 0; i < 2; i++)
             {
                 this._instance.ElementAt(i).Id = courses.ElementAt(i).Id;
-                this._instance.ElementAt(i).Título = courses.ElementAt(i).Título;
-                this._instance.ElementAt(i).DataFinal = courses.ElementAt(i).DataFinal;
-                this._instance.ElementAt(i).DataInicial = courses.ElementAt(i).DataInicial;
+                this._instance.ElementAt(i).Title = courses.ElementAt(i).Title;
+                this._instance.ElementAt(i).FinalData = courses.ElementAt(i).FinalData;
+                this._instance.ElementAt(i).InitialData = courses.ElementAt(i).InitialData;
             }
 
             return this;

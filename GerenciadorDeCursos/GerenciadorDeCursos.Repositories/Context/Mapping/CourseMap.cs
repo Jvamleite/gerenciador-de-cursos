@@ -9,9 +9,9 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.ToTable("Courses");
-            builder.Property(p => p.Título).HasMaxLength(20).IsRequired();
-            builder.Property(p => p.DataInicial).IsRequired();
-            builder.Property(p => p.DataFinal).IsRequired();
+            builder.Property(p => p.Title).HasMaxLength(20).IsRequired();
+            builder.Property(p => p.InitialData).IsRequired();
+            builder.Property(p => p.FinalData).IsRequired();
             builder.Property(p => p.Status).HasConversion<string>().IsRequired();
 
             builder.HasMany(p => p.Students)

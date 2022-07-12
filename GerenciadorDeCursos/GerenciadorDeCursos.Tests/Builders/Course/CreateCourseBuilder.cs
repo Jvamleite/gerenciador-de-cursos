@@ -19,9 +19,9 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
             _instance = new Course
             {
                 Id = Guid.NewGuid(),
-                Título = _faker.Name.ToString(),
-                DataInicial = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
-                DataFinal = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
+                Title = _faker.Name.ToString(),
+                InitialData = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
+                FinalData = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
                 Status = Status.Previsto,
                 Students = ListFactory.Generate(() => new StudentBuilder().Build(), min: 1).AsEnumerable(),
                 Teacher = new TeacherBuilder().Build(),
@@ -36,9 +36,9 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
 
         public CreateCourseBuilder WithRequest(CreateCourseRequest request)
         {
-            this._instance.Título = request.Título;
-            this._instance.DataInicial = request.DataInicial;
-            this._instance.DataFinal = request.DataFinal;
+            this._instance.Title = request.Title;
+            this._instance.InitialData = request.InitialData;
+            this._instance.FinalData = request.FinalData;
             return this;
         }
     }

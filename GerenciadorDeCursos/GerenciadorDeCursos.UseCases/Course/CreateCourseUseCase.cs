@@ -29,7 +29,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
                 await VerifyIfCourseAlreadyExist(createCourseRequest);
 
                 _logger.LogWarning("Curso não encontrado, criando curso");
-                Course createdCourse = new Course(createCourseRequest.Título, createCourseRequest.DataInicial, createCourseRequest.DataFinal);
+                Course createdCourse = new Course(createCourseRequest.Title, createCourseRequest.InitialData, createCourseRequest.FinalData);
 
                 await _courseRepository.AddAsync(createdCourse);
 
@@ -46,8 +46,8 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
             IEnumerable<Course> courses = await _courseRepository.GetAllAsync();
             foreach (var course in courses)
             {
-                if (createCourseRequest.Título == course.Título)
-                    throw new Exception("Já existe um curso com esse título");
+                if (createCourseRequest.Title == course.Title)
+                    throw new Exception("Já existe um curso com esse title");
             }
         }
     }

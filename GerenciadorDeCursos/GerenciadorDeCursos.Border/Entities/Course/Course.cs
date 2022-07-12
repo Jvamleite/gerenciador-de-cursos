@@ -12,11 +12,11 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
 
         public Guid Id { get; set; }
 
-        public string Título { get; set; }
+        public string Title { get; set; }
 
-        public DateTime DataInicial { get; set; }
+        public DateTime InitialData { get; set; }
 
-        public DateTime DataFinal { get; set; }
+        public DateTime FinalData { get; set; }
 
         public Status Status { get; set; }
 
@@ -26,15 +26,17 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
 
         public IEnumerable<Student> Students { get; set; }
 
+        public int NumeroDeVagasLivres { get; set; }
+
         public Course()
         { }
 
-        public Course(string título, DateTime dataInicial, DateTime dataFinal)
+        public Course(string title, DateTime dataInicial, DateTime dataFinal)
         {
             Id = Guid.NewGuid();
-            Título = título;
-            DataInicial = dataInicial;
-            DataFinal = dataFinal;
+            Title = title;
+            InitialData = dataInicial;
+            FinalData = dataFinal;
             Status = 0;
         }
 
@@ -49,21 +51,21 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
 
         private bool CourseIsOnGoing()
         {
-            return (dateNow > DataInicial && dateNow < DataFinal);
+            return (dateNow > InitialData && dateNow < FinalData);
         }
 
         private bool CourseIsFinished()
         {
-            return (dateNow > DataFinal);
+            return (dateNow > FinalData);
         }
 
         public CourseResponse CreateCourseResponse()
         {
             CourseResponse courseResponse = new CourseResponse();
             courseResponse.Id = Id;
-            courseResponse.Título = Título;
-            courseResponse.DataInicial = DataInicial;
-            courseResponse.DataFinal = DataFinal;
+            courseResponse.Title = Title;
+            courseResponse.InitialData = InitialData;
+            courseResponse.FinalData = FinalData;
             courseResponse.Status = Status;
             return courseResponse;
         }

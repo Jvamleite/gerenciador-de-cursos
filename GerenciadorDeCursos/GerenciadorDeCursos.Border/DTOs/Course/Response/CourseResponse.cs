@@ -7,11 +7,11 @@ namespace GerenciadorDeCursos.Border.DTOs.CourseDtos.Response
     {
         public Guid Id { get; set; }
 
-        public string Título { get; set; }
+        public string Title { get; set; }
 
-        public DateTime DataInicial { get; set; }
+        public DateTime InitialData { get; set; }
 
-        public DateTime DataFinal { get; set; }
+        public DateTime FinalData { get; set; }
 
         public Status Status { get; set; }
     }

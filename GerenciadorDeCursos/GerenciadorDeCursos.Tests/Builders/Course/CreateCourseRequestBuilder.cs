@@ -14,9 +14,9 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
         {
             _instace = new CreateCourseRequest()
             {
-                Título = _faker.Name.ToString(),
-                DataInicial = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
-                DataFinal = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1))
+                Title = _faker.Name.ToString(),
+                InitialData = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
+                FinalData = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1))
             };
         }
 

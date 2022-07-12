@@ -50,7 +50,7 @@ namespace GerenciadorDeCursos.Repositories.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Título = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    title = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     DataInicial = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataFinal = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
