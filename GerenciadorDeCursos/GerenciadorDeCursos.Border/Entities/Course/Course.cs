@@ -20,7 +20,7 @@ namespace GerenciadorDeCursos.Border.Entities.CourseEntities
 
         public Status Status { get; set; }
 
-        public Guid teacherId { get; set; }
+        public Guid TeacherId { get; set; }
 
         public Teacher Teacher { get; set; }
 

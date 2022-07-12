@@ -6,12 +6,12 @@ namespace GerenciadorDeCursos.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class teacherController : ControllerBase
+    public class TeacherController : ControllerBase
     {
         private readonly IGetUserUseCase _getUserUseCase;
         private readonly IDeleteUserUseCase _deleteUserUseCase;
 
-        public teacherController(IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase)
+        public TeacherController(IGetUserUseCase getUserUseCase, IDeleteUserUseCase deleteUserUseCase)
         {
             _getUserUseCase = getUserUseCase;
             _deleteUserUseCase = deleteUserUseCase;

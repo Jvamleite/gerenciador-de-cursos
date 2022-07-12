@@ -12,13 +12,16 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
     {
         private readonly CreateCourseUseCase _usecase;
         private readonly Mock<ICourseRepository> _courseRepositoryMock;
+        private readonly Mock<IUserRepository> _userRepositoryMock;
 
         public CreateCourseUseCaseTest()
         {
             _courseRepositoryMock = new Mock<ICourseRepository>();
+            _userRepositoryMock = new Mock<IUserRepository>();
             _usecase = new CreateCourseUseCase(
                 _courseRepositoryMock.Object,
-                Mock.Of<ILogger<CreateCourseUseCase>>());
+                Mock.Of<ILogger<CreateCourseUseCase>>(),
+                _userRepositoryMock.Object);
         }
 
         //[Fact]
