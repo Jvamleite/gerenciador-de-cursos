@@ -1,4 +1,5 @@
-﻿using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
+﻿using Bogus;
+using GerenciadorDeCursos.Border.DTOs.UserDtos.Request;
 using GerenciadorDeCursos.Border.Entities.User.Enums;
 using GerenciadorDeCursos.Border.Entities.UserEntities;
 using GerenciadorDeCursos.Border.Repositories;
@@ -14,6 +15,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
     {
         private readonly IUserRepository _userRepository;
         private readonly ILogger<CreateUserUseCase> _logger;
+        
 
         public CreateUserUseCase(IUserRepository userRepository, ILogger<CreateUserUseCase> logger)
         {
@@ -25,6 +27,8 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
         {
             try
             {
+    
+
                 if (role == Roles.Aluno)
                 {
                     var createdStudent = new Student(createUserRequest.Name,

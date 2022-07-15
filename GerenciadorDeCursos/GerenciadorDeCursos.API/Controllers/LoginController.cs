@@ -9,10 +9,10 @@ namespace GerenciadorDeCursos.API.Controllers
     public class LoginController : ControllerBase
     {
       
-        [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
-        {
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+        //{
+        //}
 
     }
 }

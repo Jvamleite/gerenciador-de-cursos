@@ -1,12 +1,13 @@
 ﻿using Bogus;
 using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
+using SecureIdentity.Password;
 using System;
 
 namespace GerenciadorDeCursos.Border.Entities.UserEntities
 {
     public class User
     {
-        private readonly Faker _faker = new Faker("pt_BR");
+        private readonly string password = new Faker().Internet.Password(10, false);
 
         public Guid Id { get; set; }
 
@@ -35,7 +36,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
             Email = email;
             CPF = cpf;
             Username = name + "_" + lastName;
-            Password = _faker.Internet.Password(10, true, "^(?=.*?[A - Z])(?=.*?[a - z])(?=.*?[0 - 9])(?=.*?[#?!@$%^&*-]).{8,}$");
+            Password = PasswordHasher.Hash(password);
             IsAdmin = isAdmin;
         }
 
@@ -43,7 +44,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         {
             var userResponse = new CreateUserResponse();
             userResponse.Username = Username;
-            userResponse.Password = Password;
+            userResponse.Password = password;
             return userResponse;
         }
     }
