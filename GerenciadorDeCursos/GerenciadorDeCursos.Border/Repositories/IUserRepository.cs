@@ -7,7 +7,7 @@ namespace GerenciadorDeCursos.Border.Repositories
 {
     public interface IUserRepository
     {
-        Task AddteacherAsync(Teacher teacher);
+        Task AddTeacherAsync(Teacher teacher);
 
         Task AddStudentAsync(Student student);
 
