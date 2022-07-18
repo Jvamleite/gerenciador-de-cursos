@@ -2,6 +2,7 @@
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.UseCases.CourseUseCase;
 using GerenciadorDeCursos.UseCases.CourseUseCases;
+using GerenciadorDeCursos.UseCases.User;
 using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,8 @@ namespace GerenciadorDeCursos.API.Configurations
             services.AddScoped<IGetCourseUseCase, GetCourseUseCase>();
             services.AddScoped<IUpdateStatusCouseUseCase, UpdateStatusCourseUseCase>();
             services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
+            services.AddScoped<IGetRoleUseCase, GetRoleUseCase>();
+            services.AddScoped<ICreateRoleUseCase, CreateRoleUseCase>();
         }
     }
 }

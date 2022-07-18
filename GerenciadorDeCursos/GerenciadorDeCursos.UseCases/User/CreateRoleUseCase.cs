@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.User
 {
-    internal class CreateRoleUseCase : ICreateRoleUseCase
+    public class CreateRoleUseCase : ICreateRoleUseCase
     {
         private readonly IRoleRepository _roleRepository;
 

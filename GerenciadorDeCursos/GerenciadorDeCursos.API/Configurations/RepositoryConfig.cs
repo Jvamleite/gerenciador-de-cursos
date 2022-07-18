@@ -10,6 +10,7 @@ namespace GerenciadorDeCursos.API.Configurations
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
         }
     }
 }
