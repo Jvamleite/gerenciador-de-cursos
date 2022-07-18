@@ -1,7 +1,6 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
 using GerenciadorDeCursos.Border.UseCases.User;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -12,16 +11,19 @@ namespace GerenciadorDeCursos.API.Controllers
     {
 
         private readonly ICreateRoleUseCase _createRoleUseCase;
+        private readonly IGetRoleUseCase _getRoleUseCase;
 
-        public RoleController(ICreateRoleUseCase createRoleUseCase)
+        public RoleController(ICreateRoleUseCase createRoleUseCase, IGetRoleUseCase getRoleUseCase)
         {
             _createRoleUseCase = createRoleUseCase;
+            _getRoleUseCase = getRoleUseCase;
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetAllRoles()
         {
-            return new string[] { "value1", "value2" };
+            var response = await _getRoleUseCase.GetAllRoles();
+            return response.Sucess ? Ok(response.Data) : BadRequest(response.Message);
         }
 
         [HttpGet("{id}")]
