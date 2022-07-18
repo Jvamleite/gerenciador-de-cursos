@@ -27,7 +27,6 @@ namespace GerenciadorDeCursos.Border.Validators
             return Regex.IsMatch(name, @"^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$");
         }
 
-
         private static bool BeAValidCpf(string cpf)
         {
             return CpfCnpjValidator.ValidationCpfCnpj(cpf);

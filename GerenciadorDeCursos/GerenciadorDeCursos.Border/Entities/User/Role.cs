@@ -14,6 +14,4 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
             Name = name;
         }
     }
-
-    
 }

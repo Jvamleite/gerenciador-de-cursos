@@ -1,6 +1,4 @@
-﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorDeCursos.API.Controllers
 {
@@ -8,11 +6,9 @@ namespace GerenciadorDeCursos.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-      
         //[HttpPost]
         //public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         //{
         //}
-
     }
 }

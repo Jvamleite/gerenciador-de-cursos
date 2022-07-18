@@ -1,5 +1,4 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
-using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Shared.Models;
 using System.Threading.Tasks;
 

@@ -1,5 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities.User;
-using GerenciadorDeCursos.Border.Entities.UserEntities;
+﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,11 +10,9 @@ namespace GerenciadorDeCursos.Border.Repositories
         Task AddRoleAsync(Role role);
 
         Task<IEnumerable<Role>> GetAllAsync();
-        
+
         Task<Role> GetRoleById(Guid id);
 
         Task DeleteRole(Guid id);
-
-
     }
 }

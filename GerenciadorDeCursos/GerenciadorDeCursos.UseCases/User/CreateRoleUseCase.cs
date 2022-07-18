@@ -4,9 +4,6 @@ using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.User
@@ -28,7 +25,7 @@ namespace GerenciadorDeCursos.UseCases.User
                 await _roleRepository.AddRoleAsync(role);
                 return new ResultBase(role);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResultBase(false, ex.Message);
             }

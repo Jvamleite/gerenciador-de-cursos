@@ -10,6 +10,7 @@ namespace GerenciadorDeCursos.Border.Validators
                 return true;
             return false;
         }
+
         public static bool IsCnpj(string cnpj)
         {
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -48,6 +49,7 @@ namespace GerenciadorDeCursos.Border.Validators
             digito += resto.ToString();
             return cnpj.EndsWith(digito);
         }
+
         public static bool IsCpf(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };

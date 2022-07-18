@@ -28,7 +28,7 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
 
         public CreateUserRequestBuilder WithNameInvalid()
         {
-            this._instance.Name = _faker.Person.FirstName.ToLower().Replace("a", _faker.Random.String2(1,"&%#")) + _faker.Random.Digits(2).ToString();
+            this._instance.Name = _faker.Person.FirstName.ToLower().Replace("a", _faker.Random.String2(1, "&%#")) + _faker.Random.Digits(2).ToString();
             return this;
         }
 
@@ -49,7 +49,5 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
             this._instance.Email = _faker.Internet.Email().Replace("@", "");
             return this;
         }
-
-        
     }
 }

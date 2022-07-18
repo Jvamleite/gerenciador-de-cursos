@@ -42,7 +42,6 @@ namespace GerenciadorDeCursos.Tests.Validators
             //Act
             var validation = await _validator.ValidateAsync(request);
 
-
             //Assert
             validation.IsValid.Should().BeFalse();
         }
@@ -57,7 +56,6 @@ namespace GerenciadorDeCursos.Tests.Validators
 
             //Act
             var validation = await _validator.ValidateAsync(request);
-
 
             //Assert
             validation.IsValid.Should().BeFalse();
@@ -74,7 +72,6 @@ namespace GerenciadorDeCursos.Tests.Validators
             //Act
             var validation = await _validator.ValidateAsync(request);
 
-
             //Assert
             validation.IsValid.Should().BeFalse();
         }
@@ -90,10 +87,8 @@ namespace GerenciadorDeCursos.Tests.Validators
             //Act
             var validation = await _validator.ValidateAsync(request);
 
-
             //Assert
             validation.IsValid.Should().BeFalse();
         }
-
     }
 }

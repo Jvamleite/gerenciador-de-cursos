@@ -1,5 +1,4 @@
-﻿using GerenciadorDeCursos.Border.Entities.UserEntities;
-using System;
+﻿using System;
 
 namespace GerenciadorDeCursos.Border.DTOs.CourseDtos.Request
 {

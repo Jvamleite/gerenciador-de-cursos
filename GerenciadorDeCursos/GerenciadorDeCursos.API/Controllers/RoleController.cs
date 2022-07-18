@@ -9,7 +9,6 @@ namespace GerenciadorDeCursos.API.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-
         private readonly ICreateRoleUseCase _createRoleUseCase;
         private readonly IGetRoleUseCase _getRoleUseCase;
 
@@ -36,7 +35,7 @@ namespace GerenciadorDeCursos.API.Controllers
         public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest createRoleRequest)
         {
             var response = await _createRoleUseCase.CreateRole(createRoleRequest);
-            return response.Sucess? CreatedAtAction(nameof(Get), response.Data) : BadRequest(response.Message);
+            return response.Sucess ? CreatedAtAction(nameof(Get), response.Data) : BadRequest(response.Message);
         }
 
         [HttpPut("{id}")]

@@ -5,7 +5,6 @@ using GerenciadorDeCursos.Border.UseCases.Course;
 using GerenciadorDeCursos.Shared.Models;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.CourseUseCase
@@ -30,7 +29,7 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCase
                 var teacher = await _userRepository.GetTeacherByNameAsync(createCourseRequest.TeachersName);
 
                 _logger.LogWarning("Curso não encontrado, criando curso");
-                var createdCourse = new Course(createCourseRequest.Title, createCourseRequest.InitialData, createCourseRequest.FinalData,teacher, createCourseRequest.NumeroDeVagas);
+                var createdCourse = new Course(createCourseRequest.Title, createCourseRequest.InitialData, createCourseRequest.FinalData, teacher, createCourseRequest.NumeroDeVagas);
 
                 await _courseRepository.AddCourseAsync(createdCourse);
 
