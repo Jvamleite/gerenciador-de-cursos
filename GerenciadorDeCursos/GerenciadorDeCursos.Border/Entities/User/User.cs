@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
+using GerenciadorDeCursos.Border.Entities.User;
 using SecureIdentity.Password;
 using System;
 
@@ -20,6 +21,10 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         public string Email { get; set; }
 
         public string Username { get; set; }
+
+        public Guid RoleId {get; set;}
+
+        public Role Role { get; set; }
 
         public string Password { get; set; }
 
