@@ -11,6 +11,8 @@ namespace GerenciadorDeCursos.Border.Repositories
     {
         Task<IEnumerable<Course>> GetAllAsync();
 
+        Task AddCourseAsync(Course course);
+
         Task<IEnumerable<Course>> GetCourseByStatusAsync(Status status);
 
         Task UpdateStatusCourseAsync();
