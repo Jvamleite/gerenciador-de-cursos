@@ -21,6 +21,7 @@ namespace GerenciadorDeCursos.API.Configurations
             services.AddScoped<IDeleteCourseUseCase, DeleteCourseUseCase>();
             services.AddScoped<IGetRoleUseCase, GetRoleUseCase>();
             services.AddScoped<ICreateRoleUseCase, CreateRoleUseCase>();
+            services.AddScoped<IDeleteRoleUseCase, DeleteRoleUseCase>();
         }
     }
 }

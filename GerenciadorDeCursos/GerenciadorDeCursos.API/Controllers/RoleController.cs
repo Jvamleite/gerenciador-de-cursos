@@ -1,6 +1,7 @@
 ﻿using GerenciadorDeCursos.Border.DTOs.User.Request;
 using GerenciadorDeCursos.Border.UseCases.User;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.API.Controllers
@@ -11,11 +12,13 @@ namespace GerenciadorDeCursos.API.Controllers
     {
         private readonly ICreateRoleUseCase _createRoleUseCase;
         private readonly IGetRoleUseCase _getRoleUseCase;
+        private readonly IDeleteRoleUseCase _deleteRoleUseCase;
 
-        public RoleController(ICreateRoleUseCase createRoleUseCase, IGetRoleUseCase getRoleUseCase)
+        public RoleController(ICreateRoleUseCase createRoleUseCase, IGetRoleUseCase getRoleUseCase, IDeleteRoleUseCase deleteRoleUseCase)
         {
             _createRoleUseCase = createRoleUseCase;
             _getRoleUseCase = getRoleUseCase;
+            _deleteRoleUseCase = deleteRoleUseCase;
         }
 
         [HttpGet]
@@ -25,27 +28,25 @@ namespace GerenciadorDeCursos.API.Controllers
             return response.Sucess ? Ok(response.Data) : BadRequest(response.Message);
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetRoleById(Guid id)
         {
-            return "value";
+            var response = await _getRoleUseCase.GetRoleById(id);
+            return response.Sucess ? Ok(response.Data) : BadRequest(response.Data);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest createRoleRequest)
         {
             var response = await _createRoleUseCase.CreateRole(createRoleRequest);
-            return response.Sucess ? CreatedAtAction(nameof(Get), response.Data) : BadRequest(response.Message);
+            return response.Sucess ? CreatedAtAction(nameof(GetAllRoles), response.Data) : BadRequest(response.Message);
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> DeleteRoleById(Guid id)
         {
-        }
-
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var response = await _deleteRoleUseCase.DeleteRoleById(id);
+            return response.Sucess ? NoContent() : BadRequest(response.Data);
         }
     }
 }

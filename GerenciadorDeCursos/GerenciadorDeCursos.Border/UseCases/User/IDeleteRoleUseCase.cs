@@ -4,10 +4,8 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.UseCases.User
 {
-    public interface IGetRoleUseCase
+    public interface IDeleteRoleUseCase
     {
-        Task<ResultBase> GetAllRoles();
-
-        Task<ResultBase> GetRoleById(Guid id);
+        Task<ResultBase> DeleteRoleById(Guid id);
     }
 }

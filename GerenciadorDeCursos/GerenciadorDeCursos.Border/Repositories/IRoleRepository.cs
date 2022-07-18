@@ -11,8 +11,8 @@ namespace GerenciadorDeCursos.Border.Repositories
 
         Task<IEnumerable<Role>> GetAllAsync();
 
-        Task<Role> GetRoleById(Guid id);
+        Task<Role> GetRoleByIdAsync(Guid id);
 
-        Task DeleteRole(Guid id);
+        Task DeleteRoleAsync(Guid id);
     }
 }

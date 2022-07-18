@@ -27,5 +27,18 @@ namespace GerenciadorDeCursos.UseCases.User
                 return new ResultBase(false, ex.Message);
             }
         }
+
+        public async Task<ResultBase> GetRoleById(Guid id)
+        {
+            try
+            {
+                var role = await _roleRepository.GetRoleById(id);
+                return new ResultBase(role);
+            }
+            catch (Exception ex)
+            {
+                return new ResultBase(false, ex.Message);
+            }
+        }
     }
 }
