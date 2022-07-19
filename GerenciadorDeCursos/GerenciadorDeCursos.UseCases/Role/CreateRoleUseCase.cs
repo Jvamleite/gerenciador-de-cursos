@@ -6,7 +6,7 @@ using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.UseCases.User
+namespace GerenciadorDeCursos.UseCases.Role
 {
     public class CreateRoleUseCase : ICreateRoleUseCase
     {
