@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Repositories.Repositories
 {
-    public class CourseRepository : ICourseRepository
+    public class CourseRepository :ICourseRepository
     {
         private readonly DataContext _context;
 
@@ -25,17 +25,15 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             Course course = _context.Courses.FirstOrDefault(c => c.Id == id);
 
-            if (course == null)
+            if (course is null)
                 throw new Exception("Não há cursos com esse id");
 
             _context.Remove(course);
             await _context.SaveChangesAsync();
-
-            return true;
         }
 
         public async Task<IEnumerable<Course>> GetAllAsync()

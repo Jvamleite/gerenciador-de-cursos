@@ -2,7 +2,8 @@
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.UseCases.CourseUseCase;
 using GerenciadorDeCursos.UseCases.CourseUseCases;
-using GerenciadorDeCursos.UseCases.Role;
+using GerenciadorDeCursos.UseCases.RoleUseCase;
+using GerenciadorDeCursos.UseCases.RoleUseCases;
 using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.Extensions.DependencyInjection;
 

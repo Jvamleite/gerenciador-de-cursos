@@ -4,7 +4,7 @@ using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.UseCases.Role
+namespace GerenciadorDeCursos.UseCases.RoleUseCases
 {
     public class DeleteRoleUseCase : IDeleteRoleUseCase
     {
@@ -19,6 +19,7 @@ namespace GerenciadorDeCursos.UseCases.Role
             try
             {
                 await _roleRepository.DeleteRoleAsync(id);
+                return new ResultBase();
             }
             catch (Exception ex)
             {

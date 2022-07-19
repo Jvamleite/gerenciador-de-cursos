@@ -4,7 +4,7 @@ using GerenciadorDeCursos.Shared.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCursos.UseCases.Role
+namespace GerenciadorDeCursos.UseCases.RoleUseCases
 {
     public class GetRoleUseCase : IGetRoleUseCase
     {
@@ -32,7 +32,7 @@ namespace GerenciadorDeCursos.UseCases.Role
         {
             try
             {
-                var role = await _roleRepository.GetRoleById(id);
+                var role = await _roleRepository.GetRoleByIdAsync(id);
                 return new ResultBase(role);
             }
             catch (Exception ex)

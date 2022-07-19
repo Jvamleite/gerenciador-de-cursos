@@ -17,13 +17,11 @@ namespace GerenciadorDeCursos.UseCases.CourseUseCases
 
         public async Task<ResultBase> DeleteCourseAsync(Guid id)
         {
-            ResultBase result = new ResultBase();
-
             try
             {
-                result.Sucess = await _courseRepository.DeleteAsync(id);
+                await _courseRepository.DeleteAsync(id);
 
-                return result;
+                return new ResultBase();
             }
             catch (Exception ex)
             {

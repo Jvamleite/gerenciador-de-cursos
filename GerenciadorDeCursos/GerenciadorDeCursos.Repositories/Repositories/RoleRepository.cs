@@ -4,6 +4,7 @@ using GerenciadorDeCursos.Repositories.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Repositories.Repositories
@@ -23,7 +24,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteRole(Guid id)
+        public async Task DeleteRoleAsync(Guid id)
         {
             var role = await _context.Roles.FirstOrDefaultAsync(p => p.Id == id);
             if (role is null)
@@ -34,10 +35,11 @@ namespace GerenciadorDeCursos.Repositories.Repositories
 
         public async Task<IEnumerable<Role>> GetAllAsync()
         {
-            return await _context.Roles.ToListAsync();
+            var roles = await _context.Roles.ToListAsync();
+            return roles.Any() ? roles : throw new Exception("Não há roles para listar"); 
         }
 
-        public Task<Role> GetRoleById(Guid id)
+        public Task<Role> GetRoleByIdAsync(Guid id)
         {
             var role = _context.Roles.FirstOrDefaultAsync(p => p.Id == id);
             return role ?? throw new Exception("Não há roles com esse id");

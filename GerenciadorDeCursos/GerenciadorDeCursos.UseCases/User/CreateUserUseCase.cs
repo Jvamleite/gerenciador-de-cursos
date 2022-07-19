@@ -42,7 +42,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                                                      createUserRequest.Email,
                                                      createUserRequest.CPF);
 
-                    await _userRepository.AddteacherAsync(createdteacher);
+                    await _userRepository.AddTeacherAsync(createdteacher);
                     return new ResultBase(createdteacher.CreateCreateUserReponse());
                 }
             }

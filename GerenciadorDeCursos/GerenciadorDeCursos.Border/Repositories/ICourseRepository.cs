@@ -1,13 +1,12 @@
 ﻿using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
-using GerenciadorDeCursos.Border.Shared;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Border.Repositories
 {
-    public interface ICourseRepository : IRepository<Course, Task>
+    public interface ICourseRepository
     {
         Task<IEnumerable<Course>> GetAllAsync();
 
@@ -17,6 +16,6 @@ namespace GerenciadorDeCursos.Border.Repositories
 
         Task UpdateStatusCourseAsync();
 
-        Task<bool> DeleteAsync(Guid id);
+        Task DeleteAsync(Guid id);
     }
 }

@@ -8,6 +8,8 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public string Name { get; set; }
 
+        public Role() {}
+
         public Role(string name)
         {
             Id = Guid.NewGuid();

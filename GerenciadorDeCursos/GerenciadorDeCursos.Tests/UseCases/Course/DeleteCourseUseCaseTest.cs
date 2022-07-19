@@ -24,17 +24,14 @@ namespace GerenciadorDeCursos.Tests.UseCases.CourseTests
         {
             //Arrange
             var id = Guid.NewGuid();
-            bool expected = true;
 
-            _courseRepositoryMock.Setup(f => f.DeleteAsync(id))
-                .ReturnsAsync(expected);
+            _courseRepositoryMock.Setup(f => f.DeleteAsync(id));
 
             //Act
             var result = await _usecase.DeleteCourseAsync(id);
 
             //Assert
             result.Sucess.Should().BeTrue();
-            result.Sucess.Should().Equals(expected);
         }
 
         [Fact]
