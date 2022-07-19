@@ -8,6 +8,14 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public string Name { get; set; }
 
+        public Guid StudentId { get; set; }
+
+        public Student Student { get; set; }
+
+        public Guid TeacherId { get; set; }
+
+        public Teacher Teacher { get; set; }
+
         public Role() {}
 
         public Role(string name)
