@@ -6,6 +6,7 @@ using GerenciadorDeCursos.UseCases.UserUseCases;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace GerenciadorDeCursos.Tests.UseCases.UserTest
 {
@@ -27,7 +28,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.UserTest
             var student = new StudentBuilder().WithRequest(createUserRequest).Build();
             var response = new CreateUserResponseBuilder().WithUser(student).Build();
 
-            _userRepositoryMock.Setup(f => f.AddStudentAsync(student));
+            _userRepositoryMock.Setup(f => f.AddStudentAsync(student,Roles.Aluno.ToString()));
 
             //Act
             var result = await _useCase.CreateUserAsync(createUserRequest, Roles.Aluno);

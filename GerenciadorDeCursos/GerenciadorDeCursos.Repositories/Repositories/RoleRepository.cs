@@ -44,5 +44,11 @@ namespace GerenciadorDeCursos.Repositories.Repositories
             var role = _context.Roles.FirstOrDefaultAsync(p => p.Id == id);
             return role ?? throw new Exception("Não há roles com esse id");
         }
+
+        public Task<Role> GetRoleByNameAsync(string name)
+        {
+            var role = _context.Roles.FirstOrDefaultAsync(p => p.Name == name);
+            return role ?? throw new Exception("Não há roles com esse nome");
+        }
     }
 }

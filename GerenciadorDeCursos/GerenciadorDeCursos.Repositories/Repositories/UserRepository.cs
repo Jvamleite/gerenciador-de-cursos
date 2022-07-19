@@ -12,20 +12,26 @@ namespace GerenciadorDeCursos.Repositories.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
+        private readonly IRoleRepository _roleRepository;
 
-        public UserRepository(DataContext context)
+        public UserRepository(DataContext context, IRoleRepository roleRepository)
         {
             _context = context;
+            _roleRepository = roleRepository;
         }
 
-        public async Task AddTeacherAsync(Teacher teacher)
+        public async Task AddTeacherAsync(Teacher teacher, string roleName)
         {
+            var role = await _roleRepository.GetRoleByNameAsync(roleName);
+            teacher.Role = role;
             await _context.Teachers.AddAsync(teacher);
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddStudentAsync(Student student)
+        public async Task AddStudentAsync(Student student, string roleName)
         {
+            var role = await _roleRepository.GetRoleByNameAsync(roleName);
+            student.Role = role;
             await _context.Students.AddAsync(student);
             await _context.SaveChangesAsync();
         }

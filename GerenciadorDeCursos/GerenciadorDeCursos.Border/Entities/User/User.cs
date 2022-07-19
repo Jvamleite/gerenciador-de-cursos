@@ -39,7 +39,7 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
             LastName = lastName;
             Email = email;
             CPF = cpf;
-            Username = name + "_" + lastName;
+            Username = (name + "_" + lastName).Replace(" ", "_");
             Password = PasswordHasher.Hash(password);
             IsAdmin = isAdmin;
         }

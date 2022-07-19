@@ -14,5 +14,7 @@ namespace GerenciadorDeCursos.Border.Repositories
         Task<Role> GetRoleByIdAsync(Guid id);
 
         Task DeleteRoleAsync(Guid id);
+
+        Task<Role> GetRoleByNameAsync(string name);
     }
 }

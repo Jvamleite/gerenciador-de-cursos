@@ -32,7 +32,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                                                      createUserRequest.Email,
                                                      createUserRequest.CPF);
 
-                    await _userRepository.AddStudentAsync(createdStudent);
+                    await _userRepository.AddStudentAsync(createdStudent, role.ToString());
                     return new ResultBase(createdStudent.CreateCreateUserReponse());
                 }
                 else
@@ -42,7 +42,7 @@ namespace GerenciadorDeCursos.UseCases.UserUseCases
                                                      createUserRequest.Email,
                                                      createUserRequest.CPF);
 
-                    await _userRepository.AddTeacherAsync(createdteacher);
+                    await _userRepository.AddTeacherAsync(createdteacher, role.ToString());
                     return new ResultBase(createdteacher.CreateCreateUserReponse());
                 }
             }
