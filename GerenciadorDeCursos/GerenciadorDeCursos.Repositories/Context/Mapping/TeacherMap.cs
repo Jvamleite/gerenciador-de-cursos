@@ -19,7 +19,7 @@ namespace GerenciadorDeCursos.Repositories.Context.Mapping
             builder.HasMany(p => p.Courses)
                 .WithOne(p => p.Teacher);
             builder.HasOne(p => p.Role)
-                .WithOne(p => p.Teacher);
+                .WithMany(p => p.Teacher);
         }
     }
 }

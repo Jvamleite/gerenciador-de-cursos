@@ -1,7 +1,10 @@
-﻿using GerenciadorDeCursos.Border.Repositories;
+﻿using GerenciadorDeCursos.Border.DTOs.User.Response;
+using GerenciadorDeCursos.Border.Entities.UserEntities;
+using GerenciadorDeCursos.Border.Repositories;
 using GerenciadorDeCursos.Border.UseCases.User;
 using GerenciadorDeCursos.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.UseCases.RoleUseCases
@@ -20,7 +23,7 @@ namespace GerenciadorDeCursos.UseCases.RoleUseCases
             try
             {
                 var roles = await _roleRepository.GetAllAsync();
-                return new ResultBase(roles);
+                return new ResultBase(CreateRoleResponseList(roles));
             }
             catch (Exception ex)
             {
@@ -39,6 +42,18 @@ namespace GerenciadorDeCursos.UseCases.RoleUseCases
             {
                 return new ResultBase(false, ex.Message);
             }
+        }
+
+        private IEnumerable<RoleResponse> CreateRoleResponseList(IEnumerable<Role> roles)
+        {
+            var response = new List<RoleResponse>();
+            foreach(var role in roles)
+            {
+                var roleResponse = role.CreateRoleResponse();
+                response.Add(roleResponse);
+            }
+            return response;
+
         }
     }
 }

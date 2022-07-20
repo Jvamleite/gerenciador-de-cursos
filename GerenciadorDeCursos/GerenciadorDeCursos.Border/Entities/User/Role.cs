@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GerenciadorDeCursos.Border.DTOs.User.Response;
+using System;
+using System.Collections.Generic;
 
 namespace GerenciadorDeCursos.Border.Entities.UserEntities
 {
@@ -8,13 +10,9 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public string Name { get; set; }
 
-        public Guid StudentId { get; set; }
+        public IEnumerable<Student> Student { get; set; }
 
-        public Student Student { get; set; }
-
-        public Guid TeacherId { get; set; }
-
-        public Teacher Teacher { get; set; }
+        public IEnumerable<Teacher> Teacher { get; set; }
 
         public Role() {}
 
@@ -22,6 +20,14 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
         {
             Id = Guid.NewGuid();
             Name = name;
+        }
+
+        public RoleResponse CreateRoleResponse()
+        {
+            var response = new RoleResponse();
+            response.Name = this.Name;
+            response.Id = this.Id;
+            return response;
         }
     }
 }

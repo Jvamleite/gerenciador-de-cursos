@@ -23,7 +23,7 @@ namespace GerenciadorDeCursos.UseCases.RoleUseCase
             {
                 var role = new Role(createRoleRequest.RoleName);
                 await _roleRepository.AddRoleAsync(role);
-                return new ResultBase(role);
+                return new ResultBase(role.CreateRoleResponse());
             }
             catch (Exception ex)
             {
