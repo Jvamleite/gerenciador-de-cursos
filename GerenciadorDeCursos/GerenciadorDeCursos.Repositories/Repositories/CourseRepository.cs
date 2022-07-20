@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Repositories.Repositories
 {
-    public class CourseRepository :ICourseRepository
+    public class CourseRepository : ICourseRepository
     {
         private readonly DataContext _context;
 

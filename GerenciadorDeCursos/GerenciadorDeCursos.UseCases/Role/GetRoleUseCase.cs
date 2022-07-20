@@ -47,13 +47,12 @@ namespace GerenciadorDeCursos.UseCases.RoleUseCases
         private IEnumerable<RoleResponse> CreateRoleResponseList(IEnumerable<Role> roles)
         {
             var response = new List<RoleResponse>();
-            foreach(var role in roles)
+            foreach (var role in roles)
             {
                 var roleResponse = role.CreateRoleResponse();
                 response.Add(roleResponse);
             }
             return response;
-
         }
     }
 }

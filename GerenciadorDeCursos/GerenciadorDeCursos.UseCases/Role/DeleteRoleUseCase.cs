@@ -9,6 +9,7 @@ namespace GerenciadorDeCursos.UseCases.RoleUseCases
     public class DeleteRoleUseCase : IDeleteRoleUseCase
     {
         private readonly IRoleRepository _roleRepository;
+
         public DeleteRoleUseCase(IRoleRepository roleRepository)
         {
             _roleRepository = roleRepository;

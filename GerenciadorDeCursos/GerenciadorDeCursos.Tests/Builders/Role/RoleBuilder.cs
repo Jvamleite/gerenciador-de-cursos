@@ -23,14 +23,11 @@ namespace GerenciadorDeCursos.Tests.Builders.RoleBuilder
         {
             return _instance;
         }
-        
+
         public RoleBuilder WithId(Guid id)
         {
             _instance.Id = id;
             return this;
         }
-    
-
-
     }
 }

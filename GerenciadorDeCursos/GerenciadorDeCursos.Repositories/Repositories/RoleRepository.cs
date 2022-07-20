@@ -36,7 +36,7 @@ namespace GerenciadorDeCursos.Repositories.Repositories
         public async Task<IEnumerable<Role>> GetAllAsync()
         {
             var roles = await _context.Roles.ToListAsync();
-            return roles.Any() ? roles : throw new Exception("Não há roles para listar"); 
+            return roles.Any() ? roles : throw new Exception("Não há roles para listar");
         }
 
         public Task<Role> GetRoleByIdAsync(Guid id)

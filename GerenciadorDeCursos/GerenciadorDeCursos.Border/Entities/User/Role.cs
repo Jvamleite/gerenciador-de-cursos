@@ -14,7 +14,8 @@ namespace GerenciadorDeCursos.Border.Entities.UserEntities
 
         public IEnumerable<Teacher> Teacher { get; set; }
 
-        public Role() {}
+        public Role()
+        { }
 
         public Role(string name)
         {

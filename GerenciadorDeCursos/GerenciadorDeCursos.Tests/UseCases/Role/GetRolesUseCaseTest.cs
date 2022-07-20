@@ -86,7 +86,5 @@ namespace GerenciadorDeCursos.Tests.UseCases.RoleTests
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);
         }
-
-
     }
 }
