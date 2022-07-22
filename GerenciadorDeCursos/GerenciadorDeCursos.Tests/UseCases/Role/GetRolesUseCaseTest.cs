@@ -25,7 +25,8 @@ namespace GerenciadorDeCursos.Tests.UseCases.RoleTests
         public async Task Execute_GetAllRoles_ReturnsSucess()
         {
             //Arrange
-            var roles = ListFactory.Generate(() => new RoleBuilder().Build(), min: 1);
+            var roles = ListFactory.Generate(() => new RoleBuilder().Build(), min: 2, max: 2);
+            var rolesResponse = new GetRoleResponseBuilder().WithListOfRoles(roles).Build();
 
             _roleRepositoryMock.Setup(p => p.GetAllAsync())
                 .ReturnsAsync(roles);
@@ -33,8 +34,9 @@ namespace GerenciadorDeCursos.Tests.UseCases.RoleTests
             //Act
             var result = await _useCase.GetAllRoles();
 
+            //Assert
             result.Sucess.Should().BeTrue();
-            result.Data.Should().BeEquivalentTo(roles);
+            result.Data.Should().BeEquivalentTo(rolesResponse);
         }
 
         [Fact]

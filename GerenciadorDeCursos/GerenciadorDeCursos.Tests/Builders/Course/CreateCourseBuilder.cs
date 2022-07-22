@@ -25,7 +25,8 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
                 Status = Status.Previsto,
                 Students = ListFactory.Generate(() => new StudentBuilder().Build(), min: 1).AsEnumerable(),
                 Teacher = new TeacherBuilder().Build(),
-                TeacherId = Guid.Parse("e045a3fa-11ba-4955-b25d-5ef362211e2e")
+                TeacherId = Guid.Parse("e045a3fa-11ba-4955-b25d-5ef362211e2e"),
+                NumeroDeVagas = _faker.Random.Int()
             };
         }
 
@@ -36,9 +37,9 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
 
         public CreateCourseBuilder WithRequest(CreateCourseRequest request)
         {
-            this._instance.Title = request.Title;
-            this._instance.InitialData = request.InitialData;
-            this._instance.FinalData = request.FinalData;
+            _instance.Title = request.Title;
+            _instance.InitialData = request.InitialData;
+            _instance.FinalData = request.FinalData;
             return this;
         }
     }

@@ -26,7 +26,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
         {
             //Arrange
             var students = ListFactory.Generate(() => new StudentBuilder().Build(), min: 2, max: 2);
-            var studentsResponse = new GetStudentResponseBuilder().WithListOfStudents(students).Build();
+            var studentsResponse = new StudentResponseBuilderList().WithListOfStudents(students).Build();
 
             _userRepositoryMock.Setup(f => f.GetAllStudentsAsync())
                 .ReturnsAsync(students);
@@ -59,7 +59,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
         {
             //Arrange
             var teachers = ListFactory.Generate(() => new TeacherBuilder().Build(), min: 2, max: 2);
-            var teachersResponse = new GetTeacherResponseBuilder().WithListOfteacher(teachers).Build();
+            var teachersResponse = new TeacherResponseBuilderList().WithListOfteacher(teachers).Build();
 
             _userRepositoryMock.Setup(f => f.GetAllteachersAsync())
                 .ReturnsAsync(teachers);
@@ -85,6 +85,48 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
 
             result.Sucess.Should().BeFalse();
             result.Message.Should().BeEquivalentTo(exception.Message);
+        }
+
+        [Fact]
+        public async Task Execute_GetStudentByRegistrationNumber_ReturnsSucess()
+        {
+            //Arrange
+            var registrationNumber = Guid.NewGuid();
+            var student = new StudentBuilder().WithRegistrationNumber(registrationNumber).Build();
+            var studentResponse = new StudentResponseBuilder().WithStudent(student).Build();
+            
+
+            _userRepositoryMock.Setup(f => f.GetByRegistrationNumberAsync(registrationNumber))
+                .ReturnsAsync(student);
+
+            //Act
+            var result = await _useCase.GetStudentByRegistrationNumberAsync(registrationNumber);
+
+            //Assert
+
+            result.Sucess.Should().BeTrue();
+            result.Data.Should().BeEquivalentTo(studentResponse);
+            
+        }
+
+        [Fact]
+        public async Task Execute_GetStudentByRegistrationNumber_ReturnsException()
+        {
+            //Arrange
+            var registrationNumber = Guid.NewGuid();
+            var exception = new Exception($"Não há nenhum estudante com o número de matrícula {registrationNumber}");
+
+
+            _userRepositoryMock.Setup(f => f.GetByRegistrationNumberAsync(registrationNumber))
+                .Throws(exception);
+
+            //Act
+            var result = await _useCase.GetStudentByRegistrationNumberAsync(registrationNumber);
+
+            //Assert
+            result.Sucess.Should().BeFalse();
+            result.Message.Should().BeEquivalentTo(exception.Message); 
+
         }
     }
 }

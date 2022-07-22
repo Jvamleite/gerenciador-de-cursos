@@ -16,25 +16,8 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
 
         public CourseResponseListBuilder()
         {
-            _instance = new List<CourseResponse>
-            {
-                new CourseResponse
-                {
-                    Id = Guid.NewGuid(),
-                    Title = _faker.Name.ToString(),
-                    InitialData = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
-                    FinalData = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
-                    Status = Status.Previsto,
-                },
-                new CourseResponse
-                {
-                    Id = Guid.NewGuid(),
-                    Title = _faker.Name.ToString(),
-                    InitialData = _faker.Date.Between(DateTime.Today, DateTime.Today.AddYears(1)),
-                    FinalData = _faker.Date.Between(DateTime.Today.AddMonths(1), DateTime.Today.AddYears(1)),
-                    Status = Status.Previsto,
-                }
-            };
+            _instance = ListFactory.Generate(() => new CourseResponseBuilder().Build(), min: 2, max: 2);
+            
         }
 
         public List<CourseResponse> Build()
@@ -46,10 +29,13 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
         {
             for (int i = 0; i < 2; i++)
             {
-                this._instance.ElementAt(i).Id = courses.ElementAt(i).Id;
-                this._instance.ElementAt(i).Title = courses.ElementAt(i).Title;
-                this._instance.ElementAt(i).FinalData = courses.ElementAt(i).FinalData;
-                this._instance.ElementAt(i).InitialData = courses.ElementAt(i).InitialData;
+                _instance[i].Id = courses[i].Id;
+                _instance[i].Title = courses[i].Title;
+                _instance[i].FinalData = courses[i].FinalData;
+                _instance[i].InitialData = courses[i].InitialData;
+                _instance[i].Teacher = courses[i].Teacher.Name;
+                _instance[i].Status = courses[i].Status;
+                _instance[i].PositionsFree = courses[i].NumeroDeVagas;
             }
 
             return this;

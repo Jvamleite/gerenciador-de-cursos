@@ -35,5 +35,11 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
             this._instance.Username = request.Name + "_" + request.LastName;
             return this;
         }
+
+        public StudentBuilder WithRegistrationNumber(Guid registrationNumber)
+        {
+            _instance.RegistrationNumber = registrationNumber;
+            return this;
+        }
     }
 }
