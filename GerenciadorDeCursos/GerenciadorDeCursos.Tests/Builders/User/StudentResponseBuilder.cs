@@ -20,7 +20,6 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
                 RegistrationNumber = Guid.NewGuid(),
                 Username = _faker.Internet.UserName(),
                 Courses = ListFactory.Generate(() => new CreateCourseBuilder().Build(), min: 1).AsEnumerable()
-                
             };
         }
 
@@ -31,7 +30,6 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
 
         public StudentResponseBuilder WithStudent(Student students)
         {
-            
             _instance.RegistrationNumber = students.RegistrationNumber;
             _instance.Username = students.Username;
             _instance.Courses = students.EnrolledCourses;

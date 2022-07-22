@@ -1,11 +1,8 @@
 ﻿using Bogus;
 using GerenciadorDeCursos.Border.DTOs.UserDtos.Response;
 using GerenciadorDeCursos.Border.Entities.UserEntities;
-using GerenciadorDeCursos.Tests.Builders.CourseBuilder;
 using GerenciadorDeCursos.Tests.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
 {
@@ -17,7 +14,6 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
         public StudentResponseBuilderList()
         {
             _instance = ListFactory.Generate(() => new StudentResponseBuilder().Build(), min: 2, max: 2);
-            
         }
 
         public List<GetStudentResponse> Build()
@@ -31,7 +27,7 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
             {
                 _instance[i].RegistrationNumber = students[i].RegistrationNumber;
                 _instance[i].Username = students[i].Username;
-               _instance[i].Courses = students[i].EnrolledCourses;
+                _instance[i].Courses = students[i].EnrolledCourses;
             }
 
             return this;

@@ -18,7 +18,6 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
             {
                 Username = _faker.Internet.UserName(),
                 Courses = ListFactory.Generate(() => new CreateCourseBuilder().Build(), min: 1).AsEnumerable()
-
             };
         }
 
@@ -29,7 +28,6 @@ namespace GerenciadorDeCursos.Tests.Builders.UserBuilder
 
         public TeacherResponseBuilder WithTeacher(Teacher teacher)
         {
-
             _instance.Username = teacher.Username;
             _instance.Courses = teacher.Courses;
             return this;

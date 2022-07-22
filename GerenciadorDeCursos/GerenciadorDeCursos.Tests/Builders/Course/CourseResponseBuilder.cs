@@ -2,7 +2,6 @@
 using GerenciadorDeCursos.Border.DTOs.CourseDtos.Response;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
 using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
-using GerenciadorDeCursos.Tests.Builders.UserBuilder;
 using GerenciadorDeCursos.Tests.Utils;
 using System;
 

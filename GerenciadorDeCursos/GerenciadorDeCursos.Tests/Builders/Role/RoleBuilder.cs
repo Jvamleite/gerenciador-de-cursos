@@ -18,8 +18,8 @@ namespace GerenciadorDeCursos.Tests.Builders.RoleBuilder
             {
                 Name = _faker.Name.ToString(),
                 Id = Guid.NewGuid(),
-                Teacher = (IEnumerable<Teacher>) ListFactory.Generate(() => new TeacherBuilder().Build(), min: 1),
-                Student = (IEnumerable<Student>) ListFactory.Generate(() => new StudentBuilder().Build(), min: 1)
+                Teacher = (IEnumerable<Teacher>)ListFactory.Generate(() => new TeacherBuilder().Build(), min: 1),
+                Student = (IEnumerable<Student>)ListFactory.Generate(() => new StudentBuilder().Build(), min: 1)
             };
         }
 

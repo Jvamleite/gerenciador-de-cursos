@@ -1,11 +1,8 @@
 ﻿using Bogus;
 using GerenciadorDeCursos.Border.DTOs.CourseDtos.Response;
 using GerenciadorDeCursos.Border.Entities.CourseEntities;
-using GerenciadorDeCursos.Border.Entities.CourseEntities.Enums;
 using GerenciadorDeCursos.Tests.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
 {
@@ -17,7 +14,6 @@ namespace GerenciadorDeCursos.Tests.Builders.CourseBuilder
         public CourseResponseListBuilder()
         {
             _instance = ListFactory.Generate(() => new CourseResponseBuilder().Build(), min: 2, max: 2);
-            
         }
 
         public List<CourseResponse> Build()

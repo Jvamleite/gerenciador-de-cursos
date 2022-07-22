@@ -94,7 +94,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             var registrationNumber = Guid.NewGuid();
             var student = new StudentBuilder().WithRegistrationNumber(registrationNumber).Build();
             var studentResponse = new StudentResponseBuilder().WithStudent(student).Build();
-            
 
             _userRepositoryMock.Setup(f => f.GetByRegistrationNumberAsync(registrationNumber))
                 .ReturnsAsync(student);
@@ -106,7 +105,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
 
             result.Sucess.Should().BeTrue();
             result.Data.Should().BeEquivalentTo(studentResponse);
-            
         }
 
         [Fact]
@@ -116,7 +114,6 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
             var registrationNumber = Guid.NewGuid();
             var exception = new Exception($"Não há nenhum estudante com o número de matrícula {registrationNumber}");
 
-
             _userRepositoryMock.Setup(f => f.GetByRegistrationNumberAsync(registrationNumber))
                 .Throws(exception);
 
@@ -125,8 +122,7 @@ namespace GerenciadorDeCursos.Tests.UseCases.User
 
             //Assert
             result.Sucess.Should().BeFalse();
-            result.Message.Should().BeEquivalentTo(exception.Message); 
-
+            result.Message.Should().BeEquivalentTo(exception.Message);
         }
     }
 }

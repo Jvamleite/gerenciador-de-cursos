@@ -6,8 +6,6 @@ using System;
 
 namespace GerenciadorDeCursos.Tests.Builders.RoleBuilder
 {
-    
-
     public class RoleResponseBuilder
     {
         private readonly RoleResponse _instance;
@@ -20,7 +18,6 @@ namespace GerenciadorDeCursos.Tests.Builders.RoleBuilder
                 Id = Guid.NewGuid(),
                 Name = _faker.Random.String()
             };
-
         }
 
         public RoleResponse Build()
